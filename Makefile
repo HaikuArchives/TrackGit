@@ -28,7 +28,10 @@ APP_MIME_SIG =
 #	means this Makefile will not work correctly if two source files with the
 #	same name (source.c or source.cpp) are included from different directories.
 #	Also note that spaces in folder names do not work well with this Makefile.
-SRCS = TrackGit.cpp	
+SRCS = GitCommand/Clone.cpp \
+	   UI/CloneWindow.cpp \
+	   TrackGit.cpp
+
 #	Specify the resource definition files to use. Full or relative paths can be
 #	used.
 RDEFS = TrackGit.rdef 
@@ -53,7 +56,7 @@ RSRCS =
 #	- 	if your library does not follow the standard library naming scheme,
 #		you need to specify the path to the library and it's name.
 #		(e.g. for mylib.a, specify "mylib.a" or "path/mylib.a")
-LIBS =  be tracker git2
+LIBS = be tracker git2
 
 #	Specify additional paths to directories following the standard libXXX.so
 #	or libXXX.a naming scheme. You can specify full paths or paths relative
@@ -116,7 +119,7 @@ LINKER_FLAGS =
 #	appear at /dev/video/usb when loaded. The default is "misc".
 DRIVER_PATH = 
 
-## Include the Makefile-Engine
+# Include the Makefile-Engine
 DEVEL_DIRECTORY := \
 	$(shell findpaths -r "makefile_engine" B_FIND_PATH_DEVELOP_DIRECTORY)
 include $(DEVEL_DIRECTORY)/etc/makefile-engine

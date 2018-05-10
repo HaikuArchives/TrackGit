@@ -10,6 +10,9 @@
 #include <strings.h>
 #include <add-ons/tracker/TrackerAddOn.h>
 
+#include "GitCommand/GitCommand.h"
+#include "GitCommand/Clone.h"
+
 #include <git2.h>
 
 extern "C" {
@@ -63,13 +66,13 @@ populate_menu (BMessage* msg, BMenu* menu, BHandler* handler)
 	git_buf buf = GIT_BUF_INIT_CONST(NULL, 0);
 
 	if (git_repository_discover(&buf, inPath, 0, NULL) == 0) {
-		// repoPath is git repo
+		// buf is git repo
 	} else {
 		// inPath does not belong to git repo
-		BMessage* itemMsg = new BMessage(*msg);
-		itemMsg->AddInt32("addon_item_id", kClone);
-		BMenuItem *menuitem = new BMenuItem("Clone", itemMsg);
-		submenu->AddItem(menuitem);
+		BMessage* cloneMsg = new BMessage(*msg);
+		cloneMsg->AddInt32("addon_item_id", kClone);
+		BMenuItem *cloneItem = new BMenuItem("Clone", cloneMsg);
+		submenu->AddItem(cloneItem);
 	}
 
 	menu->AddItem(submenu);
@@ -84,11 +87,18 @@ message_received (BMessage* msg)
 	if (msg->FindInt32("addon_item_id", &itemId) != B_OK)
 		return;
 
+	GitCommand* gitCommand = NULL;
+
 	switch (itemId) {
 		case kClone:
+			gitCommand = new Clone();
 			break;
 		default:
 			break;
+	}
+
+	if (gitCommand) {
+		gitCommand->Execute();
 	}
 }
 
