@@ -13,5 +13,5 @@ void
 Clone::Execute()
 {
 	CloneWindow* cloneWindow = new CloneWindow();
-	cloneWindow.Show();
+	cloneWindow->Show();
 }
