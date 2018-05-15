@@ -1,6 +1,7 @@
 #include "Clone.h"
 #include "../UI/CloneWindow.h"
 
+#include <AppKit.h>
 #include <git2.h>
 
 Clone::Clone()

@@ -20,6 +20,11 @@ CloneWindow::CloneWindow()
 }
 
 void
-CloneWindow::MessageReceived(BMessage*)
+CloneWindow::MessageReceived(BMessage* msg)
 {
+	printf("got msg\n");
+	switch (msg->what) {
+		default:
+			BWindow::MessageReceived(msg);
+	}
 }

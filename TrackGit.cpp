@@ -11,6 +11,7 @@
 #include <add-ons/tracker/TrackerAddOn.h>
 
 #include "GitCommand/GitCommand.h"
+#include "UI/CloneWindow.h"
 #include "GitCommand/Clone.h"
 
 #include <git2.h>
@@ -36,7 +37,6 @@ process_refs (entry_ref dir_ref, BMessage* msg, void*)
 void
 populate_menu (BMessage* msg, BMenu* menu, BHandler* handler)
 {
-	printf("in TrackGit::populate_menu");
 	if (menu == NULL){
 		BString buffer("Null menu");
 		BAlert *alert = new BAlert("", buffer.String(), "Cancel", 
@@ -106,5 +106,9 @@ message_received (BMessage* msg)
 int 
 main ()
 {
+	// new BApplication("application/x-vnd.Haiku-TrackGit");
+	// CloneWindow* cloneWindow = new CloneWindow();
+	// cloneWindow->Show();
+
 	return 0;
 }
