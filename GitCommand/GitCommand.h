@@ -3,7 +3,7 @@
 
 class GitCommand {
     public:
-    virtual void Execute();
+    virtual void Execute() = 0;
 };
 
 #endif
