@@ -17,6 +17,7 @@
 
 #include <stdio.h>
 #include <strings.h>
+#include <vector>
 #include <add-ons/tracker/TrackerAddOn.h>
 
 #include "GitCommand/GitCommand.h"
@@ -83,19 +84,32 @@ populate_menu (BMessage* msg, BMenu* menu, BHandler* handler)
 
 	BMenu* submenu = new BMenu(ADDON_NAME);
 
-	git_libgit2_init();
-	git_buf buf = GIT_BUF_INIT_CONST(NULL, 0);
-
+	// Get all the selected refs
+	BPath path;
+	BEntry entry;
+	vector<const char*> selected;
+	int refs;
+	entry_ref file_ref;
+	for (refs=0;
+			 msg->FindRef("refs", refs, &file_ref) == B_NO_ERROR;
+			 refs++) {
+			entry.SetTo(&file_ref);
+			entry.GetPath(&path);
+			selected.push_back(path.Path());
+	}
+	
 	// Get current directory path.
 	entry_ref dir_ref;
 	if (msg->FindRef("dir_ref", &dir_ref) != B_OK) {
 		printf("No dir_ref found!\n");
 		return;
 	}
-	BPath path;
-	BEntry entry(&dir_ref);
+	entry.SetTo(&dir_ref);
 	entry.GetPath(&path);
 	const char* inPath = path.Path();
+
+	git_libgit2_init();
+	git_buf buf = GIT_BUF_INIT_CONST(NULL, 0);
 
 	// Check if current directory is in git repo.
 	if (git_repository_discover(&buf, inPath, 0, NULL) == 0) {
@@ -108,11 +122,13 @@ populate_menu (BMessage* msg, BMenu* menu, BHandler* handler)
 		BMenuItem* cloneItem = new BMenuItem(B_TRANSLATE("Clone"), cloneMsg);
 		submenu->AddItem(cloneItem);
 
-		// Add Init here
-		BMessage* initMsg = new BMessage(*msg);
-		initMsg->AddInt32("addon_item_id", kInitHere);
-		BMenuItem* initItem = new BMenuItem(B_TRANSLATE("Init Here"), initMsg);
-		submenu->AddItem(initItem);
+		if (selected.size() == 0) {
+			// Add Init here
+			BMessage* initMsg = new BMessage(*msg);
+			initMsg->AddInt32("addon_item_id", kInitHere);
+			BMenuItem* initItem = new BMenuItem(B_TRANSLATE("Init Here"), initMsg);
+			submenu->AddItem(initItem);
+		}
 	}
 
 	menu->AddItem(submenu);
@@ -131,14 +147,27 @@ message_received (BMessage* msg)
 	if (msg->FindInt32("addon_item_id", &itemId) != B_OK)
 		return;
 
+	// Get all the selected refs
+	BPath path;
+	BEntry entry;
+	vector<const char*> selected;
+	int refs;
+	entry_ref file_ref;
+	for (refs=0;
+			 msg->FindRef("refs", refs, &file_ref) == B_NO_ERROR;
+			 refs++) {
+			entry.SetTo(&file_ref);
+			entry.GetPath(&path);
+			selected.push_back(path.Path());
+	}
+	
 	// Get current directory path.
 	entry_ref dir_ref;
 	if (msg->FindRef("dir_ref", &dir_ref) != B_OK) {
 		printf("No dir_ref found!\n");
 		return;
 	}
-	BPath path;
-	BEntry entry(&dir_ref);
+	entry.SetTo(&dir_ref);
 	entry.GetPath(&path);
 
 	GitCommand* gitCommand = NULL;
