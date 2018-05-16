@@ -61,6 +61,13 @@ process_refs (entry_ref dir_ref, BMessage* msg, void*)
 }
 
 
+/**
+ * Get selected files and current directory.
+ * @param msg The BMessage containing refs to selected files and current
+ *            directory.
+ * @param selected The vector of selected file paths.
+ * @returns The current directory path.
+ */
 const char*
 get_selected(BMessage* msg, vector<const char*>* selected)
 {
