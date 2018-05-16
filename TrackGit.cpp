@@ -87,11 +87,20 @@ message_received (BMessage* msg)
 	if (msg->FindInt32("addon_item_id", &itemId) != B_OK)
 		return;
 
+	entry_ref dir_ref;
+	if (msg->FindRef("dir_ref", &dir_ref) != B_OK) {
+		printf("No dir_ref found!\n");
+		return;
+	}
+	BPath path;
+	BEntry entry(&dir_ref);
+	entry.GetPath(&path);
+
 	GitCommand* gitCommand = NULL;
 
 	switch (itemId) {
 		case kClone:
-			gitCommand = new Clone();
+			gitCommand = new Clone(path.Path());
 			break;
 		default:
 			break;

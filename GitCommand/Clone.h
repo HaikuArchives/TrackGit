@@ -5,9 +5,11 @@
 
 class Clone : public GitCommand {
 public:
-							Clone();
+							Clone(const char*);
 
 	virtual	void			Execute();
+private:
+	const char*				dirPath;
 };
 
 #endif
