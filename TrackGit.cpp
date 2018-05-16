@@ -45,6 +45,7 @@ enum {
 	kInitHere
 };
 
+
 /**
  * process_ref definition for addon.
  * @param dir_ref The current directory ref.
@@ -58,6 +59,35 @@ process_refs (entry_ref dir_ref, BMessage* msg, void*)
 			0, 0, B_WIDTH_AS_USUAL, B_WARNING_ALERT);
 	alert->Go();
 }
+
+
+const char*
+get_selected(BMessage* msg, vector<const char*>* selected)
+{
+	// Get all the selected refs
+	BPath path;
+	BEntry entry;
+	int refs;
+	entry_ref file_ref;
+	for (refs=0;
+			 msg->FindRef("refs", refs, &file_ref) == B_NO_ERROR;
+			 refs++) {
+		entry.SetTo(&file_ref);
+		entry.GetPath(&path);
+		selected->push_back(path.Path());
+	}
+	
+	// Get current directory path.
+	entry_ref dir_ref;
+	if (msg->FindRef("dir_ref", &dir_ref) != B_OK) {
+		printf("No dir_ref found!\n");
+		return NULL;
+	}
+	entry.SetTo(&dir_ref);
+	entry.GetPath(&path);
+	return path.Path();
+}
+
 
 /**
  * Populates menu for this addon.
@@ -84,38 +114,18 @@ populate_menu (BMessage* msg, BMenu* menu, BHandler* handler)
 
 	BMenu* submenu = new BMenu(ADDON_NAME);
 
-	// Get all the selected refs
-	vector<const char*> selected;
-	BPath path;
-	BEntry entry;
-	int refs;
-	entry_ref file_ref;
-	for (refs=0;
-			 msg->FindRef("refs", refs, &file_ref) == B_NO_ERROR;
-			 refs++) {
-		entry.SetTo(&file_ref);
-		entry.GetPath(&path);
-		selected.push_back(path.Path());
-	}
-	
-	// Get current directory path.
-	entry_ref dir_ref;
-	if (msg->FindRef("dir_ref", &dir_ref) != B_OK) {
-		printf("No dir_ref found!\n");
-		return;
-	}
-	entry.SetTo(&dir_ref);
-	entry.GetPath(&path);
-	const char* inPath = path.Path();
+	vector<const char*>* selected = new vector<const char*>();
+	const char* dirPath = get_selected(msg, selected);
+	if (dirPath == NULL) return;
 
 	git_libgit2_init();
 	git_buf buf = GIT_BUF_INIT_CONST(NULL, 0);
 
 	// Check if current directory is in git repo.
-	if (git_repository_discover(&buf, inPath, 0, NULL) == 0) {
+	if (git_repository_discover(&buf, dirPath, 0, NULL) == 0) {
 		// buf is git repo
 	} else {
-		// inPath does not belong to git repo
+		// dirPath does not belong to git repo
 		// Add Clone menu item
 		BMessage* cloneMsg = new BMessage(*msg);
 		cloneMsg->AddInt32("addon_item_id", kClone);
@@ -123,7 +133,7 @@ populate_menu (BMessage* msg, BMenu* menu, BHandler* handler)
 		submenu->AddItem(cloneItem);
 
 		// Add "Init Here" only if no files are selected.
-		if (selected.size() == 0) {
+		if (selected->size() == 0) {
 			// Add Init here
 			BMessage* initMsg = new BMessage(*msg);
 			initMsg->AddInt32("addon_item_id", kInitHere);
@@ -149,37 +159,18 @@ message_received (BMessage* msg)
 	if (msg->FindInt32("addon_item_id", &itemId) != B_OK)
 		return;
 
-	// Get all the selected refs
-	BPath path;
-	BEntry entry;
-	vector<const char*> selected;
-	int refs;
-	entry_ref file_ref;
-	for (refs=0;
-			 msg->FindRef("refs", refs, &file_ref) == B_NO_ERROR;
-			 refs++) {
-		entry.SetTo(&file_ref);
-		entry.GetPath(&path);
-		selected.push_back(path.Path());
-	}
-	
-	// Get current directory path.
-	entry_ref dir_ref;
-	if (msg->FindRef("dir_ref", &dir_ref) != B_OK) {
-		printf("No dir_ref found!\n");
-		return;
-	}
-	entry.SetTo(&dir_ref);
-	entry.GetPath(&path);
+	vector<const char*>* selected = new vector<const char*>();
+	const char* dirPath = get_selected(msg, selected);
+	if (dirPath == NULL) return;
 
 	GitCommand* gitCommand = NULL;
 
 	switch (itemId) {
 		case kClone:
-			gitCommand = new Clone(path.Path());
+			gitCommand = new Clone(dirPath);
 			break;
 		case kInitHere:
-			gitCommand = new Init(path.Path());
+			gitCommand = new Init(dirPath);
 			break;
 		default:
 			break;
