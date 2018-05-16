@@ -30,6 +30,7 @@ APP_MIME_SIG =
 #	Also note that spaces in folder names do not work well with this Makefile.
 SRCS = ThirdParty/PathBox.cpp \
        GitCommand/Clone.cpp \
+       GitCommand/Init.cpp \
 	   UI/CloneWindow.cpp \
 	   TrackGit.cpp
 

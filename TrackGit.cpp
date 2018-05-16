@@ -9,6 +9,7 @@
 #include <Alert.h>
 #include <Application.h>
 #include <AppKit.h>
+#include <Catalog.h>
 #include <InterfaceKit.h>
 #include <StorageKit.h>
 #include <SupportKit.h>
@@ -20,9 +21,13 @@
 
 #include "GitCommand/GitCommand.h"
 #include "UI/CloneWindow.h"
+
 #include "GitCommand/Clone.h"
+#include "GitCommand/Init.h"
 
 #include <git2.h>
+
+#define B_TRANSLATION_CONTEXT "TrackGit"
 
 extern "C" {
 	void populate_menu (BMessage* msg, BMenu* menu, BHandler* handler);
@@ -33,7 +38,11 @@ extern "C" {
  * The addon name. Will be used in menu item.
  */
 const char* ADDON_NAME = "TrackGit";
-const uint32 kClone = 'clon';
+
+enum {
+	kClone,
+	kInitHere
+};
 
 /**
  * process_ref definition for addon.
@@ -96,8 +105,14 @@ populate_menu (BMessage* msg, BMenu* menu, BHandler* handler)
 		// Add Clone menu item
 		BMessage* cloneMsg = new BMessage(*msg);
 		cloneMsg->AddInt32("addon_item_id", kClone);
-		BMenuItem *cloneItem = new BMenuItem("Clone", cloneMsg);
+		BMenuItem* cloneItem = new BMenuItem(B_TRANSLATE("Clone"), cloneMsg);
 		submenu->AddItem(cloneItem);
+
+		// Add Init here
+		BMessage* initMsg = new BMessage(*msg);
+		initMsg->AddInt32("addon_item_id", kInitHere);
+		BMenuItem* initItem = new BMenuItem(B_TRANSLATE("Init Here"), initMsg);
+		submenu->AddItem(initItem);
 	}
 
 	menu->AddItem(submenu);
@@ -131,6 +146,9 @@ message_received (BMessage* msg)
 	switch (itemId) {
 		case kClone:
 			gitCommand = new Clone(path.Path());
+			break;
+		case kInitHere:
+			gitCommand = new Init(path.Path());
 			break;
 		default:
 			break;
