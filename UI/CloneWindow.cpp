@@ -14,7 +14,10 @@ enum {
 	kCancel
 };
 
-
+/**
+ * CloneWindow Constructor
+ * @param dirPath The path where Clone is selected.
+ */
 CloneWindow::CloneWindow(const char* dirPath)
 	:
 	BWindow(BRect(0, 0, 300, 150), "TrackGit - Clone", B_DOCUMENT_WINDOW, 
@@ -43,6 +46,10 @@ CloneWindow::CloneWindow(const char* dirPath)
 }
 
 
+/**
+ * Handler to received messages.
+ * @param msg The received message.
+ */
 void
 CloneWindow::MessageReceived(BMessage* msg)
 {
@@ -61,6 +68,12 @@ CloneWindow::MessageReceived(BMessage* msg)
 }
 
 
+/**
+ * Clones given repo url into given path.
+ * @param url The url of repo.
+ * @param path The path to clone into.
+ * @returns The error code or 0.
+ */
 int
 CloneWindow::DoClone(const char* url, const char* path)
 {

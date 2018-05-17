@@ -6,9 +6,16 @@
 #include <InterfaceKit.h>
 
 class CloneWindow : public BWindow {
+	/**
+	 * URL Text Box
+	 */
 	BTextControl* fURL;
+	/**
+	 * Path Text Box
+	 */ 
 	PathBox* fPathBox;
-	public:
+	
+public:
 	CloneWindow(const char*);
 	virtual void MessageReceived(BMessage*);
 	int DoClone(const char*, const char*);

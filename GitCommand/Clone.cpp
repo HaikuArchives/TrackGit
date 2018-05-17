@@ -5,6 +5,10 @@
 
 #include <git2.h>
 
+/**
+ * Clone class Constructor.
+ * @param dirPath The current directory where Clone is selected.
+ */
 Clone::Clone(const char* dirPath)
 	:
 	GitCommand()
@@ -12,6 +16,9 @@ Clone::Clone(const char* dirPath)
 	this->dirPath = dirPath;
 }
 
+/**
+ * Clone command execution. Opens a window to clone a repo.
+ */
 void
 Clone::Execute()
 {

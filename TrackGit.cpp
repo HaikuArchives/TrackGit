@@ -1,3 +1,11 @@
+/**
+ * @file TrackGit.cpp
+ * @brief Main file of TrackGit - A Tracker Addon for Git Version Control 
+ * System.
+ * 
+ * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ */
+
 #include <Alert.h>
 #include <Application.h>
 #include <AppKit.h>
@@ -21,19 +29,33 @@ extern "C" {
 	void message_received (BMessage* msg);
 }
 
+/**
+ * The addon name. Will be used in menu item.
+ */
 const char* ADDON_NAME = "TrackGit";
 const uint32 kClone = 'clon';
 
+/**
+ * process_ref definition for addon.
+ * @param dir_ref The current directory ref.
+ * @param msg BMessage containing refs to selected files.
+ */
 void 
 process_refs (entry_ref dir_ref, BMessage* msg, void*)
 {
-	BString buffer("Hello World");
+	BString buffer("TrackGit: A Tracker Addon for Git Version Control System");
 	BAlert *alert = new BAlert("", buffer.String(), "Cancel", 
 			0, 0, B_WIDTH_AS_USUAL, B_WARNING_ALERT);
 	alert->Go();
 }
 
-
+/**
+ * Populates menu for this addon.
+ * @param msg The passed BMessage. Contains refs to current dir and selected 
+ * 			  files.
+ * @param menu The pointer to Tracker menu.
+ * @param handler The BHandler of Tracker. This should be target of added items.
+ */
 void
 populate_menu (BMessage* msg, BMenu* menu, BHandler* handler)
 {
@@ -45,15 +67,17 @@ populate_menu (BMessage* msg, BMenu* menu, BHandler* handler)
 		return;
 	}
 
+	// Remove Menu item if already exists.
 	BMenuItem* item = menu->FindItem(ADDON_NAME);
 	if (item != NULL)
 		menu->RemoveItem(item);
 
 	BMenu* submenu = new BMenu(ADDON_NAME);
 
-	// Init libgit2
 	git_libgit2_init();
+	git_buf buf = GIT_BUF_INIT_CONST(NULL, 0);
 
+	// Get current directory path.
 	entry_ref dir_ref;
 	if (msg->FindRef("dir_ref", &dir_ref) != B_OK) {
 		printf("No dir_ref found!\n");
@@ -63,12 +87,13 @@ populate_menu (BMessage* msg, BMenu* menu, BHandler* handler)
 	BEntry entry(&dir_ref);
 	entry.GetPath(&path);
 	const char* inPath = path.Path();
-	git_buf buf = GIT_BUF_INIT_CONST(NULL, 0);
 
+	// Check if current directory is in git repo.
 	if (git_repository_discover(&buf, inPath, 0, NULL) == 0) {
 		// buf is git repo
 	} else {
 		// inPath does not belong to git repo
+		// Add Clone menu item
 		BMessage* cloneMsg = new BMessage(*msg);
 		cloneMsg->AddInt32("addon_item_id", kClone);
 		BMenuItem *cloneItem = new BMenuItem("Clone", cloneMsg);
@@ -80,6 +105,10 @@ populate_menu (BMessage* msg, BMenu* menu, BHandler* handler)
 }
 
 
+/**
+ * Handler for received messages.
+ * @param msg The passed BMessage.
+ */
 void 
 message_received (BMessage* msg)
 {
@@ -87,6 +116,7 @@ message_received (BMessage* msg)
 	if (msg->FindInt32("addon_item_id", &itemId) != B_OK)
 		return;
 
+	// Get current directory path.
 	entry_ref dir_ref;
 	if (msg->FindRef("dir_ref", &dir_ref) != B_OK) {
 		printf("No dir_ref found!\n");
@@ -115,9 +145,5 @@ message_received (BMessage* msg)
 int 
 main ()
 {
-	// new BApplication("application/x-vnd.Haiku-TrackGit");
-	// CloneWindow* cloneWindow = new CloneWindow();
-	// cloneWindow->Show();
-
 	return 0;
 }

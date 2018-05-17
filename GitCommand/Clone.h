@@ -9,6 +9,9 @@ public:
 
 	virtual	void			Execute();
 private:
+	/**
+	 * The current directory where Clone option is selected.
+	 */
 	const char*				dirPath;
 };
 
