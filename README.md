@@ -22,3 +22,8 @@ or you can execute `run.sh`.
 + [ ] Push
 + [ ] Create Branch
 + [ ] Merge Branch
+
+## Documentation
+
+The documentation is done using Doxygen. It can be found 
+[here](https://hrily.github.io/TrackGit).
