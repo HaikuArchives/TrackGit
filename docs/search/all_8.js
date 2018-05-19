@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['main',['main',['../TrackGit_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'TrackGit.cpp']]],
-  ['message_5freceived',['message_received',['../TrackGit_8cpp.html#aebfba3b16efd77ef470592f8481d734a',1,'TrackGit.cpp']]],
-  ['messagereceived',['MessageReceived',['../classCloneWindow.html#a3c1ffea0d1c32ef80ebe4fb08835c709',1,'CloneWindow']]]
+  ['init',['Init',['../classInit.html',1,'Init'],['../classInit.html#a95316d448e111fad47ea439f4117ab70',1,'Init::Init()']]],
+  ['init_2ecpp',['Init.cpp',['../Init_8cpp.html',1,'']]],
+  ['init_2eh',['Init.h',['../Init_8h.html',1,'']]]
 ];

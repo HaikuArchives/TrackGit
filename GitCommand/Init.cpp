@@ -1,3 +1,10 @@
+/**
+ * @file Init.cpp
+ * @brief Implementaion file of Init command.
+ * 
+ * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ */
+
 #include "Init.h"
 
 #include <InterfaceKit.h>
@@ -5,6 +12,10 @@
 #include <git2.h>
 
 
+/**
+ * Init command constructor.
+ * @param dirPath The directory where Init is selected.
+ */
 Init::Init(const char* dirPath)
 	:
 	GitCommand()
@@ -13,6 +24,9 @@ Init::Init(const char* dirPath)
 }
 
 
+/**
+ * Init command excution. Initializes empty git repository in given directory.
+ */
 void
 Init::Execute()
 {

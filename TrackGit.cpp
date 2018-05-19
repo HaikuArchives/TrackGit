@@ -85,17 +85,17 @@ populate_menu (BMessage* msg, BMenu* menu, BHandler* handler)
 	BMenu* submenu = new BMenu(ADDON_NAME);
 
 	// Get all the selected refs
+	vector<const char*> selected;
 	BPath path;
 	BEntry entry;
-	vector<const char*> selected;
 	int refs;
 	entry_ref file_ref;
 	for (refs=0;
 			 msg->FindRef("refs", refs, &file_ref) == B_NO_ERROR;
 			 refs++) {
-			entry.SetTo(&file_ref);
-			entry.GetPath(&path);
-			selected.push_back(path.Path());
+		entry.SetTo(&file_ref);
+		entry.GetPath(&path);
+		selected.push_back(path.Path());
 	}
 	
 	// Get current directory path.
@@ -122,11 +122,13 @@ populate_menu (BMessage* msg, BMenu* menu, BHandler* handler)
 		BMenuItem* cloneItem = new BMenuItem(B_TRANSLATE("Clone"), cloneMsg);
 		submenu->AddItem(cloneItem);
 
+		// Add "Init Here" only if no files are selected.
 		if (selected.size() == 0) {
 			// Add Init here
 			BMessage* initMsg = new BMessage(*msg);
 			initMsg->AddInt32("addon_item_id", kInitHere);
-			BMenuItem* initItem = new BMenuItem(B_TRANSLATE("Init Here"), initMsg);
+			BMenuItem* initItem = new BMenuItem(B_TRANSLATE("Init Here"), 
+				initMsg);
 			submenu->AddItem(initItem);
 		}
 	}
@@ -156,9 +158,9 @@ message_received (BMessage* msg)
 	for (refs=0;
 			 msg->FindRef("refs", refs, &file_ref) == B_NO_ERROR;
 			 refs++) {
-			entry.SetTo(&file_ref);
-			entry.GetPath(&path);
-			selected.push_back(path.Path());
+		entry.SetTo(&file_ref);
+		entry.GetPath(&path);
+		selected.push_back(path.Path());
 	}
 	
 	// Get current directory path.

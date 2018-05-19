@@ -15,6 +15,7 @@ or you can execute `run.sh`.
 
 ## Features Added
 
++ [x] Init
 + [ ] Clone
 + [ ] Add Files
 + [ ] Status

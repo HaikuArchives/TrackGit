@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['populate_5fmenu',['populate_menu',['../TrackGit_8cpp.html#ac56dc2e52bfe80cb3821b97a23e4d36b',1,'TrackGit.cpp']]],
-  ['process_5frefs',['process_refs',['../TrackGit_8cpp.html#a8608d0901959452276e78ba2762d5a1f',1,'TrackGit.cpp']]]
+  ['kcancel',['kCancel',['../CloneWindow_8cpp.html#adf764cbdea00d65edcd07bb9953ad2b7a8097ecc6d775444810bc07f1cb0e3842',1,'CloneWindow.cpp']]],
+  ['kclone',['kClone',['../TrackGit_8cpp.html#a06fc87d81c62e9abb8790b6e5713c55ba733c8f949e1ac14e298b30026f4e558d',1,'kClone():&#160;TrackGit.cpp'],['../CloneWindow_8cpp.html#adf764cbdea00d65edcd07bb9953ad2b7a733c8f949e1ac14e298b30026f4e558d',1,'kClone():&#160;CloneWindow.cpp']]],
+  ['kinithere',['kInitHere',['../TrackGit_8cpp.html#a06fc87d81c62e9abb8790b6e5713c55bad2a4178660ebf260a8aede547424dd88',1,'TrackGit.cpp']]]
 ];

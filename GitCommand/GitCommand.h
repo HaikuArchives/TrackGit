@@ -1,3 +1,10 @@
+/**
+ * @file GitCommand.h
+ * @brief Header file of GitCommand. The base class to all git commands.
+ * 
+ * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ */
+
 #ifndef _GIT_COMMAND_H_
 #define _GIT_COMMAND_H_
 

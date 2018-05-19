@@ -1,4 +1,11 @@
-#ifndef _CLONE_WINDOW_H_
+/**
+ * @file CloneWindow.h
+ * @brief Header file of Clone window.
+ * 
+ * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ */#
+
+ifndef _CLONE_WINDOW_H_
 #define _CLONE_WINDOW_H_
 
 #include "../ThirdParty/PathBox.h"

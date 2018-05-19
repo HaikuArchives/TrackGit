@@ -1,3 +1,10 @@
+/**
+ * @file CloneWindow.cpp
+ * @brief Implementation file of Clone window.
+ * 
+ * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ */
+
 #include "CloneWindow.h"
 
 #include <stdio.h>

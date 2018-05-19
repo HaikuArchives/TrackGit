@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['b_5ftranslation_5fcontext',['B_TRANSLATION_CONTEXT',['../CloneWindow_8cpp.html#ab01f8552d4b6c275199d59ad807093d5',1,'CloneWindow.cpp']]]
+  ['addon_5fname',['ADDON_NAME',['../TrackGit_8cpp.html#a4454d62359228deaf0814dcf59704724',1,'TrackGit.cpp']]]
 ];

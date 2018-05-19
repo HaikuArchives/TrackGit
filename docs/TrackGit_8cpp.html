@@ -62,6 +62,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -74,18 +76,33 @@ $(function() {
 <div class="textblock"><code>#include &lt;Alert.h&gt;</code><br />
 <code>#include &lt;Application.h&gt;</code><br />
 <code>#include &lt;AppKit.h&gt;</code><br />
+<code>#include &lt;Catalog.h&gt;</code><br />
 <code>#include &lt;InterfaceKit.h&gt;</code><br />
 <code>#include &lt;StorageKit.h&gt;</code><br />
 <code>#include &lt;SupportKit.h&gt;</code><br />
 <code>#include &lt;MenuItem.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;strings.h&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;add-ons/tracker/TrackerAddOn.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="GitCommand_8h_source.html">GitCommand/GitCommand.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="CloneWindow_8h_source.html">UI/CloneWindow.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Clone_8h_source.html">GitCommand/Clone.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Init_8h_source.html">GitCommand/Init.h</a>&quot;</code><br />
 <code>#include &lt;git2.h&gt;</code><br />
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ab01f8552d4b6c275199d59ad807093d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TrackGit_8cpp.html#ab01f8552d4b6c275199d59ad807093d5">B_TRANSLATION_CONTEXT</a>&#160;&#160;&#160;&quot;TrackGit&quot;</td></tr>
+<tr class="separator:ab01f8552d4b6c275199d59ad807093d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="TrackGit_8cpp.html#a06fc87d81c62e9abb8790b6e5713c55ba733c8f949e1ac14e298b30026f4e558d">kClone</a>, 
+<a class="el" href="TrackGit_8cpp.html#a06fc87d81c62e9abb8790b6e5713c55bad2a4178660ebf260a8aede547424dd88">kInitHere</a>
+ }</td></tr>
+<tr class="separator:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ac56dc2e52bfe80cb3821b97a23e4d36b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TrackGit_8cpp.html#ac56dc2e52bfe80cb3821b97a23e4d36b">populate_menu</a> (BMessage *msg, BMenu *menu, BHandler *handler)</td></tr>
@@ -105,13 +122,45 @@ Variables</h2></td></tr>
 <tr class="memitem:a4454d62359228deaf0814dcf59704724"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TrackGit_8cpp.html#a4454d62359228deaf0814dcf59704724">ADDON_NAME</a> = &quot;TrackGit&quot;</td></tr>
 <tr class="memdesc:a4454d62359228deaf0814dcf59704724"><td class="mdescLeft">&#160;</td><td class="mdescRight">The addon name.  <a href="#a4454d62359228deaf0814dcf59704724">More...</a><br /></td></tr>
 <tr class="separator:a4454d62359228deaf0814dcf59704724"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a6c29e23c8eb3f9124da82f65eef299"><td class="memItemLeft" align="right" valign="top">const uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TrackGit_8cpp.html#a1a6c29e23c8eb3f9124da82f65eef299">kClone</a> = 'clon'</td></tr>
-<tr class="separator:a1a6c29e23c8eb3f9124da82f65eef299"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Main file of TrackGit - A Tracker Addon for Git Version Control System. </p>
 <dl class="section author"><dt>Author</dt><dd>Hrishikesh Hiraskar <a href="#" onclick="location.href='mai'+'lto:'+'hri'+'sh'+'ihi'+'ra'+'ska'+'r@'+'gma'+'il'+'.co'+'m'; return false;">hrish<span style="display: none;">.nosp@m.</span>ihir<span style="display: none;">.nosp@m.</span>askar<span style="display: none;">.nosp@m.</span>@gma<span style="display: none;">.nosp@m.</span>il.co<span style="display: none;">.nosp@m.</span>m</a> </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ab01f8552d4b6c275199d59ad807093d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab01f8552d4b6c275199d59ad807093d5">&#9670;&nbsp;</a></span>B_TRANSLATION_CONTEXT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define B_TRANSLATION_CONTEXT&#160;&#160;&#160;&quot;TrackGit&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a06fc87d81c62e9abb8790b6e5713c55b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06fc87d81c62e9abb8790b6e5713c55b">&#9670;&nbsp;</a></span>anonymous enum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba733c8f949e1ac14e298b30026f4e558d"></a>kClone&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55bad2a4178660ebf260a8aede547424dd88"></a>kInitHere&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&nbsp;</a></span>main()</h2>
 
@@ -257,20 +306,6 @@ Variables</h2></td></tr>
 
 <p>The addon name. </p>
 <p>Will be used in menu item. </p>
-
-</div>
-</div>
-<a id="a1a6c29e23c8eb3f9124da82f65eef299"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1a6c29e23c8eb3f9124da82f65eef299">&#9670;&nbsp;</a></span>kClone</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const uint32 kClone = 'clon'</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>
