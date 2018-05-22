@@ -17,7 +17,7 @@ class Clone : public GitCommand {
 	/**
 	 * The current directory where Clone option is selected.
 	 */
-	const char*				dirPath;
+	char*				dirPath;
 public:
 							Clone(const char*);
 

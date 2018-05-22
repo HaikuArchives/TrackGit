@@ -23,7 +23,7 @@ class CloneWindow : public BWindow {
 	PathBox* fPathBox;
 	
 public:
-	CloneWindow(const char*);
+	CloneWindow(char*);
 	virtual void MessageReceived(BMessage*);
 	int DoClone(const char*, const char*);
 };

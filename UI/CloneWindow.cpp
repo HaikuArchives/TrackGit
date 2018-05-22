@@ -25,11 +25,12 @@ enum {
  * CloneWindow Constructor
  * @param dirPath The path where Clone is selected.
  */
-CloneWindow::CloneWindow(const char* dirPath)
+CloneWindow::CloneWindow(char* dirPath)
 	:
 	BWindow(BRect(0, 0, 300, 150), "TrackGit - Clone", B_DOCUMENT_WINDOW, 
 			B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
 {
+	printf("dir %s\n", dirPath);
 	fURL = new BTextControl(B_TRANSLATE("URL:"), "", NULL);
 	fPathBox = new PathBox("pathbox", dirPath, "Path:");
 

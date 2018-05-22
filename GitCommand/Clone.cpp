@@ -10,6 +10,9 @@
 
 #include <AppKit.h>
 
+#include <stdlib.h>
+#include <strings.h>
+
 #include <git2.h>
 
 /**
@@ -20,7 +23,8 @@ Clone::Clone(const char* dirPath)
 	:
 	GitCommand()
 {
-	this->dirPath = dirPath;
+	this->dirPath = (char*) malloc(strlen(dirPath));
+	strcpy(this->dirPath, dirPath);
 }
 
 /**
