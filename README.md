@@ -16,9 +16,9 @@ or you can execute `run.sh`.
 ## Features Added
 
 + [x] Init
++ [x] Status
 + [ ] Clone
 + [ ] Add Files
-+ [ ] Status
 + [ ] Commit
 + [ ] Push
 + [ ] Create Branch

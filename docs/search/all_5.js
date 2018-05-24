@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['execute',['Execute',['../classClone.html#a0029c0e5d7130a849137e85cafdcdd16',1,'Clone::Execute()'],['../classGitCommand.html#a94cf3dc8475df20f04add46a6f22d949',1,'GitCommand::Execute()'],['../classInit.html#a08491eed3f934d97decbc287d293afa0',1,'Init::Execute()']]]
+  ['format',['format',['../structopts.html#a804ebdb7b4cedc51f0262cff726e5d0f',1,'opts']]],
+  ['fpathbox',['fPathBox',['../classCloneWindow.html#a4b0705a50f150e1c162af56908557832',1,'CloneWindow']]],
+  ['furl',['fURL',['../classCloneWindow.html#add3cf247cddca12b877a04962102a5ec',1,'CloneWindow']]]
 ];

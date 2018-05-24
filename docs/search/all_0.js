@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_5fclone_5fwindow_5fh_5f',['_CLONE_WINDOW_H_',['../CloneWindow_8h.html#af4acaa7e1754e39f0c33ff04329552dc',1,'CloneWindow.h']]]
+  ['addon_5fname',['ADDON_NAME',['../TrackGit_8cpp.html#a4454d62359228deaf0814dcf59704724',1,'TrackGit.cpp']]]
 ];

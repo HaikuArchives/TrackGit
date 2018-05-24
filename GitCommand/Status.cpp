@@ -14,18 +14,22 @@
 #include <strings.h>
 
 
+/**
+ * Constructs Status text for current repo.
+ * @param status The status info output of git_status_list_new.
+ * @returns The Status text.
+ */
 BString*
 GetStatusTextUtil(git_status_list *status)
 {
 	size_t i, maxi = git_status_list_entrycount(status);
 	const git_status_entry *s;
-	int header = 0, changes_in_index = 0;
-	int changed_in_workdir = 0, rm_in_workdir = 0;
+	int header = 0, changesInIndex = 0;
+	int changesInWorkDir = 0, rmInWorkDir = 0;
 	const char *old_path, *new_path;
 	BString* statusText = new BString();
 
 	/** Print index changes. */
-
 	for (i = 0; i < maxi; ++i) {
 		char *istatus = NULL;
 
@@ -35,7 +39,7 @@ GetStatusTextUtil(git_status_list *status)
 			continue;
 
 		if (s->status & GIT_STATUS_WT_DELETED)
-			rm_in_workdir = 1;
+			rmInWorkDir = 1;
 
 		if (s->status & GIT_STATUS_INDEX_NEW)
 			istatus = "new file: ";
@@ -73,7 +77,7 @@ GetStatusTextUtil(git_status_list *status)
 	}
 
 	if (header) {
-		changes_in_index = 1;
+		changesInIndex = 1;
 	}
 	header = 0;
 
@@ -127,11 +131,10 @@ GetStatusTextUtil(git_status_list *status)
 	}
 
 	if (header) {
-		changed_in_workdir = 1;
+		changesInWorkDir = 1;
 	}
 
 	/** Print untracked files. */
-
 	header = 0;
 
 	for (i = 0; i < maxi; ++i) {
@@ -171,16 +174,20 @@ GetStatusTextUtil(git_status_list *status)
 		}
 	}
 
-	if (!changes_in_index && changed_in_workdir)
+	if (!changesInIndex && changesInWorkDir)
 		statusText->Append("\nNo changes added to commit\n");
 
 	return statusText;
 }
 
 
-
+/**
+ * Constructs Branch text for current repo.
+ * @param repo The current repo.
+ * @returns The Branch text.
+ */
 BString*
-GetBranchText(git_repository *repo, int format)
+GetBranchText(git_repository *repo)
 {
 	int error = 0;
 	const char *branch = NULL;
@@ -205,6 +212,11 @@ GetBranchText(git_repository *repo, int format)
 }
 
 
+/**
+ * Constructs the entire Status Text along with current branch for given repo.
+ * @param dirPath The current path to check status for.
+ * @returns The entire status text to display.
+ */
 BString*
 GetStatusText(char* dirPath)
 {
@@ -251,7 +263,7 @@ GetStatusText(char* dirPath)
 		return NULL;
 	}
 
-	BString* branchText = GetBranchText(repo, o.format);
+	BString* branchText = GetBranchText(repo);
 	BString* statusText = GetStatusTextUtil(status);
 	BString* text = new BString(*branchText);
 	text->Append(*statusText);
@@ -273,7 +285,8 @@ Status::Status(char* dirPath)
 
 
 /**
- * Status command execution. Opens a window to clone a repo.
+ * Status command execution.
+ * Opens an alert with status text.
  */
 void
 Status::Execute()

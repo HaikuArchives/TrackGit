@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['kcancel',['kCancel',['../CloneWindow_8cpp.html#adf764cbdea00d65edcd07bb9953ad2b7a8097ecc6d775444810bc07f1cb0e3842',1,'CloneWindow.cpp']]],
-  ['kclone',['kClone',['../TrackGit_8cpp.html#a06fc87d81c62e9abb8790b6e5713c55ba733c8f949e1ac14e298b30026f4e558d',1,'kClone():&#160;TrackGit.cpp'],['../CloneWindow_8cpp.html#adf764cbdea00d65edcd07bb9953ad2b7a733c8f949e1ac14e298b30026f4e558d',1,'kClone():&#160;CloneWindow.cpp']]],
-  ['kinithere',['kInitHere',['../TrackGit_8cpp.html#a06fc87d81c62e9abb8790b6e5713c55bad2a4178660ebf260a8aede547424dd88',1,'TrackGit.cpp']]]
+  ['main',['main',['../TrackGit_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'TrackGit.cpp']]],
+  ['max_5fpathspec',['MAX_PATHSPEC',['../Status_8h.html#ac6a5d060ed5c384f0f26143b537bfc39',1,'Status.h']]],
+  ['message_5freceived',['message_received',['../TrackGit_8cpp.html#aebfba3b16efd77ef470592f8481d734a',1,'TrackGit.cpp']]],
+  ['messagereceived',['MessageReceived',['../classCloneWindow.html#a3c1ffea0d1c32ef80ebe4fb08835c709',1,'CloneWindow']]]
 ];

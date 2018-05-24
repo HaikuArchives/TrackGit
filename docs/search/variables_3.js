@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kclone',['kClone',['../TrackGit_8cpp.html#a1a6c29e23c8eb3f9124da82f65eef299',1,'TrackGit.cpp']]]
+  ['npaths',['npaths',['../structopts.html#a4effafcdf7ff2353b410ac5dc5540856',1,'opts']]]
 ];

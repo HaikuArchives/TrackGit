@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['trackgit',['TrackGit',['../index.html',1,'']]],
-  ['trackgit_2ecpp',['TrackGit.cpp',['../TrackGit_8cpp.html',1,'']]]
+  ['readme_2emd',['README.md',['../README_8md.html',1,'']]],
+  ['repeat',['repeat',['../structopts.html#ac8e852f83ae4c0d31d919cc31ac5c349',1,'opts']]],
+  ['repodir',['repodir',['../structopts.html#a5d60f7f12bf3199b8072497092b59b13',1,'opts']]]
 ];

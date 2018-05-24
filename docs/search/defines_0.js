@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_5fclone_5fwindow_5fh_5f',['_CLONE_WINDOW_H_',['../CloneWindow_8h.html#af4acaa7e1754e39f0c33ff04329552dc',1,'CloneWindow.h']]]
+  ['b_5ftranslation_5fcontext',['B_TRANSLATION_CONTEXT',['../TrackGit_8cpp.html#ab01f8552d4b6c275199d59ad807093d5',1,'B_TRANSLATION_CONTEXT():&#160;TrackGit.cpp'],['../CloneWindow_8cpp.html#ab01f8552d4b6c275199d59ad807093d5',1,'B_TRANSLATION_CONTEXT():&#160;CloneWindow.cpp']]]
 ];
