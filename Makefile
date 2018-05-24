@@ -31,6 +31,7 @@ APP_MIME_SIG =
 SRCS = ThirdParty/PathBox.cpp \
        GitCommand/Clone.cpp \
        GitCommand/Init.cpp \
+       GitCommand/Status.cpp \
 	   UI/CloneWindow.cpp \
 	   TrackGit.cpp
 

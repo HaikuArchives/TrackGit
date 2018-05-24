@@ -20,11 +20,12 @@
 #include <vector>
 #include <add-ons/tracker/TrackerAddOn.h>
 
-#include "GitCommand/GitCommand.h"
 #include "UI/CloneWindow.h"
 
+#include "GitCommand/GitCommand.h"
 #include "GitCommand/Clone.h"
 #include "GitCommand/Init.h"
+#include "GitCommand/Status.h"
 
 #include <git2.h>
 
@@ -42,7 +43,8 @@ const char* ADDON_NAME = "TrackGit";
 
 enum {
 	kClone,
-	kInitHere
+	kInitHere,
+	kStatus
 };
 
 
@@ -68,7 +70,7 @@ process_refs (entry_ref dir_ref, BMessage* msg, void*)
  * @param selected The vector of selected file paths.
  * @returns The current directory path.
  */
-const char*
+char*
 get_selected(BMessage* msg, vector<const char*>* selected)
 {
 	// Get all the selected refs
@@ -92,7 +94,9 @@ get_selected(BMessage* msg, vector<const char*>* selected)
 	}
 	entry.SetTo(&dir_ref);
 	entry.GetPath(&path);
-	return path.Path();
+	char* dirPath = (char*) malloc(strlen(path.Path()));
+	strcpy(dirPath, path.Path());
+	return dirPath;
 }
 
 
@@ -122,7 +126,8 @@ populate_menu (BMessage* msg, BMenu* menu, BHandler* handler)
 	BMenu* submenu = new BMenu(ADDON_NAME);
 
 	vector<const char*>* selected = new vector<const char*>();
-	const char* dirPath = get_selected(msg, selected);
+	char* dirPath = get_selected(msg, selected);
+
 	if (dirPath == NULL) return;
 
 	git_libgit2_init();
@@ -131,6 +136,11 @@ populate_menu (BMessage* msg, BMenu* menu, BHandler* handler)
 	// Check if current directory is in git repo.
 	if (git_repository_discover(&buf, dirPath, 0, NULL) == 0) {
 		// buf is git repo
+		// Add Status menu item
+		BMessage* statusMsg = new BMessage(*msg);
+		statusMsg->AddInt32("addon_item_id", kStatus);
+		BMenuItem* statusItem = new BMenuItem(B_TRANSLATE("Status"), statusMsg);
+		submenu->AddItem(statusItem);
 	} else {
 		// dirPath does not belong to git repo
 		// Add Clone menu item
@@ -152,6 +162,9 @@ populate_menu (BMessage* msg, BMenu* menu, BHandler* handler)
 
 	menu->AddItem(submenu);
 	submenu->SetTargetForItems(handler);
+
+	git_buf_free(&buf);
+	git_libgit2_shutdown();
 }
 
 
@@ -167,7 +180,7 @@ message_received (BMessage* msg)
 		return;
 
 	vector<const char*>* selected = new vector<const char*>();
-	const char* dirPath = get_selected(msg, selected);
+	char* dirPath = get_selected(msg, selected);
 	if (dirPath == NULL) return;
 
 	GitCommand* gitCommand = NULL;
@@ -178,6 +191,9 @@ message_received (BMessage* msg)
 			break;
 		case kInitHere:
 			gitCommand = new Init(dirPath);
+			break;
+		case kStatus:
+			gitCommand = new Status(dirPath);
 			break;
 		default:
 			break;
