@@ -10,6 +10,8 @@
 
 #include "GitCommand.h"
 
+#include <SupportKit.h>
+
 #include <git2.h>
 
 #define MAX_PATHSPEC 8
@@ -42,6 +44,9 @@ public:
 							Status(char*);
 
 	virtual	void			Execute();
+	BString*				GetStatusText();
+	static BString*			GetStatusTextUtil(git_status_list*);
+	static BString*			GetBranchText(git_repository*);
 };
 
 #endif

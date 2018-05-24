@@ -8,7 +8,6 @@
 #include "Status.h"
 
 #include <InterfaceKit.h>
-#include <SupportKit.h>
 
 #include <stdlib.h>
 #include <strings.h>
@@ -20,7 +19,7 @@
  * @returns The Status text.
  */
 BString*
-GetStatusTextUtil(git_status_list *status)
+Status::GetStatusTextUtil(git_status_list *status)
 {
 	size_t i, maxi = git_status_list_entrycount(status);
 	const git_status_entry *s;
@@ -177,6 +176,9 @@ GetStatusTextUtil(git_status_list *status)
 	if (!changesInIndex && changesInWorkDir)
 		statusText->Append("\nNo changes added to commit\n");
 
+	if (statusText->Length() == 0)
+		statusText->Append("No changes to current branch.\n");
+
 	return statusText;
 }
 
@@ -187,7 +189,7 @@ GetStatusTextUtil(git_status_list *status)
  * @returns The Branch text.
  */
 BString*
-GetBranchText(git_repository *repo)
+Status::GetBranchText(git_repository *repo)
 {
 	int error = 0;
 	const char *branch = NULL;
@@ -218,7 +220,7 @@ GetBranchText(git_repository *repo)
  * @returns The entire status text to display.
  */
 BString*
-GetStatusText(char* dirPath)
+Status::GetStatusText()
 {
 	git_repository *repo = NULL;
 	git_status_list *status;
@@ -230,6 +232,8 @@ GetStatusText(char* dirPath)
 	o.statusopt.flags = GIT_STATUS_OPT_INCLUDE_UNTRACKED |
 		GIT_STATUS_OPT_RENAMES_HEAD_TO_INDEX |
 		GIT_STATUS_OPT_SORT_CASE_SENSITIVELY;
+
+	printf("dir %s\n", o.repodir);
 
 	if (git_repository_open_ext(&repo, o.repodir, 0, NULL) != 0) {
 		const git_error* err = giterr_last();
@@ -267,6 +271,8 @@ GetStatusText(char* dirPath)
 	BString* statusText = GetStatusTextUtil(status);
 	BString* text = new BString(*branchText);
 	text->Append(*statusText);
+
+	git_libgit2_shutdown();
 	
 	return text;
 }
@@ -291,7 +297,7 @@ Status::Status(char* dirPath)
 void
 Status::Execute()
 {
-	BString* statusText = GetStatusText(dirPath);
+	BString* statusText = GetStatusText();
 	if (statusText) {
 		BAlert* alert = new BAlert("", statusText->String(), "OK", 
 			0, 0, B_WIDTH_AS_USUAL, B_WARNING_ALERT);
