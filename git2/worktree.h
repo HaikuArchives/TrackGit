@@ -78,10 +78,11 @@ typedef struct git_worktree_add_options {
 	unsigned int version;
 
 	int lock; /**< lock newly created worktree */
+	git_reference *ref; /**< reference to use for the new worktree HEAD */
 } git_worktree_add_options;
 
 #define GIT_WORKTREE_ADD_OPTIONS_VERSION 1
-#define GIT_WORKTREE_ADD_OPTIONS_INIT {GIT_WORKTREE_ADD_OPTIONS_VERSION,0}
+#define GIT_WORKTREE_ADD_OPTIONS_INIT {GIT_WORKTREE_ADD_OPTIONS_VERSION,0,NULL}
 
 /**
  * Initializes a `git_worktree_add_options` with default vaules.
@@ -123,7 +124,7 @@ GIT_EXTERN(int) git_worktree_add(git_worktree **out, git_repository *repo,
  * @param reason Reason why the working tree is being locked
  * @return 0 on success, non-zero otherwise
  */
-GIT_EXTERN(int) git_worktree_lock(git_worktree *wt, char *reason);
+GIT_EXTERN(int) git_worktree_lock(git_worktree *wt, const char *reason);
 
 /**
  * Unlock a locked worktree
@@ -148,6 +149,24 @@ GIT_EXTERN(int) git_worktree_unlock(git_worktree *wt);
  */
 GIT_EXTERN(int) git_worktree_is_locked(git_buf *reason, const git_worktree *wt);
 
+/**
+ * Retrieve the name of the worktree
+ *
+ * @param wt Worktree to get the name for
+ * @return The worktree's name. The pointer returned is valid for the
+ *  lifetime of the git_worktree
+ */
+GIT_EXTERN(const char *) git_worktree_name(const git_worktree *wt);
+
+/**
+ * Retrieve the filesystem path for the worktree
+ *
+ * @param wt Worktree to get the path for
+ * @return The worktree's filesystem path. The pointer returned
+ *  is valid for the lifetime of the git_worktree.
+ */
+GIT_EXTERN(const char *) git_worktree_path(const git_worktree *wt);
+ 
 /**
  * Flags which can be passed to git_worktree_prune to alter its
  * behavior.

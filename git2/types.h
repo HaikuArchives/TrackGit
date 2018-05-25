@@ -159,6 +159,7 @@ typedef struct git_packbuilder git_packbuilder;
 typedef struct git_time {
 	git_time_t time; /**< time in seconds from epoch */
 	int offset; /**< timezone offset, in minutes */
+	char sign; /**< indicator for questionable '-0000' offsets in signature */
 } git_time;
 
 /** An action signature (e.g. for committers, taggers, etc) */
@@ -179,9 +180,6 @@ typedef struct git_transaction git_transaction;
 
 /** Annotated commits, the input to merge and rebase. */
 typedef struct git_annotated_commit git_annotated_commit;
-
-/** Merge result */
-typedef struct git_merge_result git_merge_result;
 
 /** Representation of a status collection */
 typedef struct git_status_list git_status_list;
