@@ -232,6 +232,7 @@ Status::GetStatusText()
 	o.statusopt.flags = GIT_STATUS_OPT_INCLUDE_UNTRACKED |
 		GIT_STATUS_OPT_RENAMES_HEAD_TO_INDEX |
 		GIT_STATUS_OPT_SORT_CASE_SENSITIVELY;
+	o.statusopt.baseline = 0;
 
 	printf("dir %s\n", o.repodir);
 
@@ -254,6 +255,9 @@ Status::GetStatusText()
 		alert->Go();
 		return NULL;
 	}
+
+	// int e = git_status_list_new(&status, repo, &o.statusopt);
+	// printf("e %d\n", e);
 
 	if (git_status_list_new(&status, repo, &o.statusopt) != 0) {
 		const git_error* err = giterr_last();

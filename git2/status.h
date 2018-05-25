@@ -179,6 +179,7 @@ typedef struct {
 	git_status_show_t show;
 	unsigned int      flags;
 	git_strarray      pathspec;
+	git_tree*         *baseline;
 } git_status_options;
 
 #define GIT_STATUS_OPTIONS_VERSION 1
