@@ -9,8 +9,8 @@ using namespace std;
 
 class inittest : public CPPUNIT_NS :: TestFixture
 {
-	CPPUNIT_TEST_SUITE (inittest);
-	CPPUNIT_TEST (initTest);
+	CPPUNIT_TEST_SUITE (InitTest);
+	CPPUNIT_TEST (InitTest);
 	CPPUNIT_TEST_SUITE_END ();
 
 	public:
@@ -18,7 +18,7 @@ class inittest : public CPPUNIT_NS :: TestFixture
 		void tearDown (void);
 
 	protected:
-		void initTest (void);
+		void test (void);
 
 	private:
 		Init* init;

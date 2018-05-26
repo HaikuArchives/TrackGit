@@ -1,4 +1,4 @@
-#include "inittest.h"
+#include "InitTest.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,19 +6,21 @@
 
 #include <AppKit.h>
 
-#define PATH "/boot/home/inittest"
-#define GIT_PATH "/boot/home/inittest/.git"
+#define PATH "/boot/home/InitTest"
+#define GIT_PATH "/boot/home/InitTest/.git"
 
-CPPUNIT_TEST_SUITE_REGISTRATION (inittest);
+CPPUNIT_TEST_SUITE_REGISTRATION (InitTest);
 
-void inittest :: setUp (void)
+void
+InitTest::setUp(void)
 {
 	// set up test environment (initializing objects)
 	new BApplication("application/x-vnd.Haiku-TrackGit");
 	init = new Init(PATH);
 }
 
-void inittest :: tearDown (void) 
+void
+InitTest::tearDown(void) 
 {
 	// finally delete objects
 	delete init;
@@ -28,7 +30,8 @@ void inittest :: tearDown (void)
 	system(command);
 }
 
-void inittest :: initTest (void)
+void
+InitTest::test(void)
 {
 	// check git init results
 	init->Execute();

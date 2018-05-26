@@ -1,9 +1,9 @@
 var searchData=
 [
   ['get_5fselected',['get_selected',['../TrackGit_8cpp.html#ab6e5b7aa54c8bc1d6ed9e66b17060135',1,'TrackGit.cpp']]],
-  ['getbranchtext',['GetBranchText',['../Status_8cpp.html#a19247241bd7b9ba70794903bc1546ea0',1,'Status.cpp']]],
-  ['getstatustext',['GetStatusText',['../Status_8cpp.html#a6be8269296aa09c8e7d71fc92d35c0e2',1,'Status.cpp']]],
-  ['getstatustextutil',['GetStatusTextUtil',['../Status_8cpp.html#aebfb3c0c0477e985567b26d23819997f',1,'Status.cpp']]],
+  ['getbranchtext',['GetBranchText',['../classStatus.html#a047eb3e2653cfde18ad2e4cfcca6759f',1,'Status']]],
+  ['getstatustext',['GetStatusText',['../classStatus.html#a3b6ccd17bcdecae12a352c4d09d3d613',1,'Status']]],
+  ['getstatustextutil',['GetStatusTextUtil',['../classStatus.html#a260cc821753970f4dde2aefb8233911e',1,'Status']]],
   ['gitcommand',['GitCommand',['../classGitCommand.html',1,'']]],
   ['gitcommand_2eh',['GitCommand.h',['../GitCommand_8h.html',1,'']]]
 ];

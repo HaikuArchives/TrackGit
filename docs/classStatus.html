@@ -63,6 +63,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classStatus-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -92,6 +93,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a22113306e7a305a22dd4f50e79dbbadb"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatus.html#a22113306e7a305a22dd4f50e79dbbadb">Execute</a> ()</td></tr>
 <tr class="memdesc:a22113306e7a305a22dd4f50e79dbbadb"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classStatus.html" title="Status command Class. ">Status</a> command execution.  <a href="#a22113306e7a305a22dd4f50e79dbbadb">More...</a><br /></td></tr>
 <tr class="separator:a22113306e7a305a22dd4f50e79dbbadb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b6ccd17bcdecae12a352c4d09d3d613"><td class="memItemLeft" align="right" valign="top">BString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatus.html#a3b6ccd17bcdecae12a352c4d09d3d613">GetStatusText</a> ()</td></tr>
+<tr class="memdesc:a3b6ccd17bcdecae12a352c4d09d3d613"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the entire <a class="el" href="classStatus.html" title="Status command Class. ">Status</a> Text along with current branch for given repo.  <a href="#a3b6ccd17bcdecae12a352c4d09d3d613">More...</a><br /></td></tr>
+<tr class="separator:a3b6ccd17bcdecae12a352c4d09d3d613"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a260cc821753970f4dde2aefb8233911e"><td class="memItemLeft" align="right" valign="top">static BString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatus.html#a260cc821753970f4dde2aefb8233911e">GetStatusTextUtil</a> (git_status_list *)</td></tr>
+<tr class="memdesc:a260cc821753970f4dde2aefb8233911e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs <a class="el" href="classStatus.html" title="Status command Class. ">Status</a> text for current repo.  <a href="#a260cc821753970f4dde2aefb8233911e">More...</a><br /></td></tr>
+<tr class="separator:a260cc821753970f4dde2aefb8233911e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a047eb3e2653cfde18ad2e4cfcca6759f"><td class="memItemLeft" align="right" valign="top">static BString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatus.html#a047eb3e2653cfde18ad2e4cfcca6759f">GetBranchText</a> (git_repository *)</td></tr>
+<tr class="memdesc:a047eb3e2653cfde18ad2e4cfcca6759f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs Branch text for current repo.  <a href="#a047eb3e2653cfde18ad2e4cfcca6759f">More...</a><br /></td></tr>
+<tr class="separator:a047eb3e2653cfde18ad2e4cfcca6759f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -156,6 +169,117 @@ Private Attributes</h2></td></tr>
 <p>Opens an alert with status text. </p>
 
 <p>Implements <a class="el" href="classGitCommand.html#a94cf3dc8475df20f04add46a6f22d949">GitCommand</a>.</p>
+
+</div>
+</div>
+<a id="a047eb3e2653cfde18ad2e4cfcca6759f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a047eb3e2653cfde18ad2e4cfcca6759f">&#9670;&nbsp;</a></span>GetBranchText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">BString * Status::GetBranchText </td>
+          <td>(</td>
+          <td class="paramtype">git_repository *&#160;</td>
+          <td class="paramname"><em>repo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructs Branch text for current repo. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">repo</td><td>The current repo. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The Branch text. </dd></dl>
+
+</div>
+</div>
+<a id="a3b6ccd17bcdecae12a352c4d09d3d613"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b6ccd17bcdecae12a352c4d09d3d613">&#9670;&nbsp;</a></span>GetStatusText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BString * Status::GetStatusText </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs the entire <a class="el" href="classStatus.html" title="Status command Class. ">Status</a> Text along with current branch for given repo. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dirPath</td><td>The current path to check status for. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The entire status text to display. </dd></dl>
+
+</div>
+</div>
+<a id="a260cc821753970f4dde2aefb8233911e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a260cc821753970f4dde2aefb8233911e">&#9670;&nbsp;</a></span>GetStatusTextUtil()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">BString * Status::GetStatusTextUtil </td>
+          <td>(</td>
+          <td class="paramtype">git_status_list *&#160;</td>
+          <td class="paramname"><em>status</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructs <a class="el" href="classStatus.html" title="Status command Class. ">Status</a> text for current repo. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">status</td><td>The status info output of git_status_list_new. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="classStatus.html" title="Status command Class. ">Status</a> text. </dd></dl>
+<p>Print index changes. <br />
+<br />
+<br />
+<br />
+<br />
+ Print workdir changes to tracked files. <br />
+<br />
+<br />
+<br />
+</p>
+<p>With <code>GIT_STATUS_OPT_INCLUDE_UNMODIFIED</code> (not used in this example) <code>index_to_workdir</code> may not be <code>NULL</code> even if there are no differences, in which case it will be a <code>GIT_DELTA_UNMODIFIED</code>.</p>
+<p>Print out the output since we know the file has some changes <br />
+<br />
+ Print untracked files. <br />
+ Print ignored files. </p>
 
 </div>
 </div>

@@ -54,7 +54,7 @@ enum {
  * @param msg BMessage containing refs to selected files.
  */
 void 
-process_refs (entry_ref dir_ref, BMessage* msg, void*)
+process_refs(entry_ref dir_ref, BMessage* msg, void*)
 {
 	BString buffer("TrackGit: A Tracker Addon for Git Version Control System");
 	BAlert *alert = new BAlert("", buffer.String(), "Cancel", 
@@ -108,7 +108,7 @@ get_selected(BMessage* msg, vector<const char*>* selected)
  * @param handler The BHandler of Tracker. This should be target of added items.
  */
 void
-populate_menu (BMessage* msg, BMenu* menu, BHandler* handler)
+populate_menu(BMessage* msg, BMenu* menu, BHandler* handler)
 {
 	if (menu == NULL){
 		BString buffer("Null menu");
@@ -173,7 +173,7 @@ populate_menu (BMessage* msg, BMenu* menu, BHandler* handler)
  * @param msg The passed BMessage.
  */
 void 
-message_received (BMessage* msg)
+message_received(BMessage* msg)
 {
 	int32 itemId;
 	if (msg->FindInt32("addon_item_id", &itemId) != B_OK)
@@ -206,7 +206,7 @@ message_received (BMessage* msg)
 
 
 int 
-main ()
+main()
 {
 	return 0;
 }
