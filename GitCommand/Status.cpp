@@ -81,7 +81,6 @@ Status::GetStatusTextUtil(git_status_list *status)
 	header = 0;
 
 	/** Print workdir changes to tracked files. */
-
 	for (i = 0; i < maxi; ++i) {
 		char *wstatus = NULL;
 
@@ -147,7 +146,7 @@ Status::GetStatusTextUtil(git_status_list *status)
 				header = 1;
 			}
 
-			statusText->Append("\t%file\n");
+			statusText->Append("\tuntracked: %file\n");
 			statusText->ReplaceFirst("%file" , s->index_to_workdir->old_file.path);
 
 		}
@@ -156,7 +155,6 @@ Status::GetStatusTextUtil(git_status_list *status)
 	header = 0;
 
 	/** Print ignored files. */
-
 	for (i = 0; i < maxi; ++i) {
 		s = git_status_byindex(status, i);
 
