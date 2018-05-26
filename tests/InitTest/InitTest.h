@@ -1,5 +1,5 @@
-#ifndef FRACTIONTEST_H
-#define FRACTIONTEST_H
+#ifndef _INIT_TEST_H_
+#define _INIT_TEST_H_
 
 #include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>
@@ -7,21 +7,18 @@
 
 using namespace std;
 
-class inittest : public CPPUNIT_NS :: TestFixture
+class InitTest : public CPPUNIT_NS::TestFixture
 {
-	CPPUNIT_TEST_SUITE (InitTest);
-	CPPUNIT_TEST (InitTest);
-	CPPUNIT_TEST_SUITE_END ();
+	CPPUNIT_TEST_SUITE(InitTest);
+	CPPUNIT_TEST(test);
+	CPPUNIT_TEST_SUITE_END();
 
 	public:
-		void setUp (void);
-		void tearDown (void);
+		void setUp(void);
+		void tearDown(void);
 
 	protected:
-		void test (void);
-
-	private:
-		Init* init;
+		void test(void);
 };
 
 #endif

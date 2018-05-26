@@ -18,10 +18,11 @@ class Init : public GitCommand
 	/**
 	 * The current directory where Init option is selected.
 	 */
-	const char* dirPath;
+	char* dirPath;
 public:
-	Init(const char*);
+	Init(char*);
 	virtual void Execute();
+	static void InitRepo(char*);
 };
 
 #endif
