@@ -6,6 +6,8 @@
 
 #include <AppKit.h>
 
+#include "../../GitCommand/Init.h"
+
 #define PATH "/boot/home/InitTest"
 #define GIT_PATH "/boot/home/InitTest/.git"
 
