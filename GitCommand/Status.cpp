@@ -6,6 +6,7 @@
  */
 
 #include "Status.h"
+#include "../UI/StatusWindow.h"
 
 #include <InterfaceKit.h>
 
@@ -299,10 +300,16 @@ Status::Status(char* dirPath)
 void
 Status::Execute()
 {
+	StatusWindow* statusWindow = new StatusWindow();
 	BString* statusText = GetStatusText();
-	if (statusText) {
-		BAlert* alert = new BAlert("", statusText->String(), "OK", 
-			0, 0, B_WIDTH_AS_USUAL, B_WARNING_ALERT);
-		alert->Go();
+
+	if (!statusWindow) {
+		statusWindow->Quit();
+		return;
 	}
+
+	statusWindow->SetText(statusText);
+	thread_id thread = statusWindow->Thread();
+	status_t win_status = B_OK;
+	wait_for_thread(thread, &win_status);
 }

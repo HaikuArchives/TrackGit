@@ -29,10 +29,11 @@ APP_MIME_SIG =
 #	same name (source.c or source.cpp) are included from different directories.
 #	Also note that spaces in folder names do not work well with this Makefile.
 SRCS = ThirdParty/PathBox.cpp \
+	   UI/CloneWindow.cpp \
+	   UI/StatusWindow.cpp \
        GitCommand/Clone.cpp \
        GitCommand/Init.cpp \
        GitCommand/Status.cpp \
-	   UI/CloneWindow.cpp \
 	   TrackGit.cpp
 
 #	Specify the resource definition files to use. Full or relative paths can be

@@ -87,6 +87,8 @@ CloneWindow::DoClone(const char* url, const char* path)
 {
 	printf("Cloning %s into %s\n", url, path);
 
+	git_libgit2_init();
+
 	git_repository* repo = NULL;
 	int ret = git_clone(&repo, url, path, NULL);
 	
@@ -102,5 +104,7 @@ CloneWindow::DoClone(const char* url, const char* path)
 	}
 
 	git_repository_free(repo);
+	git_libgit2_shutdown();
+
 	return ret;
 }
