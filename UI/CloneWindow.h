@@ -2,6 +2,7 @@
 #define _CLONE_WINDOW_H_
 
 #include "../ThirdParty/PathBox.h"
+#include "TrackGitWindow.h"
 
 #include <git2.h>
 
@@ -15,7 +16,7 @@ typedef struct progress_data {
 } progress_data;
 
 
-class CloneWindow : public BWindow {
+class CloneWindow : public TrackGitWindow {
 	BAlert* progressAlert;
 	BTextControl* fURL;
 	PathBox* fPathBox;

@@ -25,7 +25,7 @@ enum {
  */
 StatusWindow::StatusWindow()
 	:
-	BWindow(BRect(0, 0, 300, 300), "TrackGit - Status", B_DOCUMENT_WINDOW, 
+	TrackGitWindow(BRect(0, 0, 300, 300), "TrackGit - Status", B_DOCUMENT_WINDOW, 
 			B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
 {
 	fStatusTextView = new BTextView("statusText");

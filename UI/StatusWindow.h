@@ -8,10 +8,12 @@
 #ifndef _STATUS_WINDOW_H_
 #define _STATUS_WINDOW_H_
 
+#include "TrackGitWindow.h"
+
 #include <InterfaceKit.h>
 #include <SupportKit.h>
 
-class StatusWindow : public BWindow {
+class StatusWindow : public TrackGitWindow {
 	/**
 	 * The Status Text View.
 	 */

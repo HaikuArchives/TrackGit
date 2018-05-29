@@ -16,7 +16,7 @@ enum {
 
 CloneWindow::CloneWindow(const char* dirPath)
 	:
-	BWindow(BRect(0, 0, 300, 150), "TrackGit - Clone", B_DOCUMENT_WINDOW, 
+	TrackGitWindow(BRect(0, 0, 300, 150), "TrackGit - Clone", B_DOCUMENT_WINDOW, 
 			B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
 {
 	fURL = new BTextControl(B_TRANSLATE("URL:"), "", NULL);
