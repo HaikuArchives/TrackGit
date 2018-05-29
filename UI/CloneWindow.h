@@ -1,31 +1,29 @@
-/**
- * @file CloneWindow.h
- * @brief Header file of Clone window.
- * 
- * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
- */
-
 #ifndef _CLONE_WINDOW_H_
 #define _CLONE_WINDOW_H_
 
 #include "../ThirdParty/PathBox.h"
 
+#include <git2.h>
+
 #include <InterfaceKit.h>
 
+typedef struct progress_data {
+	git_transfer_progress fetch_progress;
+	size_t completed_steps;
+	size_t total_steps;
+	const char *path;
+} progress_data;
+
+
 class CloneWindow : public BWindow {
-	/**
-	 * URL Text Box
-	 */
+	BAlert* progressAlert;
 	BTextControl* fURL;
-	/**
-	 * Path Text Box
-	 */ 
 	PathBox* fPathBox;
-	
-public:
-	CloneWindow(char*);
+	public:
+	CloneWindow(const char*);
 	virtual void MessageReceived(BMessage*);
 	int DoClone(const char*, const char*);
+	int FetchProgress(const char*, int, void*);
 };
 
 #endif

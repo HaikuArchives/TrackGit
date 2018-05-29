@@ -1,1 +1,3 @@
 objects.*
+tests/*/*.o
+tests/*/test
