@@ -15,7 +15,7 @@ public:
 		:
 		BWindow(frame, title, type, flags)
 	{
-		this->fRepo = repo;
+		fRepo = repo;
 	}
 	virtual void Quit()
 	{

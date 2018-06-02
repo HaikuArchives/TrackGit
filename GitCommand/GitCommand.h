@@ -8,6 +8,8 @@
 #ifndef _GIT_COMMAND_H_
 #define _GIT_COMMAND_H_
 
+#include <stddef.h>
+
 class TrackGitWindow;
 
 /**
@@ -27,7 +29,7 @@ class GitCommand {
 	 */
 	virtual TrackGitWindow* GetWindow()
 	{
-		return 0;
+		return NULL;
 	}
 };
 

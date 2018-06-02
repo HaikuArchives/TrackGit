@@ -13,7 +13,7 @@ class CloneWindow : public TrackGitWindow {
 	BAlert* progressAlert;
 	BTextControl* fURL;
 	PathBox* fPathBox;
-	Clone* clone;
+	Clone* fClone;
 	public:
 	CloneWindow(BString, BString, Clone*);
 	virtual void MessageReceived(BMessage*);

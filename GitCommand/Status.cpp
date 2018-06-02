@@ -22,8 +22,8 @@ Status::Status(BString repo, BString dirPath)
 	:
 	GitCommand()
 {
-	this->fRepo = repo;
-	this->fDirPath = dirPath;
+	fRepo = repo;
+	fDirPath = dirPath;
 }
 
 

@@ -72,7 +72,7 @@ StatusWindow::MessageReceived(BMessage* msg)
 {
 	switch (msg->what) {
 		case kOK:
-			TrackGitWindow::Quit();
+			Quit();
 			break;
 		default:
 			BWindow::MessageReceived(msg);

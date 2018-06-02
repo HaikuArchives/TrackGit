@@ -20,7 +20,7 @@ CloneWindow::CloneWindow(BString repo, BString dirPath, Clone* clone)
 	TrackGitWindow(repo, BRect(0, 0, 300, 150), "TrackGit - Clone",
 			B_DOCUMENT_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
 {
-	this->clone = clone;
+	fClone = clone;
 	fURL = new BTextControl(B_TRANSLATE("URL:"), "", NULL);
 	fPathBox = new PathBox("pathbox", dirPath.String(), "Path:");
 
@@ -49,11 +49,11 @@ CloneWindow::MessageReceived(BMessage* msg)
 {
 	switch (msg->what) {
 		case kDoClone:
-			clone->DoClone(fURL->Text(), fPathBox->Path());
-			TrackGitWindow::Quit();
+			fClone->DoClone(fURL->Text(), fPathBox->Path());
+			Quit();
 			break;
 		case kCancel:
-			TrackGitWindow::Quit();
+			Quit();
 			break;
 		default:
 			BWindow::MessageReceived(msg);

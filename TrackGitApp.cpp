@@ -45,6 +45,11 @@ TrackGitApp::MessageReceived(BMessage* msg)
 	// If yes bring it to front
 	if (fRunningCommands[repo]) {
 		fRunningCommands[repo]->Activate(true);
+		BWindow* window = fRunningCommands[repo];
+		if (window->Lock()) {
+			window->Activate(true);
+			window->Unlock();
+		}
 		return;
 	}
 

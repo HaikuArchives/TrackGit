@@ -14,13 +14,13 @@
 
 /**
  * Init command constructor.
- * @param fDirPath The directory where Init is selected.
+ * @param dirPath The directory where Init is selected.
  */
 Init::Init(BString dirPath)
 	:
 	GitCommand()
 {
-	this->fDirPath = dirPath;
+	fDirPath = dirPath;
 }
 
 
