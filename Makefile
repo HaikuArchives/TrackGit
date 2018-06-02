@@ -34,6 +34,8 @@ SRCS = ThirdParty/PathBox.cpp \
        GitCommand/Clone.cpp \
        GitCommand/Init.cpp \
        GitCommand/Status.cpp \
+	   Utils.cpp \
+	   TrackGitApp.cpp \
 	   TrackGit.cpp
 
 #	Specify the resource definition files to use. Full or relative paths can be

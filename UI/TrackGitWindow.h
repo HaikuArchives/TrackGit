@@ -13,8 +13,13 @@ public:
 	{}
 	virtual bool QuitRequested()
 	{
-			be_app->PostMessage(B_QUIT_REQUESTED);
-			return true;
+		be_app->PostMessage(B_QUIT_REQUESTED);
+		return true;
+	}
+	virtual void Quit()
+	{
+		be_app->PostMessage(B_QUIT_REQUESTED);
+		BWindow::Quit();
 	}
 };
 

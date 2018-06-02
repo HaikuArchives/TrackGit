@@ -9,6 +9,8 @@
 #define _STATUS_H_
 
 #include "GitCommand.h"
+#include "../UI/TrackGitWindow.h"
+#include "../UI/StatusWindow.h"
 
 #include <SupportKit.h>
 
@@ -39,12 +41,17 @@ class Status : public GitCommand {
 	/**
 	 * The current directory where Status option is selected.
 	 */
-	char*				dirPath;
+	char*					dirPath;
+	/**
+	 * The Status Window.
+	 */
+	StatusWindow* 		statusWindow;
 public:
 							Status(char*);
 
 	virtual	void			Execute();
 	BString*				GetStatusText();
+	TrackGitWindow*			GetWindow();
 	static BString*			GetStatusTextUtil(git_status_list*);
 	static BString*			GetBranchText(git_repository*);
 };

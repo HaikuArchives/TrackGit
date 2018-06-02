@@ -20,12 +20,8 @@
 #include <vector>
 #include <add-ons/tracker/TrackerAddOn.h>
 
-#include "UI/CloneWindow.h"
-
-#include "GitCommand/GitCommand.h"
-#include "GitCommand/Clone.h"
-#include "GitCommand/Init.h"
-#include "GitCommand/Status.h"
+#include "Utils.h"
+#include "TrackGitApp.h"
 
 #include <git2.h>
 
@@ -35,17 +31,6 @@ extern "C" {
 	void populate_menu (BMessage* msg, BMenu* menu, BHandler* handler);
 	void message_received (BMessage* msg);
 }
-
-/**
- * The addon name. Will be used in menu item.
- */
-const char* ADDON_NAME = "TrackGit";
-
-enum {
-	kClone,
-	kInitHere,
-	kStatus
-};
 
 
 /**
@@ -60,43 +45,6 @@ process_refs(entry_ref dir_ref, BMessage* msg, void*)
 	BAlert *alert = new BAlert("", buffer.String(), "Cancel", 
 			0, 0, B_WIDTH_AS_USUAL, B_WARNING_ALERT);
 	alert->Go();
-}
-
-
-/**
- * Get selected files and current directory.
- * @param msg The BMessage containing refs to selected files and current
- *            directory.
- * @param selected The vector of selected file paths.
- * @returns The current directory path.
- */
-char*
-get_selected(BMessage* msg, vector<const char*>* selected)
-{
-	// Get all the selected refs
-	BPath path;
-	BEntry entry;
-	int refs;
-	entry_ref file_ref;
-	for (refs=0;
-			 msg->FindRef("refs", refs, &file_ref) == B_NO_ERROR;
-			 refs++) {
-		entry.SetTo(&file_ref);
-		entry.GetPath(&path);
-		selected->push_back(path.Path());
-	}
-	
-	// Get current directory path.
-	entry_ref dir_ref;
-	if (msg->FindRef("dir_ref", &dir_ref) != B_OK) {
-		printf("No dir_ref found!\n");
-		return NULL;
-	}
-	entry.SetTo(&dir_ref);
-	entry.GetPath(&path);
-	char* dirPath = (char*) malloc(strlen(path.Path()));
-	strcpy(dirPath, path.Path());
-	return dirPath;
 }
 
 
@@ -139,14 +87,14 @@ populate_menu(BMessage* msg, BMenu* menu, BHandler* handler)
 		// Add Status menu item
 		BMessage* statusMsg = new BMessage(*msg);
 		statusMsg->AddInt32("addon_item_id", kStatus);
-		BMenuItem* statusItem = new BMenuItem(B_TRANSLATE("Status"), statusMsg);
+		BMenuItem* statusItem = new BMenuItem(B_TRANSLATE("Status..."), statusMsg);
 		submenu->AddItem(statusItem);
 	} else {
 		// dirPath does not belong to git repo
 		// Add Clone menu item
 		BMessage* cloneMsg = new BMessage(*msg);
 		cloneMsg->AddInt32("addon_item_id", kClone);
-		BMenuItem* cloneItem = new BMenuItem(B_TRANSLATE("Clone"), cloneMsg);
+		BMenuItem* cloneItem = new BMenuItem(B_TRANSLATE("Clone..."), cloneMsg);
 		submenu->AddItem(cloneItem);
 
 		// Add "Init Here" only if no files are selected.
@@ -176,37 +124,25 @@ void
 message_received(BMessage* msg)
 {
 	int32 itemId;
+
 	if (msg->FindInt32("addon_item_id", &itemId) != B_OK)
 		return;
 
-	vector<const char*>* selected = new vector<const char*>();
-	char* dirPath = get_selected(msg, selected);
-	if (dirPath == NULL) return;
+	BMessenger* messenger = new BMessenger(APP_SIGN);
 
-	GitCommand* gitCommand = NULL;
-
-	switch (itemId) {
-		case kClone:
-			gitCommand = new Clone(dirPath);
-			break;
-		case kInitHere:
-			gitCommand = new Init(dirPath);
-			break;
-		case kStatus:
-			gitCommand = new Status(dirPath);
-			break;
-		default:
-			break;
+	if (!messenger->IsValid()) {
+		be_roster->Launch(APP_SIGN);
+		messenger = new BMessenger(APP_SIGN);
 	}
-
-	if (gitCommand) {
-		gitCommand->Execute();
-	}
+	messenger->SendMessage(msg);
 }
 
 
 int 
 main()
 {
+    new TrackGitApp();
+	be_app->Run();
+	delete be_app;
 	return 0;
 }

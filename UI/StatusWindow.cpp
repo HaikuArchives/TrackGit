@@ -73,6 +73,7 @@ StatusWindow::MessageReceived(BMessage* msg)
 	switch (msg->what) {
 		case kOK:
 			Quit();
+			QuitRequested();
 			break;
 		default:
 			BWindow::MessageReceived(msg);

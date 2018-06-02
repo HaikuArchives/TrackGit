@@ -8,6 +8,8 @@
 #ifndef _GIT_COMMAND_H_
 #define _GIT_COMMAND_H_
 
+#include "../UI/TrackGitWindow.h"
+
 /**
  * GitCommand Class.
  * This class is abstract class which are inherited by various Git commands.
@@ -19,6 +21,14 @@ class GitCommand {
      * This is where actual calls to libgit2 will go.
      */
     virtual void Execute() = 0;
+	/**
+	 * This is used to get pointer to the window (if any).
+	 * @returns The pointer to the window of command.
+	 */
+	virtual TrackGitWindow* GetWindow()
+	{
+		return NULL;
+	}
 };
 
 #endif

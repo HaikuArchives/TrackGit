@@ -9,6 +9,7 @@
 #define _CLONE_H_
 
 #include "GitCommand.h"
+#include "../UI/TrackGitWindow.h"
 
 /**
  * Clone command Class.
@@ -20,7 +21,7 @@ class Clone : public GitCommand {
 	char*				dirPath;
 public:
 							Clone(const char*);
-
+	TrackGitWindow*			GetWindow();
 	virtual	void			Execute();
 };
 

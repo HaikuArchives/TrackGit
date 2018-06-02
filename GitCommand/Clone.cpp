@@ -27,14 +27,24 @@ Clone::Clone(const char* dirPath)
 	strcpy(this->dirPath, dirPath);
 }
 
+
+/**
+ * This returns pointer to the clone window. It is used by TrackGitApp to
+ * check if window is already present.
+ * @returns The Clone Window;
+ */
+TrackGitWindow*
+Clone::GetWindow()
+{
+	TrackGitWindow* cloneWindow = new CloneWindow(dirPath);
+	return cloneWindow;
+}
+
+
 /**
  * Clone command execution. Opens a window to clone a repo.
  */
 void
 Clone::Execute()
 {
-	CloneWindow* cloneWindow = new CloneWindow(dirPath);
-	thread_id thread = cloneWindow->Thread();
-	status_t win_status = B_OK;
-	wait_for_thread(thread, &win_status);
 }

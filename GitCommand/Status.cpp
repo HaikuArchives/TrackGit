@@ -233,8 +233,6 @@ Status::GetStatusText()
 		GIT_STATUS_OPT_SORT_CASE_SENSITIVELY;
 	o.statusopt.baseline = 0;
 
-	printf("dir %s\n", o.repodir);
-
 	if (git_repository_open_ext(&repo, o.repodir, 0, NULL) != 0) {
 		const git_error* err = giterr_last();
 		printf("Error %d : %s\n", err->klass, err->message);
@@ -272,7 +270,9 @@ Status::GetStatusText()
 
 	BString* branchText = GetBranchText(repo);
 	BString* statusText = GetStatusTextUtil(status);
-	BString* text = new BString(*branchText);
+	BString* text = new BString("Current directory: %dir\n");
+	text->ReplaceFirst("%dir", dirPath);
+	text->Append(*branchText);
 	text->Append(*statusText);
 
 	git_libgit2_shutdown();
@@ -294,13 +294,25 @@ Status::Status(char* dirPath)
 
 
 /**
+ * This returns pointer to the status window. It is used in TrackGitApp to 
+ * check if the window is already present.
+ * @returns The pointer to the Status Window.
+ */
+TrackGitWindow*
+Status::GetWindow()
+{
+	statusWindow = new StatusWindow();
+	return statusWindow;
+}
+
+
+/**
  * Status command execution.
  * Opens an alert with status text.
  */
 void
 Status::Execute()
 {
-	StatusWindow* statusWindow = new StatusWindow();
 	BString* statusText = GetStatusText();
 
 	if (!statusWindow) {
@@ -309,7 +321,4 @@ Status::Execute()
 	}
 
 	statusWindow->SetText(statusText);
-	thread_id thread = statusWindow->Thread();
-	status_t win_status = B_OK;
-	wait_for_thread(thread, &win_status);
 }
