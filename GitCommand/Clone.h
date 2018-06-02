@@ -9,10 +9,10 @@
 #define _CLONE_H_
 
 #include "GitCommand.h"
-#include "../UI/TrackGitWindow.h"
+
+#include <SupportKit.h>
 
 #include <git2.h>
-
 
 typedef struct progress_data {
 	git_transfer_progress fetch_progress;
@@ -26,12 +26,13 @@ typedef struct progress_data {
  * Clone command Class.
  */
 class Clone : public GitCommand {
+	BString					fRepo;
 	/**
 	 * The current directory where Clone option is selected.
 	 */
-	char*				dirPath;
+	BString					fDirPath;
 public:
-							Clone(char*);
+							Clone(BString, BString);
 	TrackGitWindow*			GetWindow();
 	virtual	void			Execute();
 	int						DoClone(const char*, const char*);

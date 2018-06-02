@@ -1,24 +1,28 @@
 #ifndef _TRACKGIT_WINDOW_H_
 #define _TRACKGIT_WINDOW_H_
 
-#include <InterfaceKit.h>
+#include "../Utils.h"
+
 #include <AppKit.h>
+#include <InterfaceKit.h>
+#include <SupportKit.h>
 
 class TrackGitWindow : public BWindow {
+	BString fRepo;
 public:
-	TrackGitWindow(BRect frame, const char* title, window_type type,
+	TrackGitWindow(BString repo, BRect frame, const char* title, window_type type,
 			int flags)
 		:
 		BWindow(frame, title, type, flags)
-	{}
-	virtual bool QuitRequested()
 	{
-		be_app->PostMessage(B_QUIT_REQUESTED);
-		return true;
+		this->fRepo = repo;
 	}
 	virtual void Quit()
 	{
-		be_app->PostMessage(B_QUIT_REQUESTED);
+		BMessenger messenger(APP_SIGN);
+		BMessage msg(kQuitWindow);
+		msg.AddString("repo", fRepo);
+		messenger.SendMessage(&msg);
 		BWindow::Quit();
 	}
 };

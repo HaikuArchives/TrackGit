@@ -8,7 +8,7 @@
 #ifndef _GIT_COMMAND_H_
 #define _GIT_COMMAND_H_
 
-#include "../UI/TrackGitWindow.h"
+class TrackGitWindow;
 
 /**
  * GitCommand Class.
@@ -27,7 +27,7 @@ class GitCommand {
 	 */
 	virtual TrackGitWindow* GetWindow()
 	{
-		return NULL;
+		return 0;
 	}
 };
 

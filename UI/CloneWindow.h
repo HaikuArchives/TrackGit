@@ -15,10 +15,8 @@ class CloneWindow : public TrackGitWindow {
 	PathBox* fPathBox;
 	Clone* clone;
 	public:
-	CloneWindow(char*, Clone*);
+	CloneWindow(BString, BString, Clone*);
 	virtual void MessageReceived(BMessage*);
-	int DoClone(const char*, const char*);
-	int FetchProgress(const char*, int, void*);
 };
 
 #endif

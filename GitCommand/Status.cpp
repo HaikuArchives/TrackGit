@@ -15,6 +15,49 @@
 
 
 /**
+ * Status class Constructor.
+ * @param dirPath The current directory where Status is selected.
+ */
+Status::Status(BString repo, BString dirPath)
+	:
+	GitCommand()
+{
+	this->fRepo = repo;
+	this->fDirPath = dirPath;
+}
+
+
+/**
+ * This returns pointer to the status window.
+ * @returns The pointer to the Status Window.
+ */
+TrackGitWindow*
+Status::GetWindow()
+{
+	fStatusWindow = new StatusWindow(fRepo);
+	return fStatusWindow;
+}
+
+
+/**
+ * Status command execution.
+ * Opens an alert with status text.
+ */
+void
+Status::Execute()
+{
+	BString* statusText = GetStatusText();
+
+	if (!fStatusWindow) {
+		fStatusWindow->Quit();
+		return;
+	}
+
+	fStatusWindow->SetText(statusText);
+}
+
+
+/**
  * Constructs Status text for current repo.
  * @param status The status info output of git_status_list_new.
  * @returns The Status text.
@@ -223,7 +266,7 @@ Status::GetStatusText()
 {
 	git_repository *repo = NULL;
 	git_status_list *status;
-	struct opts o = { GIT_STATUS_OPTIONS_INIT, dirPath };
+	struct opts o = { GIT_STATUS_OPTIONS_INIT, fDirPath.String() };
 
 	git_libgit2_init();
 
@@ -253,9 +296,6 @@ Status::GetStatusText()
 		return NULL;
 	}
 
-	// int e = git_status_list_new(&status, repo, &o.statusopt);
-	// printf("e %d\n", e);
-
 	if (git_status_list_new(&status, repo, &o.statusopt) != 0) {
 		const git_error* err = giterr_last();
 		printf("Error %d : %s\n", err->klass, err->message);
@@ -271,54 +311,11 @@ Status::GetStatusText()
 	BString* branchText = GetBranchText(repo);
 	BString* statusText = GetStatusTextUtil(status);
 	BString* text = new BString("Current directory: %dir\n");
-	text->ReplaceFirst("%dir", dirPath);
+	text->ReplaceFirst("%dir", fDirPath.String());
 	text->Append(*branchText);
 	text->Append(*statusText);
 
 	git_libgit2_shutdown();
 	
 	return text;
-}
-
-
-/**
- * Status class Constructor.
- * @param dirPath The current directory where Status is selected.
- */
-Status::Status(char* dirPath)
-	:
-	GitCommand()
-{
-	this->dirPath = dirPath;
-}
-
-
-/**
- * This returns pointer to the status window. It is used in TrackGitApp to 
- * check if the window is already present.
- * @returns The pointer to the Status Window.
- */
-TrackGitWindow*
-Status::GetWindow()
-{
-	statusWindow = new StatusWindow();
-	return statusWindow;
-}
-
-
-/**
- * Status command execution.
- * Opens an alert with status text.
- */
-void
-Status::Execute()
-{
-	BString* statusText = GetStatusText();
-
-	if (!statusWindow) {
-		statusWindow->Quit();
-		return;
-	}
-
-	statusWindow->SetText(statusText);
 }

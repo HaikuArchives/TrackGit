@@ -2,13 +2,15 @@
 #define _UTILS_H_
 
 #include <AppKit.h>
+#include <SupportKit.h>
 
 #include <vector.h>
 
 enum {
+	kQuitWindow,
 	kClone,
 	kInitHere,
-	kStatus
+	kStatus,
 };
 
 
@@ -22,6 +24,9 @@ enum {
  */
 #define APP_SIGN "application/x-vnd.Haiku-TrackGit"
 
-char* get_selected(BMessage* msg, vector<const char*>* selected);
+void extract_selected_paths(const BMessage* msg,
+		vector<const char*>& selected);
+BString extract_current_directory(const BMessage* msg);
+BString get_root_of_repo(BString dirPath);
 
 #endif

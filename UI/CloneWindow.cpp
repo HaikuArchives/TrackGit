@@ -4,27 +4,28 @@
 
 #include <Catalog.h>
 #include <LayoutBuilder.h>
+#include <SupportKit.h>
 
 #define B_TRANSLATION_CONTEXT "TrackGit"
 
 
 enum {
-	kClone,
+	kDoClone,
 	kCancel
 };
 
 
-CloneWindow::CloneWindow(char* dirPath, Clone* clone)
+CloneWindow::CloneWindow(BString repo, BString dirPath, Clone* clone)
 	:
-	TrackGitWindow(BRect(0, 0, 300, 150), "TrackGit - Clone", B_DOCUMENT_WINDOW, 
-			B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
+	TrackGitWindow(repo, BRect(0, 0, 300, 150), "TrackGit - Clone",
+			B_DOCUMENT_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
 {
 	this->clone = clone;
 	fURL = new BTextControl(B_TRANSLATE("URL:"), "", NULL);
-	fPathBox = new PathBox("pathbox", dirPath, "Path:");
+	fPathBox = new PathBox("pathbox", dirPath.String(), "Path:");
 
 	BButton* fClone = new BButton("ok", B_TRANSLATE("Clone"),
-			new BMessage(kClone));
+			new BMessage(kDoClone));
 	BButton* fCancel = new BButton("ok", B_TRANSLATE("Cancel"),
 			new BMessage(kCancel));
 
@@ -38,8 +39,8 @@ CloneWindow::CloneWindow(char* dirPath, Clone* clone)
 			.Add(fClone)
 			.End();
 
-	Show();
 	CenterOnScreen();
+	Show();
 }
 
 
@@ -47,12 +48,12 @@ void
 CloneWindow::MessageReceived(BMessage* msg)
 {
 	switch (msg->what) {
-		case kClone:
+		case kDoClone:
 			clone->DoClone(fURL->Text(), fPathBox->Path());
-			Quit();
+			TrackGitWindow::Quit();
 			break;
 		case kCancel:
-			Quit();
+			TrackGitWindow::Quit();
 			break;
 		default:
 			BWindow::MessageReceived(msg);

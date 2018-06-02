@@ -2,8 +2,8 @@
 #include "Utils.h"
 
 #include <InterfaceKit.h>
-#include <SupportKit.h>
 
+#include "UI/TrackGitWindow.h"
 #include "GitCommand/GitCommand.h"
 #include "GitCommand/Clone.h"
 #include "GitCommand/Init.h"
@@ -20,42 +20,52 @@ TrackGitApp::TrackGitApp()
 void
 TrackGitApp::MessageReceived(BMessage* msg)
 {
-	int32 itemId;
-	GitCommand* gitCommand = NULL;
-
-	vector<const char*>* selected = new vector<const char*>();
-	char* dirPath = get_selected(msg, selected);
-
-	if (dirPath == NULL)
+	// If message is received for quitting the window
+	if (msg->what == kQuitWindow) {
+		BString repo;
+		if (msg->FindString("repo", &repo) != B_OK)
+			return;
+		fRunningCommands.erase(repo);
+		// If all windows are quit
+		if (fRunningCommands.size() == 0)
+			be_app->PostMessage(B_QUIT_REQUESTED);
 		return;
+	}
+
+	vector<const char*> selected;
+	extract_selected_paths(msg, selected);
+	BString dirPath = extract_current_directory(msg);
+
+	int32 itemId;
 	if (msg->FindInt32("addon_item_id", &itemId) != B_OK)
 		return;
 
+	BString repo = get_root_of_repo(dirPath);
+	// Check if window for selected repo already exits
+	// If yes bring it to front
+	if (fRunningCommands[repo]) {
+		fRunningCommands[repo]->Activate(true);
+		return;
+	}
+
+	GitCommand* gitCommand = NULL;
+
 	switch (itemId) {
 		case kClone:
-			gitCommand = new Clone(dirPath);
+			gitCommand = new Clone(repo, dirPath);
 			break;
 		case kInitHere:
 			gitCommand = new Init(dirPath);
 			break;
 		case kStatus:
-			gitCommand = new Status(dirPath);
+			gitCommand = new Status(repo, dirPath);
 			break;
 		default:
 			break;
 	}
-	printf("Window %d\n", windowMap[itemId]);
 
-	// Check if window for selected option already exits
-	// If yes bring it to front
-	if (windowMap[itemId]) {
-		printf("Activating Window\n");
-		windowMap[itemId]->Activate(true);
-		return;
-	}
-
-	windowMap[itemId] = gitCommand->GetWindow();
-	printf("Window1 %d\n", windowMap[itemId]);
+	fRunningCommands[repo] = gitCommand->GetWindow();
+	
 	if (gitCommand)
 		gitCommand->Execute();
 }

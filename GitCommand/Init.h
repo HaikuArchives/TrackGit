@@ -10,6 +10,8 @@
 
 #include "GitCommand.h"
 
+#include <SupportKit.h>
+
 /**
  * Init command Class.
  */
@@ -18,11 +20,11 @@ class Init : public GitCommand
 	/**
 	 * The current directory where Init option is selected.
 	 */
-	char* dirPath;
+	BString fDirPath;
 public:
-	Init(char*);
+	Init(BString);
 	virtual void Execute();
-	static void InitRepo(char*);
+	static int InitRepo(BString);
 };
 
 #endif

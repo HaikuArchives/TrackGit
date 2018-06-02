@@ -9,7 +9,6 @@
 #define _STATUS_H_
 
 #include "GitCommand.h"
-#include "../UI/TrackGitWindow.h"
 #include "../UI/StatusWindow.h"
 
 #include <SupportKit.h>
@@ -23,7 +22,7 @@
  */
 struct opts {
   git_status_options statusopt;
-  char *repodir;
+  const char *repodir;
   char *pathspec[MAX_PATHSPEC];
   int npaths;
   int format;
@@ -38,20 +37,21 @@ struct opts {
  * Status command Class.
  */
 class Status : public GitCommand {
+	BString					fRepo;
 	/**
 	 * The current directory where Status option is selected.
 	 */
-	char*					dirPath;
+	BString					fDirPath;
 	/**
 	 * The Status Window.
 	 */
-	StatusWindow* 		statusWindow;
+	StatusWindow* 			fStatusWindow;
 public:
-							Status(char*);
+							Status(BString, BString);
 
 	virtual	void			Execute();
 	BString*				GetStatusText();
-	TrackGitWindow*			GetWindow();
+	virtual TrackGitWindow*	GetWindow();
 	static BString*			GetStatusTextUtil(git_status_list*);
 	static BString*			GetBranchText(git_repository*);
 };

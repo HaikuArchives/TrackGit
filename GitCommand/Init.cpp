@@ -14,13 +14,13 @@
 
 /**
  * Init command constructor.
- * @param dirPath The directory where Init is selected.
+ * @param fDirPath The directory where Init is selected.
  */
-Init::Init(char* dirPath)
+Init::Init(BString dirPath)
 	:
 	GitCommand()
 {
-	this->dirPath = dirPath;
+	this->fDirPath = dirPath;
 }
 
 
@@ -28,11 +28,21 @@ Init::Init(char* dirPath)
  * Initializes empty repo in given directory.
  * @param dirPath The given directory.
  */
-void
-Init::InitRepo(char* dirPath)
+int
+Init::InitRepo(BString dirPath)
 {
 	git_repository* repo = NULL;
-	if (git_repository_init(&repo, dirPath, 0) < 0) {
+	return git_repository_init(&repo, dirPath.String(), 0);
+}
+
+
+/**
+ * Init command excution. Initializes empty git repository in given directory.
+ */
+void
+Init::Execute()
+{
+	if (InitRepo(fDirPath) < 0) {
 		const git_error* err = giterr_last();
 		printf("Error %d : %s\n", err->klass, err->message);
 
@@ -43,16 +53,6 @@ Init::InitRepo(char* dirPath)
 		alert->Go();
 		return;
 	}
-}
-
-
-/**
- * Init command excution. Initializes empty git repository in given directory.
- */
-void
-Init::Execute()
-{
-	InitRepo(dirPath);	
 
 	BString buffer("Repository initialted sucessfully.");
 	BAlert* alert = new BAlert("", buffer.String(), "OK", 

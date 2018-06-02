@@ -19,7 +19,7 @@ class StatusWindow : public TrackGitWindow {
 	 */
 	BTextView* fStatusTextView;
 public:
-	StatusWindow();
+	StatusWindow(BString);
 	void SetText(BString*);
 	virtual void MessageReceived(BMessage*);
 };

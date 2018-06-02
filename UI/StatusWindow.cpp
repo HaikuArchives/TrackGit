@@ -23,10 +23,10 @@ enum {
  * StatusWindow Constructor
  * @param statusText The status text to be displayed.
  */
-StatusWindow::StatusWindow()
+StatusWindow::StatusWindow(BString repo)
 	:
-	TrackGitWindow(BRect(0, 0, 300, 300), "TrackGit - Status", B_DOCUMENT_WINDOW, 
-			B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
+	TrackGitWindow(repo, BRect(0, 0, 300, 300), "TrackGit - Status",
+			B_DOCUMENT_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
 {
 	fStatusTextView = new BTextView("statusText");
 	fStatusTextView->SetText("Loading...");
@@ -44,8 +44,8 @@ StatusWindow::StatusWindow()
 		.Add(fScrollView)
 		.Add(fOK);
 
-	Show();
 	CenterOnScreen();
+	Show();
 }
 
 
@@ -72,8 +72,7 @@ StatusWindow::MessageReceived(BMessage* msg)
 {
 	switch (msg->what) {
 		case kOK:
-			Quit();
-			QuitRequested();
+			TrackGitWindow::Quit();
 			break;
 		default:
 			BWindow::MessageReceived(msg);

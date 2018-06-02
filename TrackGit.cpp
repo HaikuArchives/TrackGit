@@ -73,32 +73,33 @@ populate_menu(BMessage* msg, BMenu* menu, BHandler* handler)
 
 	BMenu* submenu = new BMenu(ADDON_NAME);
 
-	vector<const char*>* selected = new vector<const char*>();
-	char* dirPath = get_selected(msg, selected);
-
-	if (dirPath == NULL) return;
+	vector<const char*> selected;
+	extract_selected_paths(msg, selected);
+	BString dirPath = extract_current_directory(msg);
 
 	git_libgit2_init();
 	git_buf buf = GIT_BUF_INIT_CONST(NULL, 0);
 
 	// Check if current directory is in git repo.
-	if (git_repository_discover(&buf, dirPath, 0, NULL) == 0) {
+	if (git_repository_discover(&buf, dirPath.String(), 0, NULL) == 0) {
 		// buf is git repo
 		// Add Status menu item
 		BMessage* statusMsg = new BMessage(*msg);
 		statusMsg->AddInt32("addon_item_id", kStatus);
-		BMenuItem* statusItem = new BMenuItem(B_TRANSLATE("Status..."), statusMsg);
+		BMenuItem* statusItem = new BMenuItem(
+				B_TRANSLATE("Status" B_UTF8_ELLIPSIS), statusMsg);
 		submenu->AddItem(statusItem);
 	} else {
 		// dirPath does not belong to git repo
 		// Add Clone menu item
 		BMessage* cloneMsg = new BMessage(*msg);
 		cloneMsg->AddInt32("addon_item_id", kClone);
-		BMenuItem* cloneItem = new BMenuItem(B_TRANSLATE("Clone..."), cloneMsg);
+		BMenuItem* cloneItem = new BMenuItem(
+				B_TRANSLATE("Clone" B_UTF8_ELLIPSIS), cloneMsg);
 		submenu->AddItem(cloneItem);
 
 		// Add "Init Here" only if no files are selected.
-		if (selected->size() == 0) {
+		if (selected.size() == 0) {
 			// Add Init here
 			BMessage* initMsg = new BMessage(*msg);
 			initMsg->AddInt32("addon_item_id", kInitHere);
@@ -128,21 +129,20 @@ message_received(BMessage* msg)
 	if (msg->FindInt32("addon_item_id", &itemId) != B_OK)
 		return;
 
-	BMessenger* messenger = new BMessenger(APP_SIGN);
+	BMessenger messenger(APP_SIGN);
 
-	if (!messenger->IsValid()) {
+	if (!messenger.IsValid()) {
 		be_roster->Launch(APP_SIGN);
-		messenger = new BMessenger(APP_SIGN);
+		messenger = BMessenger(APP_SIGN);
 	}
-	messenger->SendMessage(msg);
+	messenger.SendMessage(msg);
 }
 
 
 int 
 main()
 {
-    new TrackGitApp();
-	be_app->Run();
-	delete be_app;
+	TrackGitApp app;
+	app.Run();
 	return 0;
 }
