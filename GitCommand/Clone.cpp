@@ -35,8 +35,8 @@ Clone::Clone(BString repo, BString dirPath)
 TrackGitWindow*
 Clone::GetWindow()
 {
-	TrackGitWindow* cloneWindow = new CloneWindow(fRepo, fDirPath, this);
-	return cloneWindow;
+	fCloneWindow = new CloneWindow(fRepo, fDirPath, this);
+	return fCloneWindow;
 }
 
 
@@ -64,13 +64,17 @@ static void print_progress(const progress_data *pd)
 			? (100 * pd->completed_steps) / pd->total_steps
 			: 0;
 	int kbytes = pd->fetch_progress.received_bytes / 1024;
+	
+	BString progress;
 
 	if (pd->fetch_progress.total_objects &&
 			pd->fetch_progress.received_objects ==
 			pd->fetch_progress.total_objects) {
-			printf("Resolving deltas %d/%d\r",
-				   pd->fetch_progress.indexed_deltas,
-				   pd->fetch_progress.total_deltas);
+		printf("Resolving deltas %d/%d\r",
+			   pd->fetch_progress.indexed_deltas,
+			   pd->fetch_progress.total_deltas);
+		progress << "Resolving deltas " << pd->fetch_progress.indexed_deltas
+				<< "/" << pd->fetch_progress.total_deltas;
 	} else {
 		printf("net %3d%% (%4d kb, %5d/%5d)  /  idx %3d%% (%5d/%5d)  /  chk %3d%% (%4d/%4d) %s\n",
 			network_percent, kbytes,
@@ -81,7 +85,16 @@ static void print_progress(const progress_data *pd)
 			checkout_percent,
 			pd->completed_steps, pd->total_steps,
 			pd->path);
+		progress << "Network " << network_percent << " (" << kbytes << " kb, "
+			<< pd->fetch_progress.received_objects << "/"
+			<< pd->fetch_progress.total_objects << "\n";
+		progress << "Indexed " << index_percent << " (" 
+			<< pd->fetch_progress.indexed_objects << "/"
+			<< pd->fetch_progress.total_objects << "\n";
 	}
+
+	if (pd->cloneWindow)
+		pd->cloneWindow->SetProgressText(progress);
 }
 
 
@@ -115,12 +128,21 @@ static void checkout_progress(const char *path, size_t cur, size_t tot, void
 }
 
 
-int
-Clone::DoClone(const char* url, const char* path)
+void*
+DoCloneThread(void* arg)
 {
+	struct param* p = (struct param*) arg;
+	const char* url = p->url;
+	const char* path = p->path;
+
 	printf("Cloning %s into %s\n", url, path);
+	BString cloneText;
+	cloneText << "Cloning " << url << " into " << path;
+	if (p->cloneWindow)
+		p->cloneWindow->SetProgressText(cloneText);
 
 	progress_data pd = {{0}};
+	pd.cloneWindow = p->cloneWindow;
 	git_repository *cloned_repo = NULL;
 	git_clone_options clone_opts = GIT_CLONE_OPTIONS_INIT;
 	git_checkout_options checkout_opts = GIT_CHECKOUT_OPTIONS_INIT;
@@ -153,6 +175,18 @@ Clone::DoClone(const char* url, const char* path)
 
 	git_repository_free(cloned_repo);
 	git_libgit2_shutdown();
+	if (p->cloneWindow && p->cloneWindow->LockLooper())
+		p->cloneWindow->Quit();
+}
 
-	return ret;
+pthread_t
+Clone::DoClone(CloneWindow* cloneWindow, const char* url, const char* path)
+{
+	struct param *p = (struct param*) malloc(sizeof(struct param));
+	p->url = url;
+	p->path = path;
+	p->cloneWindow = cloneWindow;
+	pthread_t thread_id;
+	pthread_create(&thread_id, NULL, DoCloneThread, p);
+	return thread_id;
 }
