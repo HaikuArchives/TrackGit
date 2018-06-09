@@ -1,3 +1,10 @@
+/**
+ * @file TrackGitApp.cpp
+ * @brief Implementation file of TrackGitApp.
+ * 
+ * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ */
+
 #include "TrackGitApp.h"
 #include "Utils.h"
 
@@ -10,6 +17,9 @@
 #include "GitCommand/Status.h"
 
 
+/**
+ * TrackGitApp Constructor.
+ */
 TrackGitApp::TrackGitApp()
 	: 
 	BApplication(APP_SIGN)
@@ -17,6 +27,12 @@ TrackGitApp::TrackGitApp()
 }
 
 
+/**
+ * The handler to receive messages.
+ * This function acitivates already existing window or launches a new ones if 
+ * needed. This also quits the app when there are no windows left.
+ * @param msg The message to receive.
+ */
 void
 TrackGitApp::MessageReceived(BMessage* msg)
 {

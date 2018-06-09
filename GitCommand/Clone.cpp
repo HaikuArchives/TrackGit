@@ -17,6 +17,7 @@
 
 /**
  * Clone class Constructor.
+ * @para repo The repo where the command is called.
  * @param dirPath The current directory where Clone is selected.
  */
 Clone::Clone(BString repo, BString dirPath)
@@ -49,7 +50,12 @@ Clone::Execute()
 }
 
 
-static void print_progress(const progress_data *pd)
+/**
+ * Prints progress of command to the progress window.
+ * @param pd The progress data.
+ */
+static void
+print_progress(const progress_data *pd)
 {
 	int network_percent = pd->fetch_progress.total_objects > 0 ?
 			(100*pd->fetch_progress.received_objects) /
@@ -98,7 +104,12 @@ static void print_progress(const progress_data *pd)
 }
 
 
-static int sideband_progress(const char *str, int len, void *payload)
+/**
+ * Prints the progress from remote.
+ * @param str The remote progress.
+ */
+static int
+sideband_progress(const char *str, int len, void *payload)
 {
 	(void)payload; // unused
 
@@ -108,7 +119,13 @@ static int sideband_progress(const char *str, int len, void *payload)
 }
 
 
-static int fetch_progress(const git_transfer_progress *stats, void *payload)
+/**
+ * Creates data structures for printing progress.
+ * @param stats The fetch progress.
+ * @param payload The progress payload.
+ */
+static int
+fetch_progress(const git_transfer_progress *stats, void *payload)
 {
 	progress_data *pd = (progress_data*)payload;
 	pd->fetch_progress = *stats;
@@ -117,7 +134,15 @@ static int fetch_progress(const git_transfer_progress *stats, void *payload)
 }
 
 
-static void checkout_progress(const char *path, size_t cur, size_t tot, void
+/**
+ * Prints checkout progress.
+ * @param path The clone path.
+ * @param cur Current completed steps.
+ * @param tot Total steps.
+ * @param payload The progress payload.
+ */
+static void
+checkout_progress(const char *path, size_t cur, size_t tot, void
 		*payload)
 {
 	progress_data *pd = (progress_data*)payload;
@@ -128,6 +153,11 @@ static void checkout_progress(const char *path, size_t cur, size_t tot, void
 }
 
 
+/**
+ * Clones the given url into given path along with showing progress in 
+ * given progress window.
+ * @param arg This contains url, path and progress window.
+ */
 void*
 DoCloneThread(void* arg)
 {
@@ -179,6 +209,13 @@ DoCloneThread(void* arg)
 		p->cloneWindow->Quit();
 }
 
+
+/**
+ * Spawns a thread to clone.
+ * @param cloneWindow Window to show progress.
+ * @param url The url to clone.
+ * @param path The path to clone to.
+ */
 pthread_t
 Clone::DoClone(CloneWindow* cloneWindow, const char* url, const char* path)
 {

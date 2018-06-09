@@ -1,4 +1,9 @@
-#include "CloneWindow.h"
+/**
+ * @file CloneWindow.cpp
+ * @brief Implementation file of Clone window.
+ * 
+ * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ */
 
 #include <stdio.h>
 
@@ -9,6 +14,13 @@
 
 #define B_TRANSLATION_CONTEXT "TrackGit"
 
+
+/**
+ * Constructor for CloneWindow.
+ * @param repo The repo where command is called.
+ * @param dirPath The current directory where clone optionn is selected.
+ * @param clone The Clone command.
+ */
 CloneWindow::CloneWindow(BString repo, BString dirPath, Clone* clone)
 	:
 	TrackGitWindow(repo, BRect(0, 0, 300, 150), "TrackGit - Clone",
@@ -39,6 +51,10 @@ CloneWindow::CloneWindow(BString repo, BString dirPath, Clone* clone)
 }
 
 
+/**
+ * Prints progress text to textview of window.
+ * @param text The progress text.
+ */
 void
 CloneWindow::SetProgressText(BString text)
 {
@@ -46,6 +62,10 @@ CloneWindow::SetProgressText(BString text)
 }
 
 
+/**
+ * The handler to receive messages.
+ * @param msg The message.
+ */
 void
 CloneWindow::MessageReceived(BMessage* msg)
 {
@@ -66,6 +86,11 @@ CloneWindow::MessageReceived(BMessage* msg)
 	}
 }
 
+
+/**
+ * The CloneProgressWindow constructor.
+ * @param cloneWindow The CloneWindow.
+ */
 CloneProgressWindow::CloneProgressWindow(CloneWindow* cloneWindow)
 	:
 	BWindow(BRect(0, 0, 300, 150), "", B_MODAL_WINDOW,
@@ -91,6 +116,11 @@ CloneProgressWindow::CloneProgressWindow(CloneWindow* cloneWindow)
 			.End();
 }
 
+
+/**
+ * This function sets texts of the textview within window.
+ * @param text The text to be set.
+ */
 void
 CloneProgressWindow::SetText(const char* text)
 {
@@ -100,6 +130,11 @@ CloneProgressWindow::SetText(const char* text)
 	}
 }
 
+
+/**
+ * The handler to receive messages.
+ * @param msg The message received.
+ */
 void
 CloneProgressWindow::MessageReceived(BMessage* msg)
 {

@@ -65,6 +65,8 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Clone.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -78,10 +80,244 @@ $(function() {
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;strings.h&gt;</code><br />
 <code>#include &lt;git2.h&gt;</code><br />
-</div><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a0015b141d258fc96b355c14a1eace0ed"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Clone_8cpp.html#a0015b141d258fc96b355c14a1eace0ed">print_progress</a> (const <a class="el" href="structprogress__data.html">progress_data</a> *pd)</td></tr>
+<tr class="memdesc:a0015b141d258fc96b355c14a1eace0ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints progress of command to the progress window.  <a href="#a0015b141d258fc96b355c14a1eace0ed">More...</a><br /></td></tr>
+<tr class="separator:a0015b141d258fc96b355c14a1eace0ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22d33d52efb88c1ecde98fd13875d861"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Clone_8cpp.html#a22d33d52efb88c1ecde98fd13875d861">sideband_progress</a> (const char *str, int len, void *payload)</td></tr>
+<tr class="memdesc:a22d33d52efb88c1ecde98fd13875d861"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the progress from remote.  <a href="#a22d33d52efb88c1ecde98fd13875d861">More...</a><br /></td></tr>
+<tr class="separator:a22d33d52efb88c1ecde98fd13875d861"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a078bb1d7df2108e5cee9f8c033033b91"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Clone_8cpp.html#a078bb1d7df2108e5cee9f8c033033b91">fetch_progress</a> (const git_transfer_progress *stats, void *payload)</td></tr>
+<tr class="memdesc:a078bb1d7df2108e5cee9f8c033033b91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates data structures for printing progress.  <a href="#a078bb1d7df2108e5cee9f8c033033b91">More...</a><br /></td></tr>
+<tr class="separator:a078bb1d7df2108e5cee9f8c033033b91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfb4a6be32f113f1be8b3bdc67529cb9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Clone_8cpp.html#adfb4a6be32f113f1be8b3bdc67529cb9">checkout_progress</a> (const char *path, size_t cur, size_t tot, void *payload)</td></tr>
+<tr class="memdesc:adfb4a6be32f113f1be8b3bdc67529cb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints checkout progress.  <a href="#adfb4a6be32f113f1be8b3bdc67529cb9">More...</a><br /></td></tr>
+<tr class="separator:adfb4a6be32f113f1be8b3bdc67529cb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9919d4eb6a90a708e4501fb86ecd72fb"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Clone_8cpp.html#a9919d4eb6a90a708e4501fb86ecd72fb">DoCloneThread</a> (void *arg)</td></tr>
+<tr class="memdesc:a9919d4eb6a90a708e4501fb86ecd72fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clones the given url into given path along with showing progress in given progress window.  <a href="#a9919d4eb6a90a708e4501fb86ecd72fb">More...</a><br /></td></tr>
+<tr class="separator:a9919d4eb6a90a708e4501fb86ecd72fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implemention file of <a class="el" href="classClone.html" title="Clone command Class. ">Clone</a> command. </p>
 <dl class="section author"><dt>Author</dt><dd>Hrishikesh Hiraskar <a href="#" onclick="location.href='mai'+'lto:'+'hri'+'sh'+'ihi'+'ra'+'ska'+'r@'+'gma'+'il'+'.co'+'m'; return false;">hrish<span style="display: none;">.nosp@m.</span>ihir<span style="display: none;">.nosp@m.</span>askar<span style="display: none;">.nosp@m.</span>@gma<span style="display: none;">.nosp@m.</span>il.co<span style="display: none;">.nosp@m.</span>m</a> </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="adfb4a6be32f113f1be8b3bdc67529cb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfb4a6be32f113f1be8b3bdc67529cb9">&#9670;&nbsp;</a></span>checkout_progress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void checkout_progress </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>cur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>tot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>payload</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prints checkout progress. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The clone path. </td></tr>
+    <tr><td class="paramname">cur</td><td>Current completed steps. </td></tr>
+    <tr><td class="paramname">tot</td><td>Total steps. </td></tr>
+    <tr><td class="paramname">payload</td><td>The progress payload. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9919d4eb6a90a708e4501fb86ecd72fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9919d4eb6a90a708e4501fb86ecd72fb">&#9670;&nbsp;</a></span>DoCloneThread()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* DoCloneThread </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>arg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clones the given url into given path along with showing progress in given progress window. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arg</td><td>This contains url, path and progress window. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a078bb1d7df2108e5cee9f8c033033b91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a078bb1d7df2108e5cee9f8c033033b91">&#9670;&nbsp;</a></span>fetch_progress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int fetch_progress </td>
+          <td>(</td>
+          <td class="paramtype">const git_transfer_progress *&#160;</td>
+          <td class="paramname"><em>stats</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>payload</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates data structures for printing progress. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stats</td><td>The fetch progress. </td></tr>
+    <tr><td class="paramname">payload</td><td>The progress payload. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0015b141d258fc96b355c14a1eace0ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0015b141d258fc96b355c14a1eace0ed">&#9670;&nbsp;</a></span>print_progress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void print_progress </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structprogress__data.html">progress_data</a> *&#160;</td>
+          <td class="paramname"><em>pd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prints progress of command to the progress window. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pd</td><td>The progress data. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a22d33d52efb88c1ecde98fd13875d861"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22d33d52efb88c1ecde98fd13875d861">&#9670;&nbsp;</a></span>sideband_progress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int sideband_progress </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>payload</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prints the progress from remote. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The remote progress. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

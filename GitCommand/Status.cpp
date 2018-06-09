@@ -16,6 +16,7 @@
 
 /**
  * Status class Constructor.
+ * @param repo The repo where the command is called.
  * @param dirPath The current directory where Status is selected.
  */
 Status::Status(BString repo, BString dirPath)

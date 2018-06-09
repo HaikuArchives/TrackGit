@@ -139,6 +139,10 @@ message_received(BMessage* msg)
 }
 
 
+/**
+ * The main function of TrackGit.
+ * This function launches the TrackGit App.
+ */
 int 
 main()
 {

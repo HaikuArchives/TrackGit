@@ -63,9 +63,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">TrackGit.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -85,25 +83,14 @@ $(function() {
 <code>#include &lt;strings.h&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;add-ons/tracker/TrackerAddOn.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="CloneWindow_8h_source.html">UI/CloneWindow.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="GitCommand_8h_source.html">GitCommand/GitCommand.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="Clone_8h_source.html">GitCommand/Clone.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="Init_8h_source.html">GitCommand/Init.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="Status_8h_source.html">GitCommand/Status.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Utils_8h_source.html">Utils.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="TrackGitApp_8h_source.html">TrackGitApp.h</a>&quot;</code><br />
 <code>#include &lt;git2.h&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ab01f8552d4b6c275199d59ad807093d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TrackGit_8cpp.html#ab01f8552d4b6c275199d59ad807093d5">B_TRANSLATION_CONTEXT</a>&#160;&#160;&#160;&quot;TrackGit&quot;</td></tr>
 <tr class="separator:ab01f8552d4b6c275199d59ad807093d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="TrackGit_8cpp.html#a06fc87d81c62e9abb8790b6e5713c55ba733c8f949e1ac14e298b30026f4e558d">kClone</a>, 
-<a class="el" href="TrackGit_8cpp.html#a06fc87d81c62e9abb8790b6e5713c55bad2a4178660ebf260a8aede547424dd88">kInitHere</a>, 
-<a class="el" href="TrackGit_8cpp.html#a06fc87d81c62e9abb8790b6e5713c55ba34ac05a34229cd773942c9d75f5e2980">kStatus</a>
- }</td></tr>
-<tr class="separator:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -116,17 +103,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a8608d0901959452276e78ba2762d5a1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TrackGit_8cpp.html#a8608d0901959452276e78ba2762d5a1f">process_refs</a> (entry_ref dir_ref, BMessage *msg, void *)</td></tr>
 <tr class="memdesc:a8608d0901959452276e78ba2762d5a1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">process_ref definition for addon.  <a href="#a8608d0901959452276e78ba2762d5a1f">More...</a><br /></td></tr>
 <tr class="separator:a8608d0901959452276e78ba2762d5a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6e5b7aa54c8bc1d6ed9e66b17060135"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TrackGit_8cpp.html#ab6e5b7aa54c8bc1d6ed9e66b17060135">get_selected</a> (BMessage *msg, vector&lt; const char *&gt; *selected)</td></tr>
-<tr class="memdesc:ab6e5b7aa54c8bc1d6ed9e66b17060135"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get selected files and current directory.  <a href="#ab6e5b7aa54c8bc1d6ed9e66b17060135">More...</a><br /></td></tr>
-<tr class="separator:ab6e5b7aa54c8bc1d6ed9e66b17060135"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TrackGit_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
+<tr class="memdesc:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The main function of TrackGit.  <a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">More...</a><br /></td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a4454d62359228deaf0814dcf59704724"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TrackGit_8cpp.html#a4454d62359228deaf0814dcf59704724">ADDON_NAME</a> = &quot;TrackGit&quot;</td></tr>
-<tr class="memdesc:a4454d62359228deaf0814dcf59704724"><td class="mdescLeft">&#160;</td><td class="mdescRight">The addon name.  <a href="#a4454d62359228deaf0814dcf59704724">More...</a><br /></td></tr>
-<tr class="separator:a4454d62359228deaf0814dcf59704724"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Main file of TrackGit - A Tracker Addon for Git Version Control System. </p>
@@ -146,65 +125,7 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="a06fc87d81c62e9abb8790b6e5713c55b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06fc87d81c62e9abb8790b6e5713c55b">&#9670;&nbsp;</a></span>anonymous enum</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">anonymous enum</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba733c8f949e1ac14e298b30026f4e558d"></a>kClone&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55bad2a4178660ebf260a8aede547424dd88"></a>kInitHere&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba34ac05a34229cd773942c9d75f5e2980"></a>kStatus&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ab6e5b7aa54c8bc1d6ed9e66b17060135"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab6e5b7aa54c8bc1d6ed9e66b17060135">&#9670;&nbsp;</a></span>get_selected()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char* get_selected </td>
-          <td>(</td>
-          <td class="paramtype">BMessage *&#160;</td>
-          <td class="paramname"><em>msg</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">vector&lt; const char *&gt; *&#160;</td>
-          <td class="paramname"><em>selected</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get selected files and current directory. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">msg</td><td>The BMessage containing refs to selected files and current directory. </td></tr>
-    <tr><td class="paramname">selected</td><td>The vector of selected file paths. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The current directory path. </dd></dl>
-
-</div>
-</div>
 <a id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&nbsp;</a></span>main()</h2>
 
@@ -219,6 +140,9 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>The main function of TrackGit. </p>
+<p>This function launches the TrackGit App. </p>
 
 </div>
 </div>
@@ -332,24 +256,6 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="a4454d62359228deaf0814dcf59704724"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4454d62359228deaf0814dcf59704724">&#9670;&nbsp;</a></span>ADDON_NAME</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* ADDON_NAME = &quot;TrackGit&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The addon name. </p>
-<p>Will be used in menu item. </p>
 
 </div>
 </div>

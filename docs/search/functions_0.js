@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['clone',['Clone',['../classClone.html#adb5f8674a92960fba97d348b88793bc6',1,'Clone']]],
-  ['clonewindow',['CloneWindow',['../classCloneWindow.html#a0d7d12bd003fd77c0fed4ad3a79a5df2',1,'CloneWindow']]]
+  ['checkout_5fprogress',['checkout_progress',['../Clone_8cpp.html#adfb4a6be32f113f1be8b3bdc67529cb9',1,'Clone.cpp']]],
+  ['clone',['Clone',['../classClone.html#a0a234618b373ecb4bfeef00a8f7ca370',1,'Clone']]],
+  ['cloneprogresswindow',['CloneProgressWindow',['../classCloneProgressWindow.html#aecb7b781b4a8c0b3e26a91668acdcea9',1,'CloneProgressWindow']]],
+  ['clonewindow',['CloneWindow',['../classCloneWindow.html#a511b29edcf3411e781cd00c9471542f3',1,'CloneWindow']]]
 ];

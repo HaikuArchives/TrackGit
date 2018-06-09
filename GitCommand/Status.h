@@ -37,6 +37,9 @@ struct opts {
  * Status command Class.
  */
 class Status : public GitCommand {
+	/**
+	 * The repo/directory where command is called.
+	 */
 	BString					fRepo;
 	/**
 	 * The current directory where Status option is selected.

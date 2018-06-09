@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['b_5ftranslation_5fcontext',['B_TRANSLATION_CONTEXT',['../TrackGit_8cpp.html#ab01f8552d4b6c275199d59ad807093d5',1,'B_TRANSLATION_CONTEXT():&#160;TrackGit.cpp'],['../CloneWindow_8cpp.html#ab01f8552d4b6c275199d59ad807093d5',1,'B_TRANSLATION_CONTEXT():&#160;CloneWindow.cpp']]]
+  ['addon_5fname',['ADDON_NAME',['../Utils_8h.html#aa6c551efa05b5c819c2b93c5f3c9513b',1,'Utils.h']]],
+  ['app_5fsign',['APP_SIGN',['../Utils_8h.html#a96a9559398e94d41343caddb58b1e3fe',1,'Utils.h']]]
 ];

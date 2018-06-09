@@ -1,3 +1,11 @@
+/**
+ * @file Utils.cpp
+ * @brief Implementation file of Utils.
+ *		  This file contains common functions and enums used by app.
+ * 
+ * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ */
+
 #include "Utils.h"
 
 #include <StorageKit.h>
@@ -8,11 +16,9 @@
 
 
 /**
- * Get selected files and current directory.
- * @param msg The BMessage containing refs to selected files and current
- *            directory.
+ * Get selected files.
+ * @param msg The BMessage containing refs to selected files.
  * @param selected The vector of selected file paths.
- * @returns The current directory path.
  */
 void
 extract_selected_paths(const BMessage* msg, vector<const char*>& selected)
@@ -30,6 +36,12 @@ extract_selected_paths(const BMessage* msg, vector<const char*>& selected)
 	}
 }
 
+
+/**
+ * Get current directory.
+ * @param msg The BMessage containing ref to current directory.
+ * @return The current directory.
+ */
 BString
 extract_current_directory(const BMessage* msg)
 {	
@@ -46,6 +58,12 @@ extract_current_directory(const BMessage* msg)
 	return BString(path.Path());
 }
 
+
+/**
+ * Get the root of repo of current directory.
+ * @param dirPath The current directory.
+ * @returns The repo root if found else current directory.
+ */
 BString
 get_root_of_repo(BString dirPath)
 {

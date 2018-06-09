@@ -1,3 +1,11 @@
+/**
+ * @file Utils.h
+ * @brief Header file of Utils.
+ *		  This file contains common functions and enums used by app.
+ * 
+ * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ */
+
 #ifndef _UTILS_H_
 #define _UTILS_H_
 

@@ -63,6 +63,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classInit-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -86,24 +87,34 @@ Inheritance diagram for Init:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a95316d448e111fad47ea439f4117ab70"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInit.html#a95316d448e111fad47ea439f4117ab70">Init</a> (const char *)</td></tr>
-<tr class="memdesc:a95316d448e111fad47ea439f4117ab70"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classInit.html" title="Init command Class. ">Init</a> command constructor.  <a href="#a95316d448e111fad47ea439f4117ab70">More...</a><br /></td></tr>
-<tr class="separator:a95316d448e111fad47ea439f4117ab70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f8882691e38c799c884d31129dbba5b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInit.html#a8f8882691e38c799c884d31129dbba5b">Init</a> (BString)</td></tr>
+<tr class="memdesc:a8f8882691e38c799c884d31129dbba5b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classInit.html" title="Init command Class. ">Init</a> command constructor.  <a href="#a8f8882691e38c799c884d31129dbba5b">More...</a><br /></td></tr>
+<tr class="separator:a8f8882691e38c799c884d31129dbba5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08491eed3f934d97decbc287d293afa0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInit.html#a08491eed3f934d97decbc287d293afa0">Execute</a> ()</td></tr>
 <tr class="memdesc:a08491eed3f934d97decbc287d293afa0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classInit.html" title="Init command Class. ">Init</a> command excution.  <a href="#a08491eed3f934d97decbc287d293afa0">More...</a><br /></td></tr>
 <tr class="separator:a08491eed3f934d97decbc287d293afa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classGitCommand"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classGitCommand')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classGitCommand.html">GitCommand</a></td></tr>
+<tr class="memitem:a3a7a5df7111f44a731a4a21d3e4ac539 inherit pub_methods_classGitCommand"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classTrackGitWindow.html">TrackGitWindow</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGitCommand.html#a3a7a5df7111f44a731a4a21d3e4ac539">GetWindow</a> ()</td></tr>
+<tr class="memdesc:a3a7a5df7111f44a731a4a21d3e4ac539 inherit pub_methods_classGitCommand"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is used to get pointer to the window (if any).  <a href="classGitCommand.html#a3a7a5df7111f44a731a4a21d3e4ac539">More...</a><br /></td></tr>
+<tr class="separator:a3a7a5df7111f44a731a4a21d3e4ac539 inherit pub_methods_classGitCommand"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a74bb3737e5b080cf497565d76e92a479"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInit.html#a74bb3737e5b080cf497565d76e92a479">InitRepo</a> (BString)</td></tr>
+<tr class="memdesc:a74bb3737e5b080cf497565d76e92a479"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes empty repo in given directory.  <a href="#a74bb3737e5b080cf497565d76e92a479">More...</a><br /></td></tr>
+<tr class="separator:a74bb3737e5b080cf497565d76e92a479"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a5acf3a0826367b73fbc60771a85a80df"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInit.html#a5acf3a0826367b73fbc60771a85a80df">dirPath</a></td></tr>
-<tr class="memdesc:a5acf3a0826367b73fbc60771a85a80df"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current directory where <a class="el" href="classInit.html" title="Init command Class. ">Init</a> option is selected.  <a href="#a5acf3a0826367b73fbc60771a85a80df">More...</a><br /></td></tr>
-<tr class="separator:a5acf3a0826367b73fbc60771a85a80df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7186b3900feec12e888de800e2f17e39"><td class="memItemLeft" align="right" valign="top">BString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInit.html#a7186b3900feec12e888de800e2f17e39">fDirPath</a></td></tr>
+<tr class="memdesc:a7186b3900feec12e888de800e2f17e39"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current directory where <a class="el" href="classInit.html" title="Init command Class. ">Init</a> option is selected.  <a href="#a7186b3900feec12e888de800e2f17e39">More...</a><br /></td></tr>
+<tr class="separator:a7186b3900feec12e888de800e2f17e39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classInit.html" title="Init command Class. ">Init</a> command Class. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a95316d448e111fad47ea439f4117ab70"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95316d448e111fad47ea439f4117ab70">&#9670;&nbsp;</a></span>Init()</h2>
+<a id="a8f8882691e38c799c884d31129dbba5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f8882691e38c799c884d31129dbba5b">&#9670;&nbsp;</a></span>Init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -111,7 +122,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">Init::Init </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
+          <td class="paramtype">BString&#160;</td>
           <td class="paramname"><em>dirPath</em></td><td>)</td>
           <td></td>
         </tr>
@@ -159,9 +170,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a5acf3a0826367b73fbc60771a85a80df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5acf3a0826367b73fbc60771a85a80df">&#9670;&nbsp;</a></span>dirPath</h2>
+<a id="a74bb3737e5b080cf497565d76e92a479"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74bb3737e5b080cf497565d76e92a479">&#9670;&nbsp;</a></span>InitRepo()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -170,7 +180,42 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const char* Init::dirPath</td>
+          <td class="memname">int Init::InitRepo </td>
+          <td>(</td>
+          <td class="paramtype">BString&#160;</td>
+          <td class="paramname"><em>dirPath</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initializes empty repo in given directory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dirPath</td><td>The given directory. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a7186b3900feec12e888de800e2f17e39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7186b3900feec12e888de800e2f17e39">&#9670;&nbsp;</a></span>fDirPath</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">BString Init::fDirPath</td>
         </tr>
       </table>
   </td>

@@ -37,11 +37,17 @@ struct param {
  * Clone command Class.
  */
 class Clone : public GitCommand {
+	/**
+	 * The repo/directory where the command is called.
+	 */
 	BString					fRepo;
 	/**
 	 * The current directory where Clone option is selected.
 	 */
 	BString					fDirPath;
+	/**
+	 * The window to show progress.
+	 */
 	TrackGitWindow*			fCloneWindow;
 public:
 							Clone(BString, BString);

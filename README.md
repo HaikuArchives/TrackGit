@@ -17,7 +17,7 @@ or you can execute `run.sh`.
 
 + [x] Init
 + [x] Status
-+ [ ] Clone
++ [x] Clone
 + [ ] Add Files
 + [ ] Commit
 + [ ] Push

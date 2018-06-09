@@ -86,24 +86,36 @@ Inheritance diagram for Clone:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:adb5f8674a92960fba97d348b88793bc6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClone.html#adb5f8674a92960fba97d348b88793bc6">Clone</a> (const char *)</td></tr>
-<tr class="memdesc:adb5f8674a92960fba97d348b88793bc6"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classClone.html" title="Clone command Class. ">Clone</a> class Constructor.  <a href="#adb5f8674a92960fba97d348b88793bc6">More...</a><br /></td></tr>
-<tr class="separator:adb5f8674a92960fba97d348b88793bc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a234618b373ecb4bfeef00a8f7ca370"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClone.html#a0a234618b373ecb4bfeef00a8f7ca370">Clone</a> (BString, BString)</td></tr>
+<tr class="memdesc:a0a234618b373ecb4bfeef00a8f7ca370"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classClone.html" title="Clone command Class. ">Clone</a> class Constructor.  <a href="#a0a234618b373ecb4bfeef00a8f7ca370">More...</a><br /></td></tr>
+<tr class="separator:a0a234618b373ecb4bfeef00a8f7ca370"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ae0ef8af1f956856823527e4002dd34"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTrackGitWindow.html">TrackGitWindow</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClone.html#a4ae0ef8af1f956856823527e4002dd34">GetWindow</a> ()</td></tr>
+<tr class="memdesc:a4ae0ef8af1f956856823527e4002dd34"><td class="mdescLeft">&#160;</td><td class="mdescRight">This returns pointer to the clone window.  <a href="#a4ae0ef8af1f956856823527e4002dd34">More...</a><br /></td></tr>
+<tr class="separator:a4ae0ef8af1f956856823527e4002dd34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0029c0e5d7130a849137e85cafdcdd16"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClone.html#a0029c0e5d7130a849137e85cafdcdd16">Execute</a> ()</td></tr>
 <tr class="memdesc:a0029c0e5d7130a849137e85cafdcdd16"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classClone.html" title="Clone command Class. ">Clone</a> command execution.  <a href="#a0029c0e5d7130a849137e85cafdcdd16">More...</a><br /></td></tr>
 <tr class="separator:a0029c0e5d7130a849137e85cafdcdd16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed5e0ff48c5b1bfbe4ae4ea3d4703ba2"><td class="memItemLeft" align="right" valign="top">pthread_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClone.html#aed5e0ff48c5b1bfbe4ae4ea3d4703ba2">DoClone</a> (<a class="el" href="classCloneWindow.html">CloneWindow</a> *, const char *, const char *)</td></tr>
+<tr class="memdesc:aed5e0ff48c5b1bfbe4ae4ea3d4703ba2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spawns a thread to clone.  <a href="#aed5e0ff48c5b1bfbe4ae4ea3d4703ba2">More...</a><br /></td></tr>
+<tr class="separator:aed5e0ff48c5b1bfbe4ae4ea3d4703ba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:ab996ac1d7b302a768b5a18d872810d5f"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClone.html#ab996ac1d7b302a768b5a18d872810d5f">dirPath</a></td></tr>
-<tr class="memdesc:ab996ac1d7b302a768b5a18d872810d5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current directory where <a class="el" href="classClone.html" title="Clone command Class. ">Clone</a> option is selected.  <a href="#ab996ac1d7b302a768b5a18d872810d5f">More...</a><br /></td></tr>
-<tr class="separator:ab996ac1d7b302a768b5a18d872810d5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad13cc40934dbae3c722edc4e39c529dd"><td class="memItemLeft" align="right" valign="top">BString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClone.html#ad13cc40934dbae3c722edc4e39c529dd">fRepo</a></td></tr>
+<tr class="memdesc:ad13cc40934dbae3c722edc4e39c529dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The repo/directory where the command is called.  <a href="#ad13cc40934dbae3c722edc4e39c529dd">More...</a><br /></td></tr>
+<tr class="separator:ad13cc40934dbae3c722edc4e39c529dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a370f545fe8bc6053e67b5bfdc1ec57a4"><td class="memItemLeft" align="right" valign="top">BString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClone.html#a370f545fe8bc6053e67b5bfdc1ec57a4">fDirPath</a></td></tr>
+<tr class="memdesc:a370f545fe8bc6053e67b5bfdc1ec57a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current directory where <a class="el" href="classClone.html" title="Clone command Class. ">Clone</a> option is selected.  <a href="#a370f545fe8bc6053e67b5bfdc1ec57a4">More...</a><br /></td></tr>
+<tr class="separator:a370f545fe8bc6053e67b5bfdc1ec57a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a973045a89e18a322654b7bb871b8623f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTrackGitWindow.html">TrackGitWindow</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClone.html#a973045a89e18a322654b7bb871b8623f">fCloneWindow</a></td></tr>
+<tr class="memdesc:a973045a89e18a322654b7bb871b8623f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The window to show progress.  <a href="#a973045a89e18a322654b7bb871b8623f">More...</a><br /></td></tr>
+<tr class="separator:a973045a89e18a322654b7bb871b8623f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classClone.html" title="Clone command Class. ">Clone</a> command Class. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="adb5f8674a92960fba97d348b88793bc6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb5f8674a92960fba97d348b88793bc6">&#9670;&nbsp;</a></span>Clone()</h2>
+<a id="a0a234618b373ecb4bfeef00a8f7ca370"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a234618b373ecb4bfeef00a8f7ca370">&#9670;&nbsp;</a></span>Clone()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -111,15 +123,25 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">Clone::Clone </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>dirPath</em></td><td>)</td>
+          <td class="paramtype">BString&#160;</td>
+          <td class="paramname"><em>repo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">BString&#160;</td>
+          <td class="paramname"><em>dirPath</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p><a class="el" href="classClone.html" title="Clone command Class. ">Clone</a> class Constructor. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>repo The repo where the command is called. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dirPath</td><td>The current directory where <a class="el" href="classClone.html" title="Clone command Class. ">Clone</a> is selected. </td></tr>
   </table>
@@ -129,6 +151,50 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="aed5e0ff48c5b1bfbe4ae4ea3d4703ba2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed5e0ff48c5b1bfbe4ae4ea3d4703ba2">&#9670;&nbsp;</a></span>DoClone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">pthread_t Clone::DoClone </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCloneWindow.html">CloneWindow</a> *&#160;</td>
+          <td class="paramname"><em>cloneWindow</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>url</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Spawns a thread to clone. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cloneWindow</td><td>Window to show progress. </td></tr>
+    <tr><td class="paramname">url</td><td>The url to clone. </td></tr>
+    <tr><td class="paramname">path</td><td>The path to clone to. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a0029c0e5d7130a849137e85cafdcdd16"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0029c0e5d7130a849137e85cafdcdd16">&#9670;&nbsp;</a></span>Execute()</h2>
 
@@ -159,9 +225,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="ab996ac1d7b302a768b5a18d872810d5f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab996ac1d7b302a768b5a18d872810d5f">&#9670;&nbsp;</a></span>dirPath</h2>
+<a id="a4ae0ef8af1f956856823527e4002dd34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ae0ef8af1f956856823527e4002dd34">&#9670;&nbsp;</a></span>GetWindow()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -170,7 +235,62 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">char* Clone::dirPath</td>
+          <td class="memname"><a class="el" href="classTrackGitWindow.html">TrackGitWindow</a> * Clone::GetWindow </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This returns pointer to the clone window. </p>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="classClone.html" title="Clone command Class. ">Clone</a> Window; </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classGitCommand.html#a3a7a5df7111f44a731a4a21d3e4ac539">GitCommand</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a973045a89e18a322654b7bb871b8623f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a973045a89e18a322654b7bb871b8623f">&#9670;&nbsp;</a></span>fCloneWindow</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classTrackGitWindow.html">TrackGitWindow</a>* Clone::fCloneWindow</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The window to show progress. </p>
+
+</div>
+</div>
+<a id="a370f545fe8bc6053e67b5bfdc1ec57a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a370f545fe8bc6053e67b5bfdc1ec57a4">&#9670;&nbsp;</a></span>fDirPath</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">BString Clone::fDirPath</td>
         </tr>
       </table>
   </td>
@@ -181,6 +301,30 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The current directory where <a class="el" href="classClone.html" title="Clone command Class. ">Clone</a> option is selected. </p>
+
+</div>
+</div>
+<a id="ad13cc40934dbae3c722edc4e39c529dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad13cc40934dbae3c722edc4e39c529dd">&#9670;&nbsp;</a></span>fRepo</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">BString Clone::fRepo</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The repo/directory where the command is called. </p>
 
 </div>
 </div>

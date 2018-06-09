@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['pathspec',['pathspec',['../structopts.html#a6cb27db335fe0d9bb43e5140f1fc4f82',1,'opts']]]
+  ['repeat',['repeat',['../structopts.html#ac8e852f83ae4c0d31d919cc31ac5c349',1,'opts']]],
+  ['repodir',['repodir',['../structopts.html#a55f132d782e02ac19ca06822ee1a6729',1,'opts']]]
 ];
