@@ -83,6 +83,7 @@ TrackGitApp::MessageReceived(BMessage* msg)
 			gitCommand = new Status(repo, dirPath);
 			break;
 		case kAdd:
+		case kAddAll:
 			gitCommand = new Add(dirPath, selected);
 			break;
 		default:

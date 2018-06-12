@@ -97,6 +97,13 @@ populate_menu(BMessage* msg, BMenu* menu, BHandler* handler)
 			BMenuItem* addItem = new BMenuItem(
 					B_TRANSLATE("Add Files"), addMsg);
 			submenu->AddItem(addItem);
+		} else {
+			// Add "Add All Files" menu item
+			BMessage* addMsg = new BMessage(*msg);
+			addMsg->AddInt32("addon_item_id", kAddAll);
+			BMenuItem* addItem = new BMenuItem(
+					B_TRANSLATE("Add All Files"), addMsg);
+			submenu->AddItem(addItem);
 		}
 	} else {
 		// dirPath does not belong to git repo

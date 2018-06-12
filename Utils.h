@@ -19,7 +19,8 @@ enum {
 	kClone,
 	kInitHere,
 	kStatus,
-	kAdd
+	kAdd,
+	kAddAll
 };
 
 
