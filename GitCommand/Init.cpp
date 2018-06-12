@@ -56,6 +56,6 @@ Init::Execute()
 
 	BString buffer("Repository initialted sucessfully.");
 	BAlert* alert = new BAlert("", buffer.String(), "OK", 
-		0, 0, B_WIDTH_AS_USUAL, B_WARNING_ALERT);
+		0, 0, B_WIDTH_AS_USUAL);
 	alert->Go();
 }
