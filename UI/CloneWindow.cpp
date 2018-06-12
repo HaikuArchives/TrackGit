@@ -97,13 +97,13 @@ CloneProgressWindow::CloneProgressWindow(CloneWindow* cloneWindow)
 			B_NOT_CLOSABLE | B_NOT_RESIZABLE)
 {
 	fCloneWindow = cloneWindow;
-	fTextView = new BTextView("_clone_");
-	fTextView->SetText("Cloning" B_UTF8_ELLIPSIS);
+	fTextView = new BTextView(BRect(0, 0, 280, 80), "_clone_", 
+							  BRect(0, 0, 280, 80), B_FOLLOW_LEFT_RIGHT);
 	fTextView->SetViewUIColor(B_PANEL_BACKGROUND_COLOR);
 	fTextView->MakeEditable(false);
 	fTextView->MakeSelectable(false);
 	fTextView->SetWordWrap(true);
-	fTextView->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNLIMITED));
+	fTextView->SetText("Cloning" B_UTF8_ELLIPSIS "\nRepository");
 	BButton* fCancel = new BButton("ok", "Cancel",
 								  new BMessage(kCancel));
 
