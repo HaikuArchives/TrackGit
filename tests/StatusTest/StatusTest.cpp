@@ -53,7 +53,7 @@ StatusTest::setUp(void)
 	system(command);
 
 	// Initialize status object
-	status = new Status(PATH);
+	status = new Status(BString(PATH), BString(PATH));
 }
 
 void

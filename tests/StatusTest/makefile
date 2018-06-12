@@ -3,7 +3,7 @@
 CPPUNIT_PATH=/opt/cppunit
 
 test: StatusTest.o
-	g++ -o test ../../GitCommand/Init.cpp ../../GitCommand/Status.cpp StatusTest.o test.cpp -L${CPPUNIT_PATH}/lib -lcppunit -lbe -ltracker -lgit2 -g
+	g++ -o test ../../GitCommand/Init.cpp ../../UI/StatusWindow.cpp ../../GitCommand/Status.cpp StatusTest.o test.cpp -L${CPPUNIT_PATH}/lib -lcppunit -lbe -ltracker -lgit2 -llocalestub -g
 
 clean:
 	rm -f *.o test
