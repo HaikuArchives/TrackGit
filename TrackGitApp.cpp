@@ -15,6 +15,7 @@
 #include "GitCommand/Clone.h"
 #include "GitCommand/Init.h"
 #include "GitCommand/Status.h"
+#include "GitCommand/Add.h"
 
 
 /**
@@ -48,7 +49,7 @@ TrackGitApp::MessageReceived(BMessage* msg)
 		return;
 	}
 
-	vector<const char*> selected;
+	vector<char*> selected;
 	extract_selected_paths(msg, selected);
 	BString dirPath = extract_current_directory(msg);
 
@@ -80,6 +81,9 @@ TrackGitApp::MessageReceived(BMessage* msg)
 			break;
 		case kStatus:
 			gitCommand = new Status(repo, dirPath);
+			break;
+		case kAdd:
+			gitCommand = new Add(dirPath, selected);
 			break;
 		default:
 			break;

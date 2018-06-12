@@ -19,6 +19,7 @@ enum {
 	kClone,
 	kInitHere,
 	kStatus,
+	kAdd
 };
 
 
@@ -33,7 +34,7 @@ enum {
 #define APP_SIGN "application/x-vnd.Haiku-TrackGit"
 
 void extract_selected_paths(const BMessage* msg,
-		vector<const char*>& selected);
+		vector<char*>& selected);
 BString extract_current_directory(const BMessage* msg);
 BString get_root_of_repo(BString dirPath);
 

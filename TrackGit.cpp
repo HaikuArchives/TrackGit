@@ -73,7 +73,7 @@ populate_menu(BMessage* msg, BMenu* menu, BHandler* handler)
 
 	BMenu* submenu = new BMenu(ADDON_NAME);
 
-	vector<const char*> selected;
+	vector<char*> selected;
 	extract_selected_paths(msg, selected);
 	BString dirPath = extract_current_directory(msg);
 
@@ -89,6 +89,15 @@ populate_menu(BMessage* msg, BMenu* menu, BHandler* handler)
 		BMenuItem* statusItem = new BMenuItem(
 				B_TRANSLATE("Status" B_UTF8_ELLIPSIS), statusMsg);
 		submenu->AddItem(statusItem);
+
+		if (selected.size() > 0) {
+			// Add "Add Files" menu item
+			BMessage* addMsg = new BMessage(*msg);
+			addMsg->AddInt32("addon_item_id", kAdd);
+			BMenuItem* addItem = new BMenuItem(
+					B_TRANSLATE("Add Files"), addMsg);
+			submenu->AddItem(addItem);
+		}
 	} else {
 		// dirPath does not belong to git repo
 		// Add Clone menu item

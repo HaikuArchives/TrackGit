@@ -13,6 +13,7 @@
 #include <git2.h>
 
 #include <stdlib.h>
+#include <string.h>
 
 
 /**
@@ -21,7 +22,7 @@
  * @param selected The vector of selected file paths.
  */
 void
-extract_selected_paths(const BMessage* msg, vector<const char*>& selected)
+extract_selected_paths(const BMessage* msg, vector<char*>& selected)
 {
 	// Get all the selected refs
 	entry_ref fileRef;
@@ -32,7 +33,9 @@ extract_selected_paths(const BMessage* msg, vector<const char*>& selected)
 		entry.SetTo(&fileRef);
 		BPath path;
 		entry.GetPath(&path);
-		selected.push_back(path.Path());
+		char* p = (char*) malloc(strlen(path.Path()));
+		strcpy(p, path.Path());
+		selected.push_back(p);
 	}
 }
 
