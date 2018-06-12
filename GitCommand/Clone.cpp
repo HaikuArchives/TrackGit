@@ -26,6 +26,7 @@ Clone::Clone(BString repo, BString dirPath)
 {
 	fRepo = repo;
 	fDirPath = dirPath;
+	fCloneWindow = NULL;
 }
 
 
@@ -36,7 +37,8 @@ Clone::Clone(BString repo, BString dirPath)
 TrackGitWindow*
 Clone::GetWindow()
 {
-	fCloneWindow = new CloneWindow(fRepo, fDirPath, this);
+	if (fCloneWindow == NULL)
+		fCloneWindow = new CloneWindow(fRepo, fDirPath, this);
 	return fCloneWindow;
 }
 
@@ -52,43 +54,45 @@ Clone::Execute()
 
 /**
  * Prints progress of command to the progress window.
- * @param pd The progress data.
+ * @param progress The progress data.
  */
 static void
-print_progress(const progress_data *pd)
+print_progress(const progress_data* progress)
 {
-	int network_percent = pd->fetch_progress.total_objects > 0 ?
-			(100*pd->fetch_progress.received_objects) /
-			pd->fetch_progress.total_objects :
+	int network_percent = progress->fetch_progress.total_objects > 0 ?
+			(100*progress->fetch_progress.received_objects) /
+			progress->fetch_progress.total_objects :
 			0;
-	int index_percent = pd->fetch_progress.total_objects > 0 ?
-			(100*pd->fetch_progress.indexed_objects) /
-			pd->fetch_progress.total_objects :
+	int index_percent = progress->fetch_progress.total_objects > 0 ?
+			(100*progress->fetch_progress.indexed_objects) /
+			progress->fetch_progress.total_objects :
 			0;
 
-	int checkout_percent = pd->total_steps > 0
-			? (100 * pd->completed_steps) / pd->total_steps
+	int checkout_percent = progress->total_steps > 0
+			? (100 * progress->completed_steps) / progress->total_steps
 			: 0;
-	int kbytes = pd->fetch_progress.received_bytes / 1024;
+	int kbytes = progress->fetch_progress.received_bytes / 1024;
 	
-	BString progress;
+	BString progressString;
 
-	if (pd->fetch_progress.total_objects &&
-			pd->fetch_progress.received_objects ==
-			pd->fetch_progress.total_objects) {
-		progress << "Resolving deltas " << pd->fetch_progress.indexed_deltas
-				<< "/" << pd->fetch_progress.total_deltas;
+	if (progress->fetch_progress.total_objects &&
+			progress->fetch_progress.received_objects ==
+			progress->fetch_progress.total_objects) {
+		progressString << "Resolving deltas " 
+			<< progress->fetch_progress.indexed_deltas
+			<< "/" << progress->fetch_progress.total_deltas;
 	} else {
-		progress << "Network " << network_percent << " (" << kbytes << " kb, "
-			<< pd->fetch_progress.received_objects << "/"
-			<< pd->fetch_progress.total_objects << ")\n";
-		progress << "Indexed " << index_percent << " (" 
-			<< pd->fetch_progress.indexed_objects << "/"
-			<< pd->fetch_progress.total_objects << ")\n";
+		progressString << "Network " << network_percent 
+			<< " (" << kbytes << " kb, "
+			<< progress->fetch_progress.received_objects << "/"
+			<< progress->fetch_progress.total_objects << ")\n";
+		progressString << "Indexed " << index_percent << " (" 
+			<< progress->fetch_progress.indexed_objects << "/"
+			<< progress->fetch_progress.total_objects << ")\n";
 	}
 
-	if (pd->cloneWindow)
-		pd->cloneWindow->SetProgressText(progress);
+	if (progress->cloneWindow)
+		progress->cloneWindow->SetProgressText(progressString);
 }
 
 
@@ -115,9 +119,9 @@ sideband_progress(const char *str, int len, void *payload)
 static int
 fetch_progress(const git_transfer_progress *stats, void *payload)
 {
-	progress_data *pd = (progress_data*)payload;
-	pd->fetch_progress = *stats;
-	print_progress(pd);
+	progress_data *progress = (progress_data*)payload;
+	progress->fetch_progress = *stats;
+	print_progress(progress);
 	return 0;
 }
 
@@ -133,11 +137,11 @@ static void
 checkout_progress(const char *path, size_t cur, size_t tot, void
 		*payload)
 {
-	progress_data *pd = (progress_data*)payload;
-	pd->completed_steps = cur;
-	pd->total_steps = tot;
-	pd->path = path;
-	print_progress(pd);
+	progress_data *progress = (progress_data*)payload;
+	progress->completed_steps = cur;
+	progress->total_steps = tot;
+	progress->path = path;
+	print_progress(progress);
 }
 
 
@@ -159,8 +163,8 @@ DoCloneThread(void* arg)
 	if (p->cloneWindow)
 		p->cloneWindow->SetProgressText(cloneText);
 
-	progress_data pd = {{0}};
-	pd.cloneWindow = p->cloneWindow;
+	progress_data progress = {{0}};
+	progress.cloneWindow = p->cloneWindow;
 	git_repository *cloned_repo = NULL;
 	git_clone_options clone_opts = GIT_CLONE_OPTIONS_INIT;
 	git_checkout_options checkout_opts = GIT_CHECKOUT_OPTIONS_INIT;
@@ -171,11 +175,11 @@ DoCloneThread(void* arg)
 	// Set up options
 	checkout_opts.checkout_strategy = GIT_CHECKOUT_SAFE;
 	checkout_opts.progress_cb = checkout_progress;
-	checkout_opts.progress_payload = &pd;
+	checkout_opts.progress_payload = &progress;
 	clone_opts.checkout_opts = checkout_opts;
 	clone_opts.fetch_opts.callbacks.sideband_progress = sideband_progress;
 	clone_opts.fetch_opts.callbacks.transfer_progress = &fetch_progress;
-	clone_opts.fetch_opts.callbacks.payload = &pd;
+	clone_opts.fetch_opts.callbacks.payload = &progress;
 
 	// Do the clone
 	int ret = git_clone(&cloned_repo, url, path, &clone_opts);
@@ -195,6 +199,7 @@ DoCloneThread(void* arg)
 	git_libgit2_shutdown();
 	if (p->cloneWindow && p->cloneWindow->LockLooper())
 		p->cloneWindow->Quit();
+	free(arg);
 }
 
 

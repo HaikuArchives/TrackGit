@@ -45,6 +45,18 @@ Add::InitArray(vector<char*> files)
 
 
 /**
+ * Frees the allocated strings in git_strarray.
+ * @param array The git_strarray.
+ */
+void
+Add::FreeArray(git_strarray array)
+{
+	for(int i=0; i<array.count; i++)
+		free(array.strings[i]);
+}
+
+
+/**
  * Adds given files into git repository.
  * @param dirPath The given directory.
  * @param files The files to be added.
@@ -55,32 +67,33 @@ Add::AddFiles(BString dirPath, vector<char*> files)
 	git_repository *repo = NULL;
 	git_index *index;
 	git_strarray array = InitArray(files);
-	int ret;
+	int ret = 0;
 
 	git_libgit2_init();
 
 	ret = git_repository_open(&repo, dirPath.String());
 	if (ret != 0)
-		return ret;
+		goto ret;
 
 	ret = git_repository_index(&index, repo);
 	if (ret != 0)
-		return ret;
+		goto ret;
 
 	ret = git_index_add_all(index, &array, 0, NULL, NULL);
 	if (ret != 0)
-		return ret;
+		goto ret;
 
 	ret = git_index_write(index);
 	if (ret != 0)
-		return ret;
+		goto ret;
 
+ret:
+	FreeArray(array);
 	git_index_free(index);
 	git_repository_free(repo);
 
 	git_libgit2_shutdown();
-
-	return 0;
+	return ret;
 }
 
 

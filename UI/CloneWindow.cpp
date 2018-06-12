@@ -141,7 +141,7 @@ CloneProgressWindow::MessageReceived(BMessage* msg)
 {
 	switch (msg->what) {
 		case kCancel:
-			BInvoker(new BMessage(kCancel), NULL, fCloneWindow).Invoke();
+			fCloneWindow->PostMessage(kCancel);
 			Quit();
 			break;
 		default:

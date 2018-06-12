@@ -102,7 +102,7 @@ populate_menu(BMessage* msg, BMenu* menu, BHandler* handler)
 			BMessage* addMsg = new BMessage(*msg);
 			addMsg->AddInt32("addon_item_id", kAddAll);
 			BMenuItem* addItem = new BMenuItem(
-					B_TRANSLATE("Add All Files"), addMsg);
+					B_TRANSLATE("Add all files"), addMsg);
 			submenu->AddItem(addItem);
 		}
 	} else {
