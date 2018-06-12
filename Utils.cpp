@@ -17,30 +17,6 @@
 
 
 /**
- * Get selected files.
- * @param msg The BMessage containing refs to selected files.
- * @param selected The vector of selected file paths.
- */
-void
-extract_selected_paths(const BMessage* msg, vector<char*>& selected)
-{
-	// Get all the selected refs
-	entry_ref fileRef;
-	for (int refs=0;
-			 msg->FindRef("refs", refs, &fileRef) == B_NO_ERROR;
-			 refs++) {
-		BEntry entry;
-		entry.SetTo(&fileRef);
-		BPath path;
-		entry.GetPath(&path);
-		char* p = (char*) malloc(strlen(path.Path()));
-		strcpy(p, path.Path());
-		selected.push_back(p);
-	}
-}
-
-
-/**
  * Get current directory.
  * @param msg The BMessage containing ref to current directory.
  * @return The current directory.
@@ -59,6 +35,37 @@ extract_current_directory(const BMessage* msg)
 	BPath path;
 	entry.GetPath(&path);
 	return BString(path.Path());
+}
+
+
+/**
+ * Get selected files.
+ * @param msg The BMessage containing refs to selected files.
+ * @param selected The vector of selected file paths.
+ */
+void
+extract_selected_paths(const BMessage* msg, vector<char*>& selected)
+{
+	// Get current directory
+	BString dir = extract_current_directory(msg);
+	// Get all the selected refs
+	entry_ref fileRef;
+	for (int refs=0;
+			 msg->FindRef("refs", refs, &fileRef) == B_NO_ERROR;
+			 refs++) {
+		BEntry entry;
+		entry.SetTo(&fileRef);
+		BPath path;
+		entry.GetPath(&path);
+		BString relativePath(path.Path());
+		// Generate relative path from absolute path
+		relativePath.ReplaceFirst(dir, "");
+		relativePath.ReplaceFirst("/", "");
+		// To convert const char* to char*
+		char* p = (char*) malloc(relativePath.Length());
+		strcpy(p, relativePath.String());
+		selected.push_back(p);
+	}
 }
 
 

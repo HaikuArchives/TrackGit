@@ -17,21 +17,6 @@
 #include <git2.h>
 
 
-enum print_options {
-	SKIP = 1,
-	VERBOSE = 2,
-	UPDATE = 4
-};
-
-/**
- * Payload for Add git command.
- */
-struct print_payload {
-	enum print_options options;
-	git_repository* repo;
-};
-
-
 /**
  * Init command Class.
  */

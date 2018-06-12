@@ -37,17 +37,10 @@ Add::InitArray(vector<char*> files)
 	array.count = files.size();
 	array.strings = (char**) malloc(sizeof(char*) * array.count);
 	
-	for (int i=0; i<array.count; i++) {
+	for (int i=0; i<array.count; i++)
 		array.strings[i] = files[i];
-	}
 	
 	return array;
-}
-
-int print_matched_cb(const char* path, const char* matched_pathspec,
-		void* payload)
-{
-	printf("path %s\n", path);
 }
 
 
@@ -59,29 +52,29 @@ int print_matched_cb(const char* path, const char* matched_pathspec,
 int
 Add::AddFiles(BString dirPath, vector<char*> files)
 {
-	git_index_matched_path_cb matched_cb = NULL;
 	git_repository *repo = NULL;
 	git_index *index;
-	git_strarray array = {0};
-	int options = 0, count = 0;
-	struct print_payload payload;
+	git_strarray array = InitArray(files);
+	int ret;
 
 	git_libgit2_init();
 
-	array = InitArray(files);
+	ret = git_repository_open(&repo, dirPath.String());
+	if (ret != 0)
+		return ret;
 
-	git_repository_open(&repo, dirPath.String());
-	git_repository_index(&index, repo);
+	ret = git_repository_index(&index, repo);
+	if (ret != 0)
+		return ret;
 
-	payload.repo = repo;
+	ret = git_index_add_all(index, &array, 0, NULL, NULL);
+	if (ret != 0)
+		return ret;
 
-	if (options&UPDATE) {
-			git_index_update_all(index, &array, matched_cb, &payload);
-	} else {
-			git_index_add_all(index, &array, 0, matched_cb, &payload);
-	}
+	ret = git_index_write(index);
+	if (ret != 0)
+		return ret;
 
-	git_index_write(index);
 	git_index_free(index);
 	git_repository_free(repo);
 
