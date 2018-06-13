@@ -90,12 +90,19 @@ populate_menu(BMessage* msg, BMenu* menu, BHandler* handler)
 				B_TRANSLATE("Status" B_UTF8_ELLIPSIS), statusMsg);
 		submenu->AddItem(statusItem);
 
+		// Add Commit menu item
+		BMessage* commitMsg = new BMessage(*msg);
+		commitMsg->AddInt32("addon_item_id", kCommit);
+		BMenuItem* commitItem = new BMenuItem(
+				B_TRANSLATE("Commit" B_UTF8_ELLIPSIS), commitMsg);
+		submenu->AddItem(commitItem);
+
 		if (selected.size() > 0) {
 			// Add "Add Files" menu item
 			BMessage* addMsg = new BMessage(*msg);
 			addMsg->AddInt32("addon_item_id", kAdd);
 			BMenuItem* addItem = new BMenuItem(
-					B_TRANSLATE("Add Files"), addMsg);
+					B_TRANSLATE("Add files"), addMsg);
 			submenu->AddItem(addItem);
 		} else {
 			// Add "Add All Files" menu item

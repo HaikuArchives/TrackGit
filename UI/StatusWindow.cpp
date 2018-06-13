@@ -21,7 +21,7 @@ enum {
 
 /**
  * StatusWindow Constructor
- * @param statusText The status text to be displayed.
+ * @param repo The repo to get status of.
  */
 StatusWindow::StatusWindow(BString repo)
 	:

@@ -16,6 +16,7 @@
 #include "GitCommand/Init.h"
 #include "GitCommand/Status.h"
 #include "GitCommand/Add.h"
+#include "GitCommand/Commit.h"
 
 
 /**
@@ -86,6 +87,8 @@ TrackGitApp::MessageReceived(BMessage* msg)
 		case kAddAll:
 			gitCommand = new Add(dirPath, selected);
 			break;
+		case kCommit:
+			gitCommand = new Commit(repo);
 		default:
 			break;
 	}

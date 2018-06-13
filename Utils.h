@@ -20,7 +20,8 @@ enum {
 	kInitHere,
 	kStatus,
 	kAdd,
-	kAddAll
+	kAddAll,
+	kCommit
 };
 
 

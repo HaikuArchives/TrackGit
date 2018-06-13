@@ -15,6 +15,7 @@
 #include <SupportKit.h>
 
 class TrackGitWindow : public BWindow {
+protected:
 	/**
 	 * The repo/directory where the command is called.
 	 */

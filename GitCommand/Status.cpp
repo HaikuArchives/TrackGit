@@ -25,6 +25,7 @@ Status::Status(BString repo, BString dirPath)
 {
 	fRepo = repo;
 	fDirPath = dirPath;
+	fStatusWindow = NULL;
 }
 
 
@@ -35,7 +36,8 @@ Status::Status(BString repo, BString dirPath)
 TrackGitWindow*
 Status::GetWindow()
 {
-	fStatusWindow = new StatusWindow(fRepo);
+	if (fStatusWindow == NULL)
+		fStatusWindow = new StatusWindow(fRepo);
 	return fStatusWindow;
 }
 
@@ -192,7 +194,8 @@ Status::GetStatusTextUtil(git_status_list *status)
 			}
 
 			statusText->Append("\tuntracked: %file\n");
-			statusText->ReplaceFirst("%file" , s->index_to_workdir->old_file.path);
+			statusText->ReplaceFirst("%file" ,
+					s->index_to_workdir->old_file.path);
 
 		}
 	}
@@ -212,7 +215,8 @@ Status::GetStatusTextUtil(git_status_list *status)
 			}
 
 			statusText->Append("\t%file\n");
-			statusText->ReplaceFirst("%file" , s->index_to_workdir->old_file.path);
+			statusText->ReplaceFirst("%file" ,
+					s->index_to_workdir->old_file.path);
 		}
 	}
 
