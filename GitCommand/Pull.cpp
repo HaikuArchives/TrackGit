@@ -142,6 +142,7 @@ DoPullThread(void* arg)
 
 	if (git_index_has_conflicts(index)) {
 		/* Handle conflicts */
+		p->pullWindow->Hide();
 		output_conflicts(index);
 	} else {
 		if (p->pullWindow)

@@ -7,6 +7,7 @@
  */
 
 #include "Utils.h"
+#include "UI/ConflictsWindow.h"
 
 #include <StorageKit.h>
 
@@ -223,6 +224,7 @@ create_commit(git_repository* repo, git_index* index, const char* message)
 
 void output_conflicts(git_index *index)
 {
+	ConflictsWindow* conflictsWindow = new ConflictsWindow();
 	git_index_conflict_iterator *conflicts;
 	const git_index_entry *ancestor;
 	const git_index_entry *our;
@@ -251,4 +253,10 @@ void output_conflicts(git_index *index)
 	git_index_conflict_iterator_free(conflicts);
 ret:
 	printf("%s\n", conflictsString.String());
+	conflictsWindow->SetText(conflictsString);
+
+	thread_id thread = conflictsWindow->Thread();
+	// wait for widow thread to return
+	status_t win_status = B_OK;
+	wait_for_thread(thread, &win_status);
 }
