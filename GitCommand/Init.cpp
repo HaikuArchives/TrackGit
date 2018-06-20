@@ -6,6 +6,7 @@
  */
 
 #include "Init.h"
+#include "../Utils.h"
 
 #include <InterfaceKit.h>
 
@@ -51,11 +52,13 @@ Init::Execute()
 		BAlert* alert = new BAlert("", buffer.String(), "Cancel", 
 			0, 0, B_WIDTH_AS_USUAL, B_WARNING_ALERT);
 		alert->Go();
-		return;
+	} else {
+		BString buffer("Repository initialted sucessfully.");
+		BAlert* alert = new BAlert("", buffer.String(), "OK", 
+			0, 0, B_WIDTH_AS_USUAL);
+		alert->Go();
 	}
 
-	BString buffer("Repository initialted sucessfully.");
-	BAlert* alert = new BAlert("", buffer.String(), "OK", 
-		0, 0, B_WIDTH_AS_USUAL);
-	alert->Go();
+	BMessenger messenger(APP_SIGN);
+	messenger.SendMessage(new BMessage(kQuitWindow));
 }

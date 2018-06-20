@@ -41,9 +41,8 @@ TrackGitApp::MessageReceived(BMessage* msg)
 	// If message is received for quitting the window
 	if (msg->what == kQuitWindow) {
 		BString repo;
-		if (msg->FindString("repo", &repo) != B_OK)
-			return;
-		fRunningCommands.erase(repo);
+		if (msg->FindString("repo", &repo) == B_OK)
+			fRunningCommands.erase(repo);
 		// If all windows are quit
 		if (fRunningCommands.size() == 0)
 			be_app->PostMessage(B_QUIT_REQUESTED);
@@ -61,7 +60,7 @@ TrackGitApp::MessageReceived(BMessage* msg)
 	BString repo = get_root_of_repo(dirPath);
 	// Check if window for selected repo already exits
 	// If yes bring it to front
-	if (fRunningCommands[repo]) {
+	if (fRunningCommands.count(repo)) {
 		fRunningCommands[repo]->Activate(true);
 		BWindow* window = fRunningCommands[repo];
 		if (window->Lock()) {
@@ -93,7 +92,9 @@ TrackGitApp::MessageReceived(BMessage* msg)
 			break;
 	}
 
-	fRunningCommands[repo] = gitCommand->GetWindow();
+	TrackGitWindow* window = gitCommand->GetWindow();
+	if (window != NULL)
+		fRunningCommands[repo] = window;
 	
 	if (gitCommand)
 		gitCommand->Execute();

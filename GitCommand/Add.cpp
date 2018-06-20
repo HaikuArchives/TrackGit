@@ -6,6 +6,7 @@
  */
 
 #include "Add.h"
+#include "../Utils.h"
 
 #include <InterfaceKit.h>
 
@@ -112,11 +113,13 @@ Add::Execute()
 		BAlert* alert = new BAlert("", buffer.String(), "Cancel", 
 			0, 0, B_WIDTH_AS_USUAL, B_WARNING_ALERT);
 		alert->Go();
-		return;
+	} else {
+		BString buffer("Files successfully added to the repository.");
+		BAlert* alert = new BAlert("", buffer.String(), "OK", 
+			0, 0, B_WIDTH_AS_USUAL);
+		alert->Go();
 	}
 
-	BString buffer("Files successfully added to the repository.");
-	BAlert* alert = new BAlert("", buffer.String(), "OK", 
-		0, 0, B_WIDTH_AS_USUAL);
-	alert->Go();
+	BMessenger messenger(APP_SIGN);
+	messenger.SendMessage(new BMessage(kQuitWindow));
 }
