@@ -52,8 +52,7 @@ Add::InitArray(vector<char*> files)
 void
 Add::FreeArray(git_strarray array)
 {
-	for(int i=0; i<array.count; i++)
-		free(array.strings[i]);
+	free(array.strings);
 }
 
 

@@ -9,7 +9,7 @@
 #include "../../GitCommand/Add.h"
 #include "../../GitCommand/Init.h"
 
-#define PATH "/boot/home/StatusTest"
+#define PATH "/boot/home/AddTest"
 
 CPPUNIT_TEST_SUITE_REGISTRATION(AddTest);
 
