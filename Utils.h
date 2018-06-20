@@ -13,6 +13,7 @@
 #include <SupportKit.h>
 
 #include <vector.h>
+#include <git2.h>
 
 enum {
 	kQuitWindow,
@@ -21,7 +22,8 @@ enum {
 	kStatus,
 	kAdd,
 	kAddAll,
-	kCommit
+	kCommit,
+	kPull
 };
 
 
@@ -39,5 +41,8 @@ void extract_selected_paths(const BMessage* msg,
 		vector<char*>& selected);
 BString extract_current_directory(const BMessage* msg);
 BString get_root_of_repo(BString dirPath);
+int perform_fastforward(git_repository*, const git_oid*, int);
+int create_commit(git_repository*, git_index*, const char*);
+void output_conflicts(git_index*);
 
 #endif

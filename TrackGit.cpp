@@ -88,7 +88,14 @@ populate_menu(BMessage* msg, BMenu* menu, BHandler* handler)
 		statusMsg->AddInt32("addon_item_id", kStatus);
 		BMenuItem* statusItem = new BMenuItem(
 				B_TRANSLATE("Status" B_UTF8_ELLIPSIS), statusMsg);
-		submenu->AddItem(statusItem);
+		submenu->AddItem(statusItem);	
+
+		// Add Pull menu item
+		BMessage* pullMsg = new BMessage(*msg);
+		pullMsg->AddInt32("addon_item_id", kPull);
+		BMenuItem* pullItem = new BMenuItem(
+				B_TRANSLATE("Pull" B_UTF8_ELLIPSIS), pullMsg);
+		submenu->AddItem(pullItem);
 
 		// Add Commit menu item
 		BMessage* commitMsg = new BMessage(*msg);

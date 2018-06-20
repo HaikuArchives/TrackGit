@@ -32,11 +32,13 @@ SRCS = ThirdParty/PathBox.cpp \
 	   UI/CloneWindow.cpp \
 	   UI/StatusWindow.cpp \
 	   UI/CommitWindow.cpp \
+	   UI/PullWindow.cpp \
        GitCommand/Clone.cpp \
        GitCommand/Init.cpp \
        GitCommand/Status.cpp \
        GitCommand/Add.cpp \
        GitCommand/Commit.cpp \
+       GitCommand/Pull.cpp \
 	   Utils.cpp \
 	   TrackGitApp.cpp \
 	   TrackGit.cpp

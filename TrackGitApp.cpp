@@ -17,6 +17,7 @@
 #include "GitCommand/Status.h"
 #include "GitCommand/Add.h"
 #include "GitCommand/Commit.h"
+#include "GitCommand/Pull.h"
 
 
 /**
@@ -88,6 +89,8 @@ TrackGitApp::MessageReceived(BMessage* msg)
 			break;
 		case kCommit:
 			gitCommand = new Commit(repo);
+		case kPull:
+			gitCommand = new Pull(repo);
 		default:
 			break;
 	}
