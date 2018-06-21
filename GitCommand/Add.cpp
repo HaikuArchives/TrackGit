@@ -30,6 +30,7 @@ Add::Add(BString dirPath, vector<char*> files)
 /**
  * Initializes git_strarray.
  * @param files The files to be added to git_strarray.
+ * @returns The git_strarray.
  */
 git_strarray
 Add::InitArray(vector<char*> files)
@@ -60,6 +61,7 @@ Add::FreeArray(git_strarray array)
  * Adds given files into git repository.
  * @param dirPath The given directory.
  * @param files The files to be added.
+ * @returns 0 or error code.
  */
 int
 Add::AddFiles(BString dirPath, vector<char*> files)

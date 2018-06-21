@@ -17,6 +17,10 @@
 
 class CloneWindow;
 
+/**
+ * The progress data payload.
+ * Used to print clone progress.
+ */
 typedef struct progress_data {
 	git_transfer_progress fetch_progress;
 	size_t completed_steps;
@@ -26,6 +30,9 @@ typedef struct progress_data {
 } progress_data;
 
 
+/**
+ * Parameters to pass to clone thread.
+ */
 struct param {
 	const char* url;
 	const char* path;

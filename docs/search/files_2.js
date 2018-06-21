@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['init_2ecpp',['Init.cpp',['../Init_8cpp.html',1,'']]],
-  ['init_2eh',['Init.h',['../Init_8h.html',1,'']]]
+  ['gitcommand_2eh',['GitCommand.h',['../GitCommand_8h.html',1,'']]]
 ];

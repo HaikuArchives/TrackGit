@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['gitcommand',['GitCommand',['../classGitCommand.html',1,'']]]
+  ['clone',['Clone',['../classClone.html',1,'']]],
+  ['cloneprogresswindow',['CloneProgressWindow',['../classCloneProgressWindow.html',1,'']]],
+  ['clonewindow',['CloneWindow',['../classCloneWindow.html',1,'']]],
+  ['commit',['Commit',['../classCommit.html',1,'']]],
+  ['commitwindow',['CommitWindow',['../classCommitWindow.html',1,'']]]
 ];

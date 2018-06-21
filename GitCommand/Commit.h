@@ -13,7 +13,7 @@
 #include <SupportKit.h>
 
 /**
- * Status command Class.
+ * Commit command Class.
  */
 class Commit : public GitCommand {
 	/**

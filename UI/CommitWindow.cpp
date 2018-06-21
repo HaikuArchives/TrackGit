@@ -15,7 +15,7 @@
 
 
 /**
- * StatusWindow Constructor
+ * CommitWindow Constructor
  * @param repo The repository to commit to.
  */
 CommitWindow::CommitWindow(BString repo)

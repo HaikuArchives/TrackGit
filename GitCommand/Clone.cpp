@@ -44,7 +44,7 @@ Clone::GetWindow()
 
 
 /**
- * Clone command execution. Opens a window to clone a repo.
+ * Clone command execution.
  */
 void
 Clone::Execute()
@@ -98,7 +98,6 @@ print_progress(const progress_data* progress)
 
 /**
  * Prints the progress from remote.
- * @param str The remote progress.
  */
 static int
 sideband_progress(const char *str, int len, void *payload)
@@ -106,7 +105,6 @@ sideband_progress(const char *str, int len, void *payload)
 	(void)payload; // unused
 
 	printf("remote: %.*s\n", len, str);
-	fflush(stdout);
 	return 0;
 }
 

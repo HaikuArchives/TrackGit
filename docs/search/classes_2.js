@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['init',['Init',['../classInit.html',1,'']]]
+  ['gitcommand',['GitCommand',['../classGitCommand.html',1,'']]]
 ];

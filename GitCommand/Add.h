@@ -18,7 +18,7 @@
 
 
 /**
- * Init command Class.
+ * Add command Class.
  */
 class Add : public GitCommand
 {

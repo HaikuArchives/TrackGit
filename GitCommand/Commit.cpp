@@ -13,17 +13,30 @@
 #include <git2.h>
 
 
+/**
+ * Commit class constructor.
+ * @param repo The repo path where commit option is selected.
+ */
 Commit::Commit(BString repo)
 {
 	fRepo = repo;
 	fCommitWindow = NULL;
 }
 
+
+/**
+ * Commit command execution.
+ */
 void
 Commit::Execute()
 {
 }
 
+
+/**
+ * This returns pointer to the commit window.
+ * @returns The Commit Window;
+ */
 TrackGitWindow*
 Commit::GetWindow()
 {
@@ -32,6 +45,13 @@ Commit::GetWindow()
 	return NULL;
 }
 
+
+/**
+ * This function commits to given repo with given message.
+ * @param repoPath The repository path.
+ * @param message The commit message.
+ * @returns 0 or error code.
+ */
 int
 Commit::DoCommit(BString repoPath, BString message)
 {
@@ -50,7 +70,6 @@ Commit::DoCommit(BString repoPath, BString message)
 
 	git_config* cfg;
 	git_config* cfg_snapshot;
-	// git_repository_config_snapshot(&cfg, repo);
 	git_config_open_ondisk(&cfg, "/boot/home/config/settings/git/config");
 	git_config_snapshot(&cfg_snapshot, cfg);
 	
@@ -92,7 +111,6 @@ Commit::DoCommit(BString repoPath, BString message)
 				message.String(), tree, 0);
 		goto ret;
 	}
-
 
 	ret = git_commit_lookup(&parent, repo, &parent_id);
 	if (ret < 0)

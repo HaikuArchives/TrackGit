@@ -28,6 +28,7 @@ Init::Init(BString dirPath)
 /**
  * Initializes empty repo in given directory.
  * @param dirPath The given directory.
+ * @returns 0 or error code.
  */
 int
 Init::InitRepo(BString dirPath)

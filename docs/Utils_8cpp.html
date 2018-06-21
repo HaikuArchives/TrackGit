@@ -74,15 +74,16 @@ $(function() {
 <code>#include &lt;StorageKit.h&gt;</code><br />
 <code>#include &lt;git2.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac8ffba92bad089e6ddbee0bddc80ca09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Utils_8cpp.html#ac8ffba92bad089e6ddbee0bddc80ca09">extract_selected_paths</a> (const BMessage *msg, vector&lt; const char *&gt; &amp;selected)</td></tr>
-<tr class="memdesc:ac8ffba92bad089e6ddbee0bddc80ca09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get selected files.  <a href="#ac8ffba92bad089e6ddbee0bddc80ca09">More...</a><br /></td></tr>
-<tr class="separator:ac8ffba92bad089e6ddbee0bddc80ca09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d96b66286047200c13e787169dc5305"><td class="memItemLeft" align="right" valign="top">BString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Utils_8cpp.html#a6d96b66286047200c13e787169dc5305">extract_current_directory</a> (const BMessage *msg)</td></tr>
 <tr class="memdesc:a6d96b66286047200c13e787169dc5305"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current directory.  <a href="#a6d96b66286047200c13e787169dc5305">More...</a><br /></td></tr>
 <tr class="separator:a6d96b66286047200c13e787169dc5305"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a371937e595a8a26b717151410dcefa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Utils_8cpp.html#a3a371937e595a8a26b717151410dcefa">extract_selected_paths</a> (const BMessage *msg, vector&lt; char *&gt; &amp;selected)</td></tr>
+<tr class="memdesc:a3a371937e595a8a26b717151410dcefa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get selected files.  <a href="#a3a371937e595a8a26b717151410dcefa">More...</a><br /></td></tr>
+<tr class="separator:a3a371937e595a8a26b717151410dcefa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a470bedcd8bb9b46bff2b6b5faac7a880"><td class="memItemLeft" align="right" valign="top">BString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Utils_8cpp.html#a470bedcd8bb9b46bff2b6b5faac7a880">get_root_of_repo</a> (BString dirPath)</td></tr>
 <tr class="memdesc:a470bedcd8bb9b46bff2b6b5faac7a880"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the root of repo of current directory.  <a href="#a470bedcd8bb9b46bff2b6b5faac7a880">More...</a><br /></td></tr>
 <tr class="separator:a470bedcd8bb9b46bff2b6b5faac7a880"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,8 +120,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ac8ffba92bad089e6ddbee0bddc80ca09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac8ffba92bad089e6ddbee0bddc80ca09">&#9670;&nbsp;</a></span>extract_selected_paths()</h2>
+<a id="a3a371937e595a8a26b717151410dcefa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a371937e595a8a26b717151410dcefa">&#9670;&nbsp;</a></span>extract_selected_paths()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -134,7 +135,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">vector&lt; const char *&gt; &amp;&#160;</td>
+          <td class="paramtype">vector&lt; char *&gt; &amp;&#160;</td>
           <td class="paramname"><em>selected</em>&#160;</td>
         </tr>
         <tr>
