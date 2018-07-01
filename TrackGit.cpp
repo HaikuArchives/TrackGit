@@ -83,6 +83,22 @@ populate_menu(BMessage* msg, BMenu* menu, BHandler* handler)
 	// Check if current directory is in git repo.
 	if (git_repository_discover(&buf, dirPath.String(), 0, NULL) == 0) {
 		// buf is git repo
+		git_repository* repo = NULL;
+		git_index* index;
+		// Init repo
+		git_repository_open_ext(&repo, dirPath.String(), 0, NULL);
+		// Init index
+		git_repository_index(&index, repo);
+		if (git_index_has_conflicts(index)) {
+			// Show conflicts menu item
+			BMessage* showConflictsMsg = new BMessage(*msg);
+			showConflictsMsg->AddInt32("addon_item_id", kShowConflicts);
+			BMenuItem* showConflictsItem = new BMenuItem(
+					B_TRANSLATE("Show conflicts" B_UTF8_ELLIPSIS),
+					showConflictsMsg);
+			submenu->AddItem(showConflictsItem);	
+		}
+
 		// Add Status menu item
 		BMessage* statusMsg = new BMessage(*msg);
 		statusMsg->AddInt32("addon_item_id", kStatus);

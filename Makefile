@@ -40,6 +40,7 @@ SRCS = ThirdParty/PathBox.cpp \
        GitCommand/Add.cpp \
        GitCommand/Commit.cpp \
        GitCommand/Pull.cpp \
+       GitCommand/ShowConflicts.cpp \
 	   Utils.cpp \
 	   TrackGitApp.cpp \
 	   TrackGit.cpp

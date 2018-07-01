@@ -272,6 +272,13 @@ void output_conflicts(git_index *index)
 		conflictsString << "Error iterating conflicts\n";
 
 	git_index_conflict_iterator_free(conflicts);
+
+	conflictsString << "\n"
+	                << "  a : Ancestor path\n"
+	                << "  o : Our path\n"
+	                << "  t : Their path\n";
+	conflictsString << "Resolve the conflicts and add files to mark them as "
+		<< "resolved.\nCommit changes after resolving all files.\n";
 ret:
 	printf("%s\n", conflictsString.String());
 	conflictsWindow->SetText(conflictsString);

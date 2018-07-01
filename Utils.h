@@ -25,7 +25,8 @@ enum {
 	kAdd,
 	kAddAll,
 	kCommit,
-	kPull
+	kPull,
+	kShowConflicts
 };
 
 
