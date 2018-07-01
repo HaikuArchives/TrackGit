@@ -24,6 +24,9 @@ enum {
 
 class CloneProgressWindow;
 
+/**
+ * The Clone Window class.
+ */
 class CloneWindow : public TrackGitWindow {
 	/**
 	 * The progress window.
@@ -52,6 +55,10 @@ class CloneWindow : public TrackGitWindow {
 	virtual void			MessageReceived(BMessage*);
 };
 
+
+/**
+ * The Clone Progress Window class.
+ */
 class CloneProgressWindow : public BWindow
 {
 	/**

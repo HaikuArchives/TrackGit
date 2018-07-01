@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['populate_5fmenu',['populate_menu',['../TrackGit_8cpp.html#ac56dc2e52bfe80cb3821b97a23e4d36b',1,'TrackGit.cpp']]],
-  ['print_5fprogress',['print_progress',['../Clone_8cpp.html#a641ed179a88f75e92f3e4147b90ca130',1,'Clone.cpp']]],
-  ['process_5frefs',['process_refs',['../TrackGit_8cpp.html#a8608d0901959452276e78ba2762d5a1f',1,'TrackGit.cpp']]]
+  ['output_5fconflicts',['output_conflicts',['../Utils_8cpp.html#ad16d96a8e2f6586ef0d5327057589cb6',1,'output_conflicts(git_index *index):&#160;Utils.cpp'],['../Utils_8h.html#a334d275496504573eba751af96815f69',1,'output_conflicts(git_index *):&#160;Utils.cpp']]]
 ];

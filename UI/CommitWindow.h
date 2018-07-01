@@ -20,6 +20,9 @@ enum {
 };
 
 
+/**
+ * The Commit Window class.
+ */
 class CommitWindow : public TrackGitWindow {
 	/**
 	 * The Commit Text View.

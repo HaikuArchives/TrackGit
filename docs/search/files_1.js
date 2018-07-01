@@ -7,5 +7,7 @@ var searchData=
   ['commit_2ecpp',['Commit.cpp',['../Commit_8cpp.html',1,'']]],
   ['commit_2eh',['Commit.h',['../Commit_8h.html',1,'']]],
   ['commitwindow_2ecpp',['CommitWindow.cpp',['../CommitWindow_8cpp.html',1,'']]],
-  ['commitwindow_2eh',['CommitWindow.h',['../CommitWindow_8h.html',1,'']]]
+  ['commitwindow_2eh',['CommitWindow.h',['../CommitWindow_8h.html',1,'']]],
+  ['conflictswindow_2ecpp',['ConflictsWindow.cpp',['../ConflictsWindow_8cpp.html',1,'']]],
+  ['conflictswindow_2eh',['ConflictsWindow.h',['../ConflictsWindow_8h.html',1,'']]]
 ];

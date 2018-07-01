@@ -17,6 +17,9 @@
 #include <git2.h>
 
 
+/**
+ * Payload to search for merge branch.
+ */
 struct fetch_payload {
 	char branch[100];
 	git_oid branch_oid;

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['showbranch',['showbranch',['../structopts.html#a2fdbd1ed31a71c2c0197bfce66c245c3',1,'opts']]],
-  ['showsubmod',['showsubmod',['../structopts.html#a338dba93f9dbeca2f887ebf71951665f',1,'opts']]],
-  ['statusopt',['statusopt',['../structopts.html#a018c00d0e4da357f2e22f9db68e4f56e',1,'opts']]]
+  ['repeat',['repeat',['../structopts.html#ac8e852f83ae4c0d31d919cc31ac5c349',1,'opts']]],
+  ['repodir',['repodir',['../structopts.html#a55f132d782e02ac19ca06822ee1a6729',1,'opts']]]
 ];

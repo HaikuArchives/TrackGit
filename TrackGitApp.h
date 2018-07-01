@@ -15,6 +15,12 @@
 
 class TrackGitWindow;
 
+
+/**
+ * The TrackGit Application class.
+ * This takes care of launching of windows. It also brings forward a window
+ * which is previously launched for a given repo.
+ */
 class TrackGitApp : public BApplication
 {
 	/**

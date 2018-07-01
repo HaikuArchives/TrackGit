@@ -14,6 +14,11 @@
 #include <InterfaceKit.h>
 #include <SupportKit.h>
 
+
+/**
+ * The TrackGit Window class.
+ * This provides base for all the command windows.
+ */
 class TrackGitWindow : public BWindow {
 protected:
 	/**

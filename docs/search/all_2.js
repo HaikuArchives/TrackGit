@@ -14,5 +14,9 @@ var searchData=
   ['commitwindow',['CommitWindow',['../classCommitWindow.html',1,'CommitWindow'],['../classCommitWindow.html#a850c0363113f137cf1ab5e71cc9e5109',1,'CommitWindow::CommitWindow()']]],
   ['commitwindow_2ecpp',['CommitWindow.cpp',['../CommitWindow_8cpp.html',1,'']]],
   ['commitwindow_2eh',['CommitWindow.h',['../CommitWindow_8h.html',1,'']]],
-  ['completed_5fsteps',['completed_steps',['../structprogress__data.html#a2cc31ae21b15c352adfbb74185a32595',1,'progress_data']]]
+  ['completed_5fsteps',['completed_steps',['../structprogress__data.html#a2cc31ae21b15c352adfbb74185a32595',1,'progress_data']]],
+  ['conflictswindow',['ConflictsWindow',['../classConflictsWindow.html',1,'ConflictsWindow'],['../classConflictsWindow.html#acc42482809c1f9c2facff7fb41a50361',1,'ConflictsWindow::ConflictsWindow()']]],
+  ['conflictswindow_2ecpp',['ConflictsWindow.cpp',['../ConflictsWindow_8cpp.html',1,'']]],
+  ['conflictswindow_2eh',['ConflictsWindow.h',['../ConflictsWindow_8h.html',1,'']]],
+  ['create_5fcommit',['create_commit',['../Utils_8cpp.html#a4213785632d4cb0b755b7cc0d7d48820',1,'create_commit(git_repository *repo, git_index *index, const char *message):&#160;Utils.cpp'],['../Utils_8h.html#a2277d6b2e709d2da619d10fded4da7d3',1,'create_commit(git_repository *, git_index *, const char *):&#160;Utils.cpp']]]
 ];

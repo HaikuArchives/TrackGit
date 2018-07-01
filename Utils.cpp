@@ -90,6 +90,14 @@ get_root_of_repo(BString dirPath)
 	return (ret == 0) ? BString(buf.ptr) : dirPath;
 }
 
+
+/**
+ * This performs fastforward on given repo, branch id.
+ * @param repo The git repository.
+ * @param target_oid The target branch id.
+ * @param is_unborn True if HEAD isn't born yet.
+ * @returns 0 or error code.
+ */
 int perform_fastforward(git_repository *repo, const git_oid *target_oid,
 		int is_unborn)
 {
@@ -164,6 +172,14 @@ int perform_fastforward(git_repository *repo, const git_oid *target_oid,
 	return 0;
 }
 
+
+/**
+ * Creates a commit on given repo, index and message.
+ * @param repo The git repository.
+ * @param index The git index.
+ * @param message The commit message.
+ * @returns 0 or error code.
+ */
 int
 create_commit(git_repository* repo, git_index* index, const char* message)
 {
@@ -222,6 +238,11 @@ create_commit(git_repository* repo, git_index* index, const char* message)
 	return ret;
 }
 
+
+/**
+ * Shows conflicts in current repo index in a window.
+ * @param index The git index with conflicts.
+ */
 void output_conflicts(git_index *index)
 {
 	ConflictsWindow* conflictsWindow = new ConflictsWindow();

@@ -71,6 +71,7 @@ $(function() {
 <p>Implementation file of Utils.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="Utils_8h_source.html">Utils.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ConflictsWindow_8h_source.html">UI/ConflictsWindow.h</a>&quot;</code><br />
 <code>#include &lt;StorageKit.h&gt;</code><br />
 <code>#include &lt;git2.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
@@ -87,12 +88,66 @@ Functions</h2></td></tr>
 <tr class="memitem:a470bedcd8bb9b46bff2b6b5faac7a880"><td class="memItemLeft" align="right" valign="top">BString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Utils_8cpp.html#a470bedcd8bb9b46bff2b6b5faac7a880">get_root_of_repo</a> (BString dirPath)</td></tr>
 <tr class="memdesc:a470bedcd8bb9b46bff2b6b5faac7a880"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the root of repo of current directory.  <a href="#a470bedcd8bb9b46bff2b6b5faac7a880">More...</a><br /></td></tr>
 <tr class="separator:a470bedcd8bb9b46bff2b6b5faac7a880"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a018be519040ae48eff626d8028dfdc92"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Utils_8cpp.html#a018be519040ae48eff626d8028dfdc92">perform_fastforward</a> (git_repository *repo, const git_oid *target_oid, int is_unborn)</td></tr>
+<tr class="memdesc:a018be519040ae48eff626d8028dfdc92"><td class="mdescLeft">&#160;</td><td class="mdescRight">This performs fastforward on given repo, branch id.  <a href="#a018be519040ae48eff626d8028dfdc92">More...</a><br /></td></tr>
+<tr class="separator:a018be519040ae48eff626d8028dfdc92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4213785632d4cb0b755b7cc0d7d48820"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Utils_8cpp.html#a4213785632d4cb0b755b7cc0d7d48820">create_commit</a> (git_repository *repo, git_index *index, const char *message)</td></tr>
+<tr class="memdesc:a4213785632d4cb0b755b7cc0d7d48820"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a commit on given repo, index and message.  <a href="#a4213785632d4cb0b755b7cc0d7d48820">More...</a><br /></td></tr>
+<tr class="separator:a4213785632d4cb0b755b7cc0d7d48820"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad16d96a8e2f6586ef0d5327057589cb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Utils_8cpp.html#ad16d96a8e2f6586ef0d5327057589cb6">output_conflicts</a> (git_index *index)</td></tr>
+<tr class="memdesc:ad16d96a8e2f6586ef0d5327057589cb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shows conflicts in current repo index in a window.  <a href="#ad16d96a8e2f6586ef0d5327057589cb6">More...</a><br /></td></tr>
+<tr class="separator:ad16d96a8e2f6586ef0d5327057589cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation file of Utils. </p>
 <p>This file contains common functions and enums used by app.</p>
 <dl class="section author"><dt>Author</dt><dd>Hrishikesh Hiraskar <a href="#" onclick="location.href='mai'+'lto:'+'hri'+'sh'+'ihi'+'ra'+'ska'+'r@'+'gma'+'il'+'.co'+'m'; return false;">hrish<span style="display: none;">.nosp@m.</span>ihir<span style="display: none;">.nosp@m.</span>askar<span style="display: none;">.nosp@m.</span>@gma<span style="display: none;">.nosp@m.</span>il.co<span style="display: none;">.nosp@m.</span>m</a> </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a4213785632d4cb0b755b7cc0d7d48820"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4213785632d4cb0b755b7cc0d7d48820">&#9670;&nbsp;</a></span>create_commit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int create_commit </td>
+          <td>(</td>
+          <td class="paramtype">git_repository *&#160;</td>
+          <td class="paramname"><em>repo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">git_index *&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a commit on given repo, index and message. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">repo</td><td>The git repository. </td></tr>
+    <tr><td class="paramname">index</td><td>The git index. </td></tr>
+    <tr><td class="paramname">message</td><td>The commit message. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 or error code. </dd></dl>
+
+</div>
+</div>
 <a id="a6d96b66286047200c13e787169dc5305"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6d96b66286047200c13e787169dc5305">&#9670;&nbsp;</a></span>extract_current_directory()</h2>
 
@@ -181,6 +236,77 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The repo root if found else current directory. </dd></dl>
+
+</div>
+</div>
+<a id="ad16d96a8e2f6586ef0d5327057589cb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad16d96a8e2f6586ef0d5327057589cb6">&#9670;&nbsp;</a></span>output_conflicts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void output_conflicts </td>
+          <td>(</td>
+          <td class="paramtype">git_index *&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Shows conflicts in current repo index in a window. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The git index with conflicts. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a018be519040ae48eff626d8028dfdc92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a018be519040ae48eff626d8028dfdc92">&#9670;&nbsp;</a></span>perform_fastforward()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int perform_fastforward </td>
+          <td>(</td>
+          <td class="paramtype">git_repository *&#160;</td>
+          <td class="paramname"><em>repo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const git_oid *&#160;</td>
+          <td class="paramname"><em>target_oid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>is_unborn</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This performs fastforward on given repo, branch id. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">repo</td><td>The git repository. </td></tr>
+    <tr><td class="paramname">target_oid</td><td>The target branch id. </td></tr>
+    <tr><td class="paramname">is_unborn</td><td>True if HEAD isn't born yet. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 or error code. </dd></dl>
 
 </div>
 </div>

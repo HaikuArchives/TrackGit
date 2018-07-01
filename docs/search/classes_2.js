@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gitcommand',['GitCommand',['../classGitCommand.html',1,'']]]
+  ['fetch_5fpayload',['fetch_payload',['../structfetch__payload.html',1,'']]]
 ];

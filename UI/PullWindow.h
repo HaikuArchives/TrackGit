@@ -15,6 +15,10 @@
 
 #include <InterfaceKit.h>
 
+
+/**
+ * The Pull window class.
+ */
 class PullWindow : public TrackGitWindow
 {
 	/**

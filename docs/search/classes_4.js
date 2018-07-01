@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['opts',['opts',['../structopts.html',1,'']]]
+  ['init',['Init',['../classInit.html',1,'']]]
 ];

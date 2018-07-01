@@ -34,6 +34,11 @@ Pull::Execute()
 {
 }
 
+
+/**
+ * This returns pointer to the Pull window.
+ * @returns The pull window.
+ */
 TrackGitWindow*
 Pull::GetWindow()
 {
@@ -42,6 +47,10 @@ Pull::GetWindow()
 	return fPullWindow;
 }
 
+
+/**
+ * This function gets the branch to be merged.
+ */
 int fetchhead_ref_cb(const char* name, const char* url, const git_oid* oid, 
 		unsigned int is_merge, void* payload_v) {
 	struct fetch_payload* payload = (struct fetch_payload*) payload_v;
@@ -51,6 +60,12 @@ int fetchhead_ref_cb(const char* name, const char* url, const git_oid* oid,
 	}
 }
 
+
+/**
+ * This does git pull on given repository. This also shows progress
+ * in given progress window.
+ * @param arg This contains repo path and progress window
+ */
 void*
 DoPullThread(void* arg)
 {
@@ -170,6 +185,12 @@ clean:
 	free(arg);
 }
 
+
+/**
+ * This spawns thread to perform pull over given repo.
+ * @param pullWindow The window to show progress.
+ * @param path The repo path.
+ */
 pthread_t
 Pull::DoPull(PullWindow* pullWindow, const char* path)
 {

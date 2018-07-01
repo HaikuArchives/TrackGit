@@ -13,6 +13,10 @@
 #include <InterfaceKit.h>
 #include <SupportKit.h>
 
+
+/**
+ * The Status Window class.
+ */
 class StatusWindow : public TrackGitWindow {
 	/**
 	 * The Status Text View.

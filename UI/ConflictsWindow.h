@@ -11,6 +11,10 @@
 #include <InterfaceKit.h>
 #include <SupportKit.h>
 
+
+/**
+ * The Conflicts Window class.
+ */
 class ConflictsWindow : public BWindow {
 	/**
 	 * The Conflicts Text View.

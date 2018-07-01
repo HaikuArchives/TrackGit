@@ -1,20 +1,5 @@
 var searchData=
 [
-  ['fclone',['fClone',['../classCloneWindow.html#a21e6e1341be8f88132f91ea32606eaea',1,'CloneWindow']]],
-  ['fclonewindow',['fCloneWindow',['../classClone.html#a973045a89e18a322654b7bb871b8623f',1,'Clone::fCloneWindow()'],['../classCloneProgressWindow.html#a2453a724ff1478c32ca99b53086bda50',1,'CloneProgressWindow::fCloneWindow()']]],
-  ['fcommittextview',['fCommitTextView',['../classCommitWindow.html#a311ab74ec0d23374bf45549b3eee8d9a',1,'CommitWindow']]],
-  ['fcommitwindow',['fCommitWindow',['../classCommit.html#aa1f5089de7fcd943cf0b59ef7ca5ece2',1,'Commit']]],
-  ['fdirpath',['fDirPath',['../classAdd.html#a02dee1d52df7a075ddde96cd1ee4410c',1,'Add::fDirPath()'],['../classClone.html#a370f545fe8bc6053e67b5bfdc1ec57a4',1,'Clone::fDirPath()'],['../classInit.html#a7186b3900feec12e888de800e2f17e39',1,'Init::fDirPath()'],['../classStatus.html#a07db4fd0ed319d2581036bcd68fd9fd7',1,'Status::fDirPath()']]],
-  ['fetch_5fprogress',['fetch_progress',['../structprogress__data.html#a003729321e191ca016d7f5726c8868d1',1,'progress_data']]],
-  ['ffiles',['fFiles',['../classAdd.html#a456ade4da7611f58f0fec1d1d0a24562',1,'Add']]],
-  ['format',['format',['../structopts.html#a804ebdb7b4cedc51f0262cff726e5d0f',1,'opts']]],
-  ['fpathbox',['fPathBox',['../classCloneWindow.html#a4b0705a50f150e1c162af56908557832',1,'CloneWindow']]],
-  ['fprogresswindow',['fProgressWindow',['../classCloneWindow.html#aefe33110666e0adb2e23331caa93702c',1,'CloneWindow']]],
-  ['frepo',['fRepo',['../classClone.html#ad13cc40934dbae3c722edc4e39c529dd',1,'Clone::fRepo()'],['../classCommit.html#a659c44baad72a36e733d385a32640b70',1,'Commit::fRepo()'],['../classStatus.html#ad25c299a675d6ef794832b2aaed2225a',1,'Status::fRepo()'],['../classTrackGitWindow.html#a17fe46fc031ea0e7d24350b86622e330',1,'TrackGitWindow::fRepo()']]],
-  ['frunningcommands',['fRunningCommands',['../classTrackGitApp.html#af39b7944e08b0e1962048b6827159914',1,'TrackGitApp']]],
-  ['fstatustextview',['fStatusTextView',['../classStatusWindow.html#adbabb1ed0de8060068a2341eaaafe86c',1,'StatusWindow']]],
-  ['fstatuswindow',['fStatusWindow',['../classStatus.html#a798f43485d6d02400964a76782b9f28a',1,'Status']]],
-  ['ftextview',['fTextView',['../classCloneProgressWindow.html#a8263934222c214152454053ace37d2c7',1,'CloneProgressWindow']]],
-  ['fthreadid',['fThreadId',['../classCloneWindow.html#ae6dd07f6fad0f574939e5a5f38909030',1,'CloneWindow']]],
-  ['furl',['fURL',['../classCloneWindow.html#add3cf247cddca12b877a04962102a5ec',1,'CloneWindow']]]
+  ['clonewindow',['cloneWindow',['../structprogress__data.html#ab32c9cb5b888c8959bf6cb1842caaf17',1,'progress_data::cloneWindow()'],['../structparam.html#a4fa1ed3619d44c0bae79ea5d7a33eb47',1,'param::cloneWindow()']]],
+  ['completed_5fsteps',['completed_steps',['../structprogress__data.html#a2cc31ae21b15c352adfbb74185a32595',1,'progress_data']]]
 ];
