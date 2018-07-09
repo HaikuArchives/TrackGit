@@ -26,6 +26,7 @@ enum {
 	kAddAll,
 	kCommit,
 	kPull,
+	kPush,
 	kShowConflicts
 };
 
@@ -47,5 +48,6 @@ BString get_root_of_repo(BString dirPath);
 int perform_fastforward(git_repository*, const git_oid*, int);
 int create_commit(git_repository*, git_index*, const char*);
 void output_conflicts(git_index*);
+int cred_acquire_cb(git_cred**, const char*, const char*, unsigned int, void*);
 
 #endif

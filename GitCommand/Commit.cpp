@@ -60,6 +60,8 @@ Commit::DoCommit(BString repoPath, BString message)
 	git_index* index;
 	int ret = 0;
 
+	git_libgit2_init();
+
 	// Init repo
 	ret = git_repository_open_ext(&repo, repoPath.String(), 0, NULL);
 	if (ret < 0)

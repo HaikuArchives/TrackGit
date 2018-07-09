@@ -8,11 +8,13 @@
 
 #include "Utils.h"
 #include "UI/ConflictsWindow.h"
+#include "UI/CredentialsWindow.h"
 
 #include <StorageKit.h>
 
 #include <git2.h>
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -287,4 +289,25 @@ ret:
 	// wait for widow thread to return
 	status_t win_status = B_OK;
 	wait_for_thread(thread, &win_status);
+}
+
+
+/**
+ * This functions gets username and password from the user in case
+ * credentials are required.
+ */
+int cred_acquire_cb(git_cred** out, const char* url,
+		const char* username_from_url, unsigned int allowed_types,
+		void* payload)
+{
+	char username[100] = "",
+		 password[100] = "";
+	CredentialsWindow* window = new CredentialsWindow(username, password);
+
+	thread_id thread = window->Thread();
+	// wait for widow thread to return
+	status_t win_status = B_OK;
+	wait_for_thread(thread, &win_status);
+
+	return git_cred_userpass_plaintext_new(out, username, password);
 }

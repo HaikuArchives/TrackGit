@@ -18,6 +18,7 @@
 #include "GitCommand/Add.h"
 #include "GitCommand/Commit.h"
 #include "GitCommand/Pull.h"
+#include "GitCommand/Push.h"
 #include "GitCommand/ShowConflicts.h"
 
 
@@ -93,6 +94,9 @@ TrackGitApp::MessageReceived(BMessage* msg)
 			break;
 		case kPull:
 			gitCommand = new Pull(repo);
+			break;
+		case kPush:
+			gitCommand = new Push(repo);
 			break;
 		case kShowConflicts:
 			gitCommand = new ShowConflicts(repo);

@@ -106,6 +106,13 @@ populate_menu(BMessage* msg, BMenu* menu, BHandler* handler)
 				B_TRANSLATE("Status" B_UTF8_ELLIPSIS), statusMsg);
 		submenu->AddItem(statusItem);	
 
+		// Add Commit menu item
+		BMessage* commitMsg = new BMessage(*msg);
+		commitMsg->AddInt32("addon_item_id", kCommit);
+		BMenuItem* commitItem = new BMenuItem(
+				B_TRANSLATE("Commit" B_UTF8_ELLIPSIS), commitMsg);
+		submenu->AddItem(commitItem);
+
 		// Add Pull menu item
 		BMessage* pullMsg = new BMessage(*msg);
 		pullMsg->AddInt32("addon_item_id", kPull);
@@ -113,12 +120,12 @@ populate_menu(BMessage* msg, BMenu* menu, BHandler* handler)
 				B_TRANSLATE("Pull" B_UTF8_ELLIPSIS), pullMsg);
 		submenu->AddItem(pullItem);
 
-		// Add Commit menu item
-		BMessage* commitMsg = new BMessage(*msg);
-		commitMsg->AddInt32("addon_item_id", kCommit);
-		BMenuItem* commitItem = new BMenuItem(
-				B_TRANSLATE("Commit" B_UTF8_ELLIPSIS), commitMsg);
-		submenu->AddItem(commitItem);
+		// Add Push menu item
+		BMessage* pushMsg = new BMessage(*msg);
+		pushMsg->AddInt32("addon_item_id", kPush);
+		BMenuItem* pushItem = new BMenuItem(
+				B_TRANSLATE("Push" B_UTF8_ELLIPSIS), pushMsg);
+		submenu->AddItem(pushItem);
 
 		if (selected.size() > 0) {
 			// Add "Add Files" menu item
