@@ -21,7 +21,7 @@ class CreateBranch : public GitCommand {
 	 */
 	BString					fRepo;
 	/**
-	 * The Commit Window.
+	 * The Create Branch Window.
 	 */
 	TrackGitWindow*			fCreateBranchWindow;
 public:

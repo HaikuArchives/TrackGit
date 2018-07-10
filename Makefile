@@ -37,6 +37,7 @@ SRCS = ThirdParty/PathBox.cpp \
 	   UI/ConflictsWindow.cpp \
 	   UI/CredentialsWindow.cpp \
 	   UI/CreateBranchWindow.cpp \
+	   UI/SwitchBranchWindow.cpp \
        GitCommand/Clone.cpp \
        GitCommand/Init.cpp \
        GitCommand/Status.cpp \
@@ -46,6 +47,7 @@ SRCS = ThirdParty/PathBox.cpp \
        GitCommand/Push.cpp \
        GitCommand/ShowConflicts.cpp \
        GitCommand/CreateBranch.cpp \
+       GitCommand/SwitchBranch.cpp \
 	   Utils.cpp \
 	   TrackGitApp.cpp \
 	   TrackGit.cpp

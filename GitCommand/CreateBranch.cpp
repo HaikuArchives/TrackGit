@@ -42,7 +42,7 @@ CreateBranch::GetWindow()
 {
 	if (fCreateBranchWindow == NULL)
 		fCreateBranchWindow = new CreateBranchWindow(fRepo);
-	return NULL;
+	return fCreateBranchWindow;
 }
 
 

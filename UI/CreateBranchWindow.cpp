@@ -25,7 +25,7 @@ CreateBranchWindow::CreateBranchWindow(BString repo)
 {
 	fBranchText = new BTextControl("Name: ", "", NULL);
 
-	BButton* fCreate = new BButton("commit", "Create",
+	BButton* fCreate = new BButton("create", "Create",
 			new BMessage(kDoCreateBranch));
 	BButton* fCancel = new BButton("cancel", "Cancel",
 			new BMessage(kCancelCreateBranch));

@@ -43,7 +43,7 @@ Commit::GetWindow()
 {
 	if (fCommitWindow == NULL)
 		fCommitWindow = new CommitWindow(fRepo);
-	return NULL;
+	return fCommitWindow;
 }
 
 
