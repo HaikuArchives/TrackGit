@@ -7,6 +7,7 @@
 
 #include "CreateBranchWindow.h"
 #include "../GitCommand/CreateBranch.h"
+#include "../GitCommand/SwitchBranch.h"
 
 #include <stdio.h>
 #include <git2.h>
@@ -24,6 +25,7 @@ CreateBranchWindow::CreateBranchWindow(BString repo)
 			B_DOCUMENT_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
 {
 	fBranchText = new BTextControl("Name: ", "", NULL);
+	fSwitchBranch = new BCheckBox("Switch to this branch");
 
 	BButton* fCreate = new BButton("create", "Create",
 			new BMessage(kDoCreateBranch));
@@ -33,6 +35,7 @@ CreateBranchWindow::CreateBranchWindow(BString repo)
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.SetInsets(10)
 		.Add(fBranchText)
+		.Add(fSwitchBranch)
 		.AddGroup(B_HORIZONTAL, 0)
 			.AddGlue()
 			.Add(fCancel)
@@ -73,6 +76,23 @@ CreateBranchWindow::MessageReceived(BMessage* msg)
                         0, 0, B_WIDTH_AS_USUAL);
 			}
 			alert->Go();
+			if (fSwitchBranch->Value() == B_CONTROL_ON) {
+				if (SwitchBranch::DoSwitchBranch(fRepo,
+							BString(fBranchText->Text())) < 0) {
+					const git_error* err = giterr_last();
+
+					BString buffer("Error : %s");
+					buffer.ReplaceFirst("%s", err->message);
+					alert = new BAlert("", buffer.String(), "Cancel", 
+							0, 0, B_WIDTH_AS_USUAL, B_WARNING_ALERT);
+				} else {
+					BString buffer("Switched to branch %b.");
+					buffer.ReplaceFirst("%b", fBranchText->Text());
+					alert = new BAlert("", buffer.String(), "OK", 
+							0, 0, B_WIDTH_AS_USUAL);
+				}
+				alert->Go();
+			}
 			Quit();
 			break;
 		case kCancelCreateBranch:

@@ -28,6 +28,10 @@ class CreateBranchWindow : public TrackGitWindow {
 	 * The Create Branch Text View.
 	 */
 	BTextControl*		fBranchText;
+	/**
+	 * Switch Branch check box.
+	 */
+	BCheckBox*			fSwitchBranch;
 public:
 						CreateBranchWindow(BString);
 	virtual void		MessageReceived(BMessage*);
