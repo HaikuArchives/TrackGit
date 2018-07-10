@@ -20,6 +20,7 @@
 #include "GitCommand/Pull.h"
 #include "GitCommand/Push.h"
 #include "GitCommand/ShowConflicts.h"
+#include "GitCommand/CreateBranch.h"
 
 
 /**
@@ -100,6 +101,9 @@ TrackGitApp::MessageReceived(BMessage* msg)
 			break;
 		case kShowConflicts:
 			gitCommand = new ShowConflicts(repo);
+			break;
+		case kCreateBranch:
+			gitCommand = new CreateBranch(repo);
 			break;
 		default:
 			break;

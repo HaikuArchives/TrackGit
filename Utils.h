@@ -27,7 +27,8 @@ enum {
 	kCommit,
 	kPull,
 	kPush,
-	kShowConflicts
+	kShowConflicts,
+	kCreateBranch
 };
 
 

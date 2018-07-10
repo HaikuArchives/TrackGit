@@ -127,6 +127,13 @@ populate_menu(BMessage* msg, BMenu* menu, BHandler* handler)
 				B_TRANSLATE("Push" B_UTF8_ELLIPSIS), pushMsg);
 		submenu->AddItem(pushItem);
 
+		// Add Create Branch menu item
+		BMessage* createBranchMsg = new BMessage(*msg);
+		createBranchMsg->AddInt32("addon_item_id", kCreateBranch);
+		BMenuItem* createBranchItem = new BMenuItem(
+				B_TRANSLATE("Create branch" B_UTF8_ELLIPSIS), createBranchMsg);
+		submenu->AddItem(createBranchItem);
+
 		if (selected.size() > 0) {
 			// Add "Add Files" menu item
 			BMessage* addMsg = new BMessage(*msg);
