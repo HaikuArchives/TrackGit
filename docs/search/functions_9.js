@@ -5,5 +5,7 @@ var searchData=
   ['print_5fprogress',['print_progress',['../Clone_8cpp.html#a641ed179a88f75e92f3e4147b90ca130',1,'Clone.cpp']]],
   ['process_5frefs',['process_refs',['../TrackGit_8cpp.html#a8608d0901959452276e78ba2762d5a1f',1,'TrackGit.cpp']]],
   ['pull',['Pull',['../classPull.html#ae08615cfa01bdefaebdc227d22ba2f6b',1,'Pull']]],
-  ['pullwindow',['PullWindow',['../classPullWindow.html#a95b0c56e3f69dc2b39809ca21fae0b72',1,'PullWindow']]]
+  ['pullwindow',['PullWindow',['../classPullWindow.html#a95b0c56e3f69dc2b39809ca21fae0b72',1,'PullWindow']]],
+  ['push',['Push',['../classPush.html#aa0e61416f8554e0506c4ba77d894c011',1,'Push']]],
+  ['pushwindow',['PushWindow',['../classPushWindow.html#a349ba2d5a5f37ff50776bb4f06d4345f',1,'PushWindow']]]
 ];

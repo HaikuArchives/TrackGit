@@ -27,11 +27,10 @@ or you can execute `run.sh`.
 + [x] Add Files
 + [x] Commit
 + [x] Pull
-+ [ ] ShowConflicts
-+ [ ] Push
-+ [ ] CreateBranch
-+ [ ] SwitchBranch
-+ [ ] MergeBranch
++ [x] ShowConflicts
++ [x] Push
++ [x] CreateBranch
++ [x] SwitchBranch
 
 ## Documentation
 

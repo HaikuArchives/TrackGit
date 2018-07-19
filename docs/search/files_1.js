@@ -9,5 +9,11 @@ var searchData=
   ['commitwindow_2ecpp',['CommitWindow.cpp',['../CommitWindow_8cpp.html',1,'']]],
   ['commitwindow_2eh',['CommitWindow.h',['../CommitWindow_8h.html',1,'']]],
   ['conflictswindow_2ecpp',['ConflictsWindow.cpp',['../ConflictsWindow_8cpp.html',1,'']]],
-  ['conflictswindow_2eh',['ConflictsWindow.h',['../ConflictsWindow_8h.html',1,'']]]
+  ['conflictswindow_2eh',['ConflictsWindow.h',['../ConflictsWindow_8h.html',1,'']]],
+  ['createbranch_2ecpp',['CreateBranch.cpp',['../CreateBranch_8cpp.html',1,'']]],
+  ['createbranch_2eh',['CreateBranch.h',['../CreateBranch_8h.html',1,'']]],
+  ['createbranchwindow_2ecpp',['CreateBranchWindow.cpp',['../CreateBranchWindow_8cpp.html',1,'']]],
+  ['createbranchwindow_2eh',['CreateBranchWindow.h',['../CreateBranchWindow_8h.html',1,'']]],
+  ['credentialswindow_2ecpp',['CredentialsWindow.cpp',['../CredentialsWindow_8cpp.html',1,'']]],
+  ['credentialswindow_2eh',['CredentialsWindow.h',['../CredentialsWindow_8h.html',1,'']]]
 ];

@@ -72,8 +72,10 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="Utils_8h_source.html">Utils.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ConflictsWindow_8h_source.html">UI/ConflictsWindow.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="CredentialsWindow_8h_source.html">UI/CredentialsWindow.h</a>&quot;</code><br />
 <code>#include &lt;StorageKit.h&gt;</code><br />
 <code>#include &lt;git2.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 </div><table class="memberdecls">
@@ -97,6 +99,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ad16d96a8e2f6586ef0d5327057589cb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Utils_8cpp.html#ad16d96a8e2f6586ef0d5327057589cb6">output_conflicts</a> (git_index *index)</td></tr>
 <tr class="memdesc:ad16d96a8e2f6586ef0d5327057589cb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shows conflicts in current repo index in a window.  <a href="#ad16d96a8e2f6586ef0d5327057589cb6">More...</a><br /></td></tr>
 <tr class="separator:ad16d96a8e2f6586ef0d5327057589cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7328dba42df1fcd52ffa47aca1012db8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Utils_8cpp.html#a7328dba42df1fcd52ffa47aca1012db8">cred_acquire_cb</a> (git_cred **out, const char *url, const char *username_from_url, unsigned int allowed_types, void *payload)</td></tr>
+<tr class="memdesc:a7328dba42df1fcd52ffa47aca1012db8"><td class="mdescLeft">&#160;</td><td class="mdescRight">This functions gets username and password from the user in case credentials are required.  <a href="#a7328dba42df1fcd52ffa47aca1012db8">More...</a><br /></td></tr>
+<tr class="separator:a7328dba42df1fcd52ffa47aca1012db8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation file of Utils. </p>
@@ -145,6 +150,54 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 or error code. </dd></dl>
+
+</div>
+</div>
+<a id="a7328dba42df1fcd52ffa47aca1012db8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7328dba42df1fcd52ffa47aca1012db8">&#9670;&nbsp;</a></span>cred_acquire_cb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cred_acquire_cb </td>
+          <td>(</td>
+          <td class="paramtype">git_cred **&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>url</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>username_from_url</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>allowed_types</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>payload</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This functions gets username and password from the user in case credentials are required. </p>
 
 </div>
 </div>
