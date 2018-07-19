@@ -29,7 +29,8 @@ enum {
 	kPush,
 	kShowConflicts,
 	kCreateBranch,
-	kSwitchBranch
+	kSwitchBranch,
+	kLog
 };
 
 

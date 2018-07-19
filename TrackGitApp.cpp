@@ -22,6 +22,7 @@
 #include "GitCommand/ShowConflicts.h"
 #include "GitCommand/CreateBranch.h"
 #include "GitCommand/SwitchBranch.h"
+#include "GitCommand/Log.h"
 
 
 /**
@@ -108,6 +109,9 @@ TrackGitApp::MessageReceived(BMessage* msg)
 			break;
 		case kSwitchBranch:
 			gitCommand = new SwitchBranch(repo);
+			break;
+		case kLog:
+			gitCommand = new Log(repo);
 			break;
 		default:
 			break;

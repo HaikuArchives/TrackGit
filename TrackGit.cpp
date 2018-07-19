@@ -141,6 +141,13 @@ populate_menu(BMessage* msg, BMenu* menu, BHandler* handler)
 				B_TRANSLATE("Switch branch" B_UTF8_ELLIPSIS), switchBranchMsg);
 		submenu->AddItem(switchBranchItem);
 
+		// Add Log menu item
+		BMessage* logMsg = new BMessage(*msg);
+		logMsg->AddInt32("addon_item_id", kLog);
+		BMenuItem* logItem = new BMenuItem(
+				B_TRANSLATE("Log" B_UTF8_ELLIPSIS), logMsg);
+		submenu->AddItem(logItem);
+
 		if (selected.size() > 0) {
 			// Add "Add Files" menu item
 			BMessage* addMsg = new BMessage(*msg);
