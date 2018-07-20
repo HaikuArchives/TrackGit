@@ -112,7 +112,6 @@ static void print_time(const git_time *intime, const char *prefix,
 	intm = gmtime(&t);
 	strftime(out, sizeof(out), "%a %b %e %T %Y", intm);
 
-	printf("%s%s %c%02d%02d\n", prefix, out, sign, hours, minutes);
 	text << prefix << out << " "<< sign << hours << minutes << "\n";
 }
 
@@ -129,37 +128,29 @@ static void print_commit(git_commit *commit, struct log_options *opts,
 	const char *scan, *eol;
 
 	git_oid_tostr(buf, sizeof(buf), git_commit_id(commit));
-	printf("commit %s\n", buf);
 	text << "commit " << buf << "\n";
 
 	if ((count = (int)git_commit_parentcount(commit)) > 1) {
-		printf("Merge:");
 		text << "Merge: ";
 		for (i = 0; i < count; ++i) {
 			git_oid_tostr(buf, 8, git_commit_parent_id(commit, i));
-			printf(" %s", buf);
 			text << buf;
 		}
-		printf("\n");
 		text << "\n";
 	}
 
 	if ((sig = git_commit_author(commit)) != NULL) {
-		printf("Author: %s <%s>\n", sig->name, sig->email);
 		text << "Author: " << sig->name << " <" << sig->email << ">\n";
 		print_time(&sig->when, "Date:   ", text);
 	}
-	printf("\n");
 	text << "\n";
 
 	for (scan = git_commit_message(commit); scan && *scan; ) {
 		for (eol = scan; *eol && *eol != '\n'; ++eol) /* find eol */;
 
-		printf("    %.*s\n", (int)(eol - scan), scan);
 		text << "\t" << scan << "\n";
 		scan = *eol ? eol + 1 : NULL;
 	}
-	printf("\n");
 	text << "\n";
 }
 
