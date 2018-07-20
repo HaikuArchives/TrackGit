@@ -91,8 +91,10 @@ print_progress(const progress_data* progress)
 			<< progress->fetch_progress.total_objects << ")\n";
 	}
 
-	if (progress->cloneWindow)
+	if (progress->cloneWindow) {
 		progress->cloneWindow->SetProgressText(progressString);
+		progress->cloneWindow->SetProgress(index_percent);
+	}
 }
 
 

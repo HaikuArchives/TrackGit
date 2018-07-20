@@ -52,6 +52,7 @@ class CloneWindow : public TrackGitWindow {
 	public:
 							CloneWindow(BString, BString, Clone*);
 	void					SetProgressText(BString);
+	void					SetProgress(float);
 	virtual void			MessageReceived(BMessage*);
 };
 
@@ -65,15 +66,20 @@ class CloneProgressWindow : public BWindow
 	 * The Clone Window pointer.
 	 * Used to sent cancel BMessage.
 	 */
-	CloneWindow*		fCloneWindow;
+	CloneWindow*			fCloneWindow;
 	/**
 	 * The text view to show progress text.
 	 */
-	BTextView*			fTextView;
+	BTextView*				fTextView;
+	/**
+	 * The progress bar.
+	 */
+	BStatusBar*				fProgressBar;
 	public:
-						CloneProgressWindow(CloneWindow*);
-	void				SetText(const char*);
-	virtual void		MessageReceived(BMessage*);
+							CloneProgressWindow(CloneWindow*);
+	void					SetText(const char*);
+	void					SetProgress(float);
+	virtual void			MessageReceived(BMessage*);
 };
 
 #endif

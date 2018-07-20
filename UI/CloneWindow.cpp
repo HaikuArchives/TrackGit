@@ -24,7 +24,7 @@
  */
 CloneWindow::CloneWindow(BString repo, BString dirPath, Clone* clone)
 	:
-	TrackGitWindow(repo, BRect(0, 0, 300, 150), "TrackGit - Clone",
+	TrackGitWindow(repo, BRect(0, 0, 300, 180), "TrackGit - Clone",
 			B_DOCUMENT_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
 {
 	fClone = clone;
@@ -60,6 +60,17 @@ void
 CloneWindow::SetProgressText(BString text)
 {
 	fProgressWindow->SetText(text.String());
+}
+
+
+/**
+ * Sets the progress value of the progress bar in progress window.
+ * @param progress The progress value.
+ */
+void
+CloneWindow::SetProgress(float progress)
+{
+	fProgressWindow->SetProgress(progress);
 }
 
 
@@ -105,12 +116,17 @@ CloneProgressWindow::CloneProgressWindow(CloneWindow* cloneWindow)
 	fTextView->MakeSelectable(false);
 	fTextView->SetWordWrap(true);
 	fTextView->SetText("Cloning" B_UTF8_ELLIPSIS "\nRepository");
+
+	fProgressBar = new BStatusBar("progressBar");
+	fProgressBar->SetBarHeight(20);
+
 	BButton* fCancel = new BButton("ok", "Cancel",
 								  new BMessage(kCancel));
 
     BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.SetInsets(10)
 		.Add(fTextView)
+		.Add(fProgressBar)
 		.AddGroup(B_HORIZONTAL, 0)
 			.AddGlue()
 			.Add(fCancel)
@@ -127,6 +143,20 @@ CloneProgressWindow::SetText(const char* text)
 {
 	if (LockLooper()) {
 		fTextView->SetText(text);
+		UnlockLooper();
+	}
+}
+
+
+/**
+ * This function sets the value of progress bar.
+ * @param progress The progress value.
+ */
+void
+CloneProgressWindow::SetProgress(float progress)
+{
+	if (LockLooper()) {
+		fProgressBar->SetTo(progress);
 		UnlockLooper();
 	}
 }
