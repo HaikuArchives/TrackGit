@@ -15,17 +15,35 @@
 
 
 /**
+ * The Status List Item class.
+ */
+class StatusItem : public BStringItem {
+	/**
+	 * The text to be displayed.
+	 */
+	BString				fText;
+	/**
+	 * The file path of item.
+	 */
+	BString				fPath;
+public:
+						StatusItem(BString, BString);
+	BString				GetPath();
+};
+
+
+/**
  * The Status Window class.
  */
 class StatusWindow : public TrackGitWindow {
 	/**
-	 * The Status Text View.
+	 * The Status List View.
 	 */
-	BTextView* fStatusTextView;
+	BListView*			fStatusListView;
 public:
-	StatusWindow(BString);
-	void SetText(BString*);
-	virtual void MessageReceived(BMessage*);
+						StatusWindow(BString);
+	void				AddItem(BString, BString);
+	virtual void		MessageReceived(BMessage*);
 };
 
 #endif

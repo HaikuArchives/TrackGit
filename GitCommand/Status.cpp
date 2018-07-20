@@ -44,19 +44,13 @@ Status::GetWindow()
 
 /**
  * Status command execution.
- * Opens an alert with status text.
+ * Shows an alert with status text.
  */
 void
 Status::Execute()
 {
 	BString* statusText = GetStatusText();
 
-	if (!fStatusWindow) {
-		fStatusWindow->Quit();
-		return;
-	}
-
-	fStatusWindow->SetText(statusText);
 }
 
 
@@ -66,7 +60,7 @@ Status::Execute()
  * @returns The Status text.
  */
 BString*
-Status::GetStatusTextUtil(git_status_list *status)
+Status::GetStatusTextUtil(git_status_list* status, StatusWindow* window)
 {
 	size_t i, maxi = git_status_list_entrycount(status);
 	const git_status_entry *s;
@@ -104,22 +98,32 @@ Status::GetStatusTextUtil(git_status_list *status)
 		if (!header) {
 			statusText->Append("\n");
 			statusText->Append("Changes to be committed:\n");
+			if (window) {
+				window->AddItem(BString(), BString());
+				window->AddItem(BString("Changes to be commited:"), BString());
+			}
 			header = 1;
 		}
 
 		old_path = s->head_to_index->old_file.path;
 		new_path = s->head_to_index->new_file.path;
 
+		BString text;
 		if (old_path && new_path && strcmp(old_path, new_path)) {
-			statusText->Append("\t%istatus %old -> %new\n");
-			statusText->ReplaceFirst("%istatus", istatus);
-			statusText->ReplaceFirst("%old", old_path);
-			statusText->ReplaceFirst("%new", new_path);
+			text.Append("\t%istatus %old -> %new\n");
+			text.ReplaceFirst("%istatus", istatus);
+			text.ReplaceFirst("%old", old_path);
+			text.ReplaceFirst("%new", new_path);
+			if (window)
+				window->AddItem(text, BString(new_path));
 		} else {
-			statusText->Append("\t%istatus %file\n");
-			statusText->ReplaceFirst("%istatus", istatus);
-			statusText->ReplaceFirst("%file", old_path ? old_path : new_path);
+			text.Append("\t%istatus %file\n");
+			text.ReplaceFirst("%istatus", istatus);
+			text.ReplaceFirst("%file", old_path ? old_path : new_path);
+			if (window)
+				window->AddItem(text, BString(old_path ? old_path : new_path));
 		}
+		statusText->Append(text);
 	}
 
 	if (header) {
@@ -158,21 +162,32 @@ Status::GetStatusTextUtil(git_status_list *status)
 			statusText->Append("\n");
 			statusText->Append("Changes not staged for commit:\n");
 			header = 1;
+			if (window) {
+				window->AddItem(BString(), BString());
+				window->AddItem(BString("Changes not staged for commit:"),
+							BString());
+			}
 		}
 
 		old_path = s->index_to_workdir->old_file.path;
 		new_path = s->index_to_workdir->new_file.path;
 
+		BString text;
 		if (old_path && new_path && strcmp(old_path, new_path)) {
-			statusText->Append("\t%wstatus %old -> %new\n");
-			statusText->ReplaceFirst("%wstatus", wstatus);
-			statusText->ReplaceFirst("%old", old_path);
-			statusText->ReplaceFirst("%new", new_path);
+			text.Append("\t%wstatus %old -> %new\n");
+			text.ReplaceFirst("%wstatus", wstatus);
+			text.ReplaceFirst("%old", old_path);
+			text.ReplaceFirst("%new", new_path);
+			if (window)
+				window->AddItem(text, BString(new_path));
 		} else {
-			statusText->Append("\t%wstatus %file\n");
-			statusText->ReplaceFirst("%wstatus", wstatus);
-			statusText->ReplaceFirst("%file", old_path ? old_path : new_path);
+			text.Append("\t%wstatus %file\n");
+			text.ReplaceFirst("%wstatus", wstatus);
+			text.ReplaceFirst("%file", old_path ? old_path : new_path);
+			if (window)
+				window->AddItem(text, BString(old_path ? old_path : new_path));
 		}
+		statusText->Append(text);
 	}
 
 	if (header) {
@@ -191,11 +206,19 @@ Status::GetStatusTextUtil(git_status_list *status)
 				statusText->Append("\n");
 				statusText->Append("Untracked files:\n");
 				header = 1;
+				if (window) {
+					window->AddItem(BString(), BString());
+					window->AddItem(BString("Untracked files:"), BString());
+				}
 			}
 
-			statusText->Append("\tuntracked: %file\n");
-			statusText->ReplaceFirst("%file" ,
-					s->index_to_workdir->old_file.path);
+			BString text;
+			text.Append("\tuntracked: %file\n");
+			text.ReplaceFirst("%file" , s->index_to_workdir->old_file.path);
+			statusText->Append(text);
+			if (window)
+				window->AddItem(text, BString(
+						s->index_to_workdir->old_file.path));
 
 		}
 	}
@@ -212,19 +235,37 @@ Status::GetStatusTextUtil(git_status_list *status)
 				statusText->Append("\n");
 				statusText->Append("Ignored files:\n");
 				header = 1;
+				if (window) {
+					window->AddItem(BString(), BString());
+					window->AddItem(BString("Ignored files:"), BString());
+				}
 			}
 
-			statusText->Append("\t%file\n");
-			statusText->ReplaceFirst("%file" ,
+			BString text;
+			text.Append("\t%file\n");
+			text.ReplaceFirst("%file" ,
 					s->index_to_workdir->old_file.path);
+			statusText->Append(text);
+			if (window)
+				window->AddItem(text, BString(
+						s->index_to_workdir->old_file.path));
 		}
 	}
 
-	if (!changesInIndex && changesInWorkDir)
+	if (!changesInIndex && changesInWorkDir) {
 		statusText->Append("\nNo changes added to commit\n");
+		if (window) {
+			window->AddItem(BString(), BString());
+			window->AddItem(BString("No changes added to commit."), BString());
+		}
+	}
 
-	if (statusText->Length() == 0)
+	if (statusText->Length() == 0) {
 		statusText->Append("No changes to current branch.\n");
+		if (window)
+			window->AddItem(BString("No changes to current branch."),
+				   BString());
+	}
 
 	return statusText;
 }
@@ -236,7 +277,7 @@ Status::GetStatusTextUtil(git_status_list *status)
  * @returns The Branch text.
  */
 BString*
-Status::GetBranchText(git_repository *repo)
+Status::GetBranchText(git_repository *repo, StatusWindow* window)
 {
 	int error = 0;
 	const char *branch = NULL;
@@ -254,6 +295,8 @@ Status::GetBranchText(git_repository *repo)
 	BString* branchText = new BString("Branch: ");
 	branchText->Append((branch) ? branch : "No Branch info");
 	branchText->Append("\n");
+	if (window)
+		window->AddItem(*branchText, BString());
 
 	git_reference_free(head);
 	
@@ -313,8 +356,8 @@ Status::GetStatusText()
 		return NULL;
 	}
 
-	BString* branchText = GetBranchText(repo);
-	BString* statusText = GetStatusTextUtil(status);
+	BString* branchText = GetBranchText(repo, fStatusWindow);
+	BString* statusText = GetStatusTextUtil(status, fStatusWindow);
 	BString* text = new BString("Current directory: %dir\n");
 	text->ReplaceFirst("%dir", fDirPath.String());
 	text->Append(*branchText);

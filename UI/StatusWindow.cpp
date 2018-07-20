@@ -16,8 +16,35 @@
 
 
 enum {
-	kOK
+	kStatusOK,
+	kStatusSelected
 };
+
+
+/**
+ * StatusItem Constructor.
+ * @param text The text to be displayed.
+ * @param path The path of the file.
+ */
+StatusItem::StatusItem(BString text, BString path)
+	:
+	BStringItem(text)
+{
+	fText = text;
+	fPath = path;
+}
+
+
+/**
+ * Getter for path.
+ * @returns The path of the file.
+ */
+BString
+StatusItem::GetPath()
+{
+	return fPath;
+}
+
 
 /**
  * StatusWindow Constructor
@@ -28,16 +55,16 @@ StatusWindow::StatusWindow(BString repo)
 	TrackGitWindow(repo, BRect(0, 0, 300, 300), "TrackGit - Status",
 			B_DOCUMENT_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
 {
-	fStatusTextView = new BTextView("statusText");
-	fStatusTextView->SetText("Loading...");
-	fStatusTextView->MakeEditable(false);
+	fStatusListView = new BListView(B_SINGLE_SELECTION_LIST);
+	//fStatusListView->SetSelectionMessage(new BMessage(kStatusSelected));
+	fStatusListView->SetInvocationMessage(new BMessage(kStatusSelected));
 	
 	BScrollView* fScrollView = new BScrollView("statusScrollView",
-			fStatusTextView, B_WILL_DRAW | B_FRAME_EVENTS, false, true,
+			fStatusListView, B_WILL_DRAW | B_FRAME_EVENTS, false, true,
 			B_PLAIN_BORDER);
 
 	BButton* fOK = new BButton("ok", B_TRANSLATE("OK"),
-			new BMessage(kOK));
+			new BMessage(kStatusOK));
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.SetInsets(10)
@@ -50,14 +77,15 @@ StatusWindow::StatusWindow(BString repo)
 
 
 /**
- * Sets Text of the View in Window.
+ * Adds item to the Status list.
  * @param text The text to be set.
+ * @param path The path of the file.
  */
 void
-StatusWindow::SetText(BString* text)
+StatusWindow::AddItem(BString text, BString path)
 {
 	if (LockLooper()) {
-		fStatusTextView->SetText(text->String());
+		fStatusListView->AddItem(new StatusItem(text, path));
 		UnlockLooper();
 	}
 }
@@ -70,8 +98,31 @@ StatusWindow::SetText(BString* text)
 void
 StatusWindow::MessageReceived(BMessage* msg)
 {
+	int selection;
+	StatusItem* item;
+	BString path;
+	BEntry entry;
+	entry_ref ref;
+	BMessenger msgr;
+	BMessage rmsg;
 	switch (msg->what) {
-		case kOK:
+		case kStatusSelected:
+			selection = fStatusListView->CurrentSelection();
+			item = (StatusItem*)fStatusListView->ItemAt(selection);
+			if (item->GetPath().Length() > 0) {
+				path = fRepo;
+				path.ReplaceFirst(".git/", "");
+				path.Append(item->GetPath());
+				printf("Selected %s\n", path.String());
+				entry = BEntry(path.String());
+				entry.GetRef(&ref);
+				msgr = BMessenger("application/x-vnd.Be-TRAK");
+				rmsg = BMessage(B_REFS_RECEIVED);
+				rmsg.AddRef("refs", &ref);
+				msgr.SendMessage(&rmsg);
+			}
+			break;
+		case kStatusOK:
 			Quit();
 			break;
 		default:

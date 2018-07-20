@@ -55,8 +55,8 @@ public:
 	virtual	void			Execute();
 	BString*				GetStatusText();
 	virtual TrackGitWindow*	GetWindow();
-	static BString*			GetStatusTextUtil(git_status_list*);
-	static BString*			GetBranchText(git_repository*);
+	static BString*			GetStatusTextUtil(git_status_list*, StatusWindow*);
+	static BString*			GetBranchText(git_repository*, StatusWindow*);
 };
 
 #endif
