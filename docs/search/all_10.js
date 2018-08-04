@@ -1,11 +1,8 @@
 var searchData=
 [
-  ['trackgit',['TrackGit',['../index.html',1,'']]],
-  ['total_5fsteps',['total_steps',['../structprogress__data.html#a85f8f04a17ded841316001a57751c7fe',1,'progress_data']]],
-  ['trackgit_2ecpp',['TrackGit.cpp',['../TrackGit_8cpp.html',1,'']]],
-  ['trackgitapp',['TrackGitApp',['../classTrackGitApp.html',1,'TrackGitApp'],['../classTrackGitApp.html#ae1daf8c8e24a22e695ca77cc66dd6fd1',1,'TrackGitApp::TrackGitApp()']]],
-  ['trackgitapp_2ecpp',['TrackGitApp.cpp',['../TrackGitApp_8cpp.html',1,'']]],
-  ['trackgitapp_2eh',['TrackGitApp.h',['../TrackGitApp_8h.html',1,'']]],
-  ['trackgitwindow',['TrackGitWindow',['../classTrackGitWindow.html',1,'TrackGitWindow'],['../classTrackGitWindow.html#a336a3d3c8c657624ec6b37fc40c174f2',1,'TrackGitWindow::TrackGitWindow()']]],
-  ['trackgitwindow_2eh',['TrackGitWindow.h',['../TrackGitWindow_8h.html',1,'']]]
+  ['readme_2emd',['README.md',['../README_8md.html',1,'']]],
+  ['repeat',['repeat',['../structopts.html#ac8e852f83ae4c0d31d919cc31ac5c349',1,'opts']]],
+  ['repo',['repo',['../structlog__state.html#a3255508f417b2ec0efcff437d82d6557',1,'log_state']]],
+  ['repodir',['repodir',['../structlog__state.html#a8d0dd6b25c4fbdaa95fae0ab3ffb24dc',1,'log_state::repodir()'],['../structopts.html#a55f132d782e02ac19ca06822ee1a6729',1,'opts::repodir()']]],
+  ['revisions',['revisions',['../structlog__state.html#ae0427f3596ba126067dc668754d99ff9',1,'log_state']]]
 ];

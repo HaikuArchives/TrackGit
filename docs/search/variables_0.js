@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['branch',['branch',['../structfetch__payload.html#a78fbc4742a18e6fd57bc9b48c0afd4f3',1,'fetch_payload']]],
-  ['branch_5foid',['branch_oid',['../structfetch__payload.html#ab549c311f8ef078aa2d34654ef805ae3',1,'fetch_payload']]]
+  ['after',['after',['../structlog__options.html#ac2f6620bbd83e3d8d1530383c9a42954',1,'log_options']]],
+  ['author',['author',['../structlog__options.html#ac2380efa94bef6251264bc3dac1e2bae',1,'log_options']]]
 ];

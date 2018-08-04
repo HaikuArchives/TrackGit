@@ -84,11 +84,12 @@ Inheritance diagram for GitCommand:</div>
 <area href="classCommit.html" title="Commit command Class. " alt="Commit" shape="rect" coords="102,168,194,192"/>
 <area href="classCreateBranch.html" title="Create Branch command Class. " alt="CreateBranch" shape="rect" coords="102,224,194,248"/>
 <area href="classInit.html" title="Init command Class. " alt="Init" shape="rect" coords="102,280,194,304"/>
-<area href="classPull.html" title="Pull command Class. " alt="Pull" shape="rect" coords="102,336,194,360"/>
-<area href="classPush.html" title="Push command Class. " alt="Push" shape="rect" coords="102,392,194,416"/>
-<area href="classShowConflicts.html" title="ShowConflicts command Class. " alt="ShowConflicts" shape="rect" coords="102,448,194,472"/>
-<area href="classStatus.html" title="Status command Class. " alt="Status" shape="rect" coords="102,504,194,528"/>
-<area href="classSwitchBranch.html" title="Switch Branch command Class. " alt="SwitchBranch" shape="rect" coords="102,560,194,584"/>
+<area href="classLog.html" title="Log command Class. " alt="Log" shape="rect" coords="102,336,194,360"/>
+<area href="classPull.html" title="Pull command Class. " alt="Pull" shape="rect" coords="102,392,194,416"/>
+<area href="classPush.html" title="Push command Class. " alt="Push" shape="rect" coords="102,448,194,472"/>
+<area href="classShowConflicts.html" title="ShowConflicts command Class. " alt="ShowConflicts" shape="rect" coords="102,504,194,528"/>
+<area href="classStatus.html" title="Status command Class. " alt="Status" shape="rect" coords="102,560,194,584"/>
+<area href="classSwitchBranch.html" title="Switch Branch command Class. " alt="SwitchBranch" shape="rect" coords="102,616,194,640"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -104,6 +105,8 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classGitCommand.html" title="GitCommand Class. ">GitCommand</a> Class. </p>
 <p>This class is abstract class which are inherited by various Git commands. These commands are the interface to libgit2. </p>
+
+<p class="definition">Definition at line <a class="el" href="GitCommand_8h_source.html#l00020">20</a> of file <a class="el" href="GitCommand_8h_source.html">GitCommand.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a94cf3dc8475df20f04add46a6f22d949"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a94cf3dc8475df20f04add46a6f22d949">&#9670;&nbsp;</a></span>Execute()</h2>
@@ -130,7 +133,7 @@ Public Member Functions</h2></td></tr>
 
 <p>This is where actual calls to libgit2 will go. </p>
 
-<p>Implemented in <a class="el" href="classClone.html#a0029c0e5d7130a849137e85cafdcdd16">Clone</a>, <a class="el" href="classStatus.html#a22113306e7a305a22dd4f50e79dbbadb">Status</a>, <a class="el" href="classPull.html#ae86772a90a63358fe9625195bc5dc9d1">Pull</a>, <a class="el" href="classPush.html#aa65e736f10dfa6a96ed928b582c4f24b">Push</a>, <a class="el" href="classAdd.html#a0dfbdff449a14e5180be5d2575fc5d20">Add</a>, <a class="el" href="classSwitchBranch.html#ae8d33a7d087b441f97b7c08cfb989a4d">SwitchBranch</a>, <a class="el" href="classCommit.html#acc97934dd1c5807419f958bdf1ee3839">Commit</a>, <a class="el" href="classCreateBranch.html#a2c9b7efe0fb1e6f5ea18f4d089fe7a08">CreateBranch</a>, <a class="el" href="classInit.html#a08491eed3f934d97decbc287d293afa0">Init</a>, and <a class="el" href="classShowConflicts.html#a389154051d95b89c9650eecb376ba329">ShowConflicts</a>.</p>
+<p>Implemented in <a class="el" href="classClone.html#a0029c0e5d7130a849137e85cafdcdd16">Clone</a>, <a class="el" href="classLog.html#a9cc2549dc36a6274717d13a6f13f8888">Log</a>, <a class="el" href="classStatus.html#a22113306e7a305a22dd4f50e79dbbadb">Status</a>, <a class="el" href="classPull.html#ae86772a90a63358fe9625195bc5dc9d1">Pull</a>, <a class="el" href="classPush.html#aa65e736f10dfa6a96ed928b582c4f24b">Push</a>, <a class="el" href="classAdd.html#a0dfbdff449a14e5180be5d2575fc5d20">Add</a>, <a class="el" href="classSwitchBranch.html#ae8d33a7d087b441f97b7c08cfb989a4d">SwitchBranch</a>, <a class="el" href="classCommit.html#acc97934dd1c5807419f958bdf1ee3839">Commit</a>, <a class="el" href="classCreateBranch.html#a2c9b7efe0fb1e6f5ea18f4d089fe7a08">CreateBranch</a>, <a class="el" href="classInit.html#a08491eed3f934d97decbc287d293afa0">Init</a>, and <a class="el" href="classShowConflicts.html#a389154051d95b89c9650eecb376ba329">ShowConflicts</a>.</p>
 
 </div>
 </div>
@@ -160,7 +163,9 @@ Public Member Functions</h2></td></tr>
 <p>This is used to get pointer to the window (if any). </p>
 <dl class="section return"><dt>Returns</dt><dd>The pointer to the window of command. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classClone.html#a4ae0ef8af1f956856823527e4002dd34">Clone</a>, <a class="el" href="classStatus.html#a4edf252fd12830bf0808f3d9ff009662">Status</a>, <a class="el" href="classPull.html#ad114554a1f5a3e7c9b128dccde4b9101">Pull</a>, <a class="el" href="classPush.html#a5e558e15d0217447b6e2beaa359604af">Push</a>, <a class="el" href="classSwitchBranch.html#a6d29f96faa802f6b7f2da10155bd414c">SwitchBranch</a>, <a class="el" href="classCommit.html#a7b630670d736db78fab10c2de0755910">Commit</a>, and <a class="el" href="classCreateBranch.html#aed4d012ac321d0b3d6a28e02a3642f5e">CreateBranch</a>.</p>
+<p>Reimplemented in <a class="el" href="classLog.html#a9369ab614854da3771b261a8ed39b040">Log</a>, <a class="el" href="classClone.html#a4ae0ef8af1f956856823527e4002dd34">Clone</a>, <a class="el" href="classStatus.html#a4edf252fd12830bf0808f3d9ff009662">Status</a>, <a class="el" href="classPull.html#ad114554a1f5a3e7c9b128dccde4b9101">Pull</a>, <a class="el" href="classPush.html#a5e558e15d0217447b6e2beaa359604af">Push</a>, <a class="el" href="classSwitchBranch.html#a6d29f96faa802f6b7f2da10155bd414c">SwitchBranch</a>, <a class="el" href="classCommit.html#a7b630670d736db78fab10c2de0755910">Commit</a>, and <a class="el" href="classCreateBranch.html#aed4d012ac321d0b3d6a28e02a3642f5e">CreateBranch</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="GitCommand_8h_source.html#l00030">30</a> of file <a class="el" href="GitCommand_8h_source.html">GitCommand.h</a>.</p>
 
 </div>
 </div>

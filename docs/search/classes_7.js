@@ -1,8 +1,11 @@
 var searchData=
 [
-  ['showconflicts',['ShowConflicts',['../classShowConflicts.html',1,'']]],
-  ['status',['Status',['../classStatus.html',1,'']]],
-  ['statuswindow',['StatusWindow',['../classStatusWindow.html',1,'']]],
-  ['switchbranch',['SwitchBranch',['../classSwitchBranch.html',1,'']]],
-  ['switchbranchwindow',['SwitchBranchWindow',['../classSwitchBranchWindow.html',1,'']]]
+  ['param',['param',['../structparam.html',1,'']]],
+  ['progress_5fdata',['progress_data',['../structprogress__data.html',1,'']]],
+  ['pull',['Pull',['../classPull.html',1,'']]],
+  ['pull_5fparams',['pull_params',['../structpull__params.html',1,'']]],
+  ['pullwindow',['PullWindow',['../classPullWindow.html',1,'']]],
+  ['push',['Push',['../classPush.html',1,'']]],
+  ['push_5fparams',['push_params',['../structpush__params.html',1,'']]],
+  ['pushwindow',['PushWindow',['../classPushWindow.html',1,'']]]
 ];

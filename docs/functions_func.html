@@ -70,6 +70,9 @@ $(function() {
 <li>AddFiles()
 : <a class="el" href="classAdd.html#a9234cb905a78dae319959c7a5a4c3708">Add</a>
 </li>
+<li>AddItem()
+: <a class="el" href="classStatusWindow.html#a6392c306dec852f0efcd6226dfb53f29">StatusWindow</a>
+</li>
 </ul>
 
 
@@ -134,6 +137,7 @@ $(function() {
 , <a class="el" href="classCreateBranch.html#a2c9b7efe0fb1e6f5ea18f4d089fe7a08">CreateBranch</a>
 , <a class="el" href="classGitCommand.html#a94cf3dc8475df20f04add46a6f22d949">GitCommand</a>
 , <a class="el" href="classInit.html#a08491eed3f934d97decbc287d293afa0">Init</a>
+, <a class="el" href="classLog.html#a9cc2549dc36a6274717d13a6f13f8888">Log</a>
 , <a class="el" href="classPull.html#ae86772a90a63358fe9625195bc5dc9d1">Pull</a>
 , <a class="el" href="classPush.html#aa65e736f10dfa6a96ed928b582c4f24b">Push</a>
 , <a class="el" href="classShowConflicts.html#a389154051d95b89c9650eecb376ba329">ShowConflicts</a>
@@ -155,19 +159,26 @@ $(function() {
 : <a class="el" href="classSwitchBranch.html#afb01cabe6b5edce690e9ff3a568be257">SwitchBranch</a>
 </li>
 <li>GetBranchText()
-: <a class="el" href="classStatus.html#a047eb3e2653cfde18ad2e4cfcca6759f">Status</a>
+: <a class="el" href="classStatus.html#a44c08f069c8c7021355c526a595f114b">Status</a>
+</li>
+<li>GetLogText()
+: <a class="el" href="classLog.html#a779292cfdb4bacfca5a9ec43966d06ec">Log</a>
+</li>
+<li>GetPath()
+: <a class="el" href="classStatusItem.html#a7b27ebf5598a2a71841491b0471dfe69">StatusItem</a>
 </li>
 <li>GetStatusText()
 : <a class="el" href="classStatus.html#a3b6ccd17bcdecae12a352c4d09d3d613">Status</a>
 </li>
 <li>GetStatusTextUtil()
-: <a class="el" href="classStatus.html#a260cc821753970f4dde2aefb8233911e">Status</a>
+: <a class="el" href="classStatus.html#ac6d5b54c6dee4b025487684d4664c031">Status</a>
 </li>
 <li>GetWindow()
 : <a class="el" href="classClone.html#a4ae0ef8af1f956856823527e4002dd34">Clone</a>
 , <a class="el" href="classCommit.html#a7b630670d736db78fab10c2de0755910">Commit</a>
 , <a class="el" href="classCreateBranch.html#aed4d012ac321d0b3d6a28e02a3642f5e">CreateBranch</a>
 , <a class="el" href="classGitCommand.html#a3a7a5df7111f44a731a4a21d3e4ac539">GitCommand</a>
+, <a class="el" href="classLog.html#a9369ab614854da3771b261a8ed39b040">Log</a>
 , <a class="el" href="classPull.html#ad114554a1f5a3e7c9b128dccde4b9101">Pull</a>
 , <a class="el" href="classPush.html#a5e558e15d0217447b6e2beaa359604af">Push</a>
 , <a class="el" href="classStatus.html#a4edf252fd12830bf0808f3d9ff009662">Status</a>
@@ -189,6 +200,16 @@ $(function() {
 </ul>
 
 
+<h3><a id="index_l"></a>- l -</h3><ul>
+<li>Log()
+: <a class="el" href="classLog.html#a64965b07334326b95152d36040a7ec26">Log</a>
+</li>
+<li>LogWindow()
+: <a class="el" href="classLogWindow.html#a86ad8398985c2f9630a1e33551b8c4cc">LogWindow</a>
+</li>
+</ul>
+
+
 <h3><a id="index_m"></a>- m -</h3><ul>
 <li>MessageReceived()
 : <a class="el" href="classCloneProgressWindow.html#a700f8f65bf2a66e72360366e44bde75e">CloneProgressWindow</a>
@@ -197,6 +218,7 @@ $(function() {
 , <a class="el" href="classConflictsWindow.html#a711235374d22d2ba626f1a4d930e6b6b">ConflictsWindow</a>
 , <a class="el" href="classCreateBranchWindow.html#adc421bb1a2ee5e9ad29121fb7839a917">CreateBranchWindow</a>
 , <a class="el" href="classCredentialsWindow.html#a9e4c1234644b23046a07eacc28846eb3">CredentialsWindow</a>
+, <a class="el" href="classLogWindow.html#ae41aa96000e16d0f9e2b3b9077d60593">LogWindow</a>
 , <a class="el" href="classPullWindow.html#a1c5f0a718c4f56567fc4106f5db605df">PullWindow</a>
 , <a class="el" href="classPushWindow.html#a6e0733e1b56f5f1c17fd0c185b363583">PushWindow</a>
 , <a class="el" href="classStatusWindow.html#a33df31c0ced0e43994f25375f8d8226e">StatusWindow</a>
@@ -230,21 +252,28 @@ $(function() {
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
+<li>SetProgress()
+: <a class="el" href="classCloneProgressWindow.html#a4d83e79cf10992feb3eabc373ff1b084">CloneProgressWindow</a>
+, <a class="el" href="classCloneWindow.html#a9361daa5018feb37d5a9601926802c4d">CloneWindow</a>
+</li>
 <li>SetProgressText()
 : <a class="el" href="classCloneWindow.html#aa8c90446bfd4f596261f2b203e4f27cc">CloneWindow</a>
 </li>
 <li>SetText()
 : <a class="el" href="classCloneProgressWindow.html#ab2b08327ed93547ecbd49cf7ad2b79b1">CloneProgressWindow</a>
 , <a class="el" href="classConflictsWindow.html#a09c7379df3c7236b822fef5fb1ed3661">ConflictsWindow</a>
+, <a class="el" href="classLogWindow.html#abdd9c2b5de12ae587f2ec860140b3621">LogWindow</a>
 , <a class="el" href="classPullWindow.html#a73dfe3062bdbc18a4960c87d4cf11a5c">PullWindow</a>
 , <a class="el" href="classPushWindow.html#afdf32bfe8a1507f6731c5fe95c87945d">PushWindow</a>
-, <a class="el" href="classStatusWindow.html#abbf2a2ebfe79722df2afd66b87b5a36c">StatusWindow</a>
 </li>
 <li>ShowConflicts()
 : <a class="el" href="classShowConflicts.html#a8123ac8114a5428c156f9e1ba68ebc29">ShowConflicts</a>
 </li>
 <li>Status()
 : <a class="el" href="classStatus.html#a6a5d2b43e60360372041bf221bb12729">Status</a>
+</li>
+<li>StatusItem()
+: <a class="el" href="classStatusItem.html#afdc343b5a75ce1e40ed63ba02ffb694f">StatusItem</a>
 </li>
 <li>StatusWindow()
 : <a class="el" href="classStatusWindow.html#aa1b66b8a77d4155ba4f6fc88ae757f11">StatusWindow</a>

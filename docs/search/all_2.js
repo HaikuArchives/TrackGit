@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['check_5flg2',['check_lg2',['../Log_8cpp.html#a80f9e1d2a1f0e92f701dac43cd6383ec',1,'Log.cpp']]],
   ['checkout_5fprogress',['checkout_progress',['../Clone_8cpp.html#adfb4a6be32f113f1be8b3bdc67529cb9',1,'Clone.cpp']]],
   ['clone',['Clone',['../classClone.html',1,'Clone'],['../classClone.html#a0a234618b373ecb4bfeef00a8f7ca370',1,'Clone::Clone()']]],
   ['clone_2ecpp',['Clone.cpp',['../Clone_8cpp.html',1,'']]],
@@ -11,6 +12,7 @@ var searchData=
   ['commit',['Commit',['../classCommit.html',1,'Commit'],['../classCommit.html#a39c770153436765d6fc3779fd5f1c307',1,'Commit::Commit()']]],
   ['commit_2ecpp',['Commit.cpp',['../Commit_8cpp.html',1,'']]],
   ['commit_2eh',['Commit.h',['../Commit_8h.html',1,'']]],
+  ['committer',['committer',['../structlog__options.html#a81331b35f642c4eb1a500f48a4a36ea1',1,'log_options']]],
   ['commitwindow',['CommitWindow',['../classCommitWindow.html',1,'CommitWindow'],['../classCommitWindow.html#a850c0363113f137cf1ab5e71cc9e5109',1,'CommitWindow::CommitWindow()']]],
   ['commitwindow_2ecpp',['CommitWindow.cpp',['../CommitWindow_8cpp.html',1,'']]],
   ['commitwindow_2eh',['CommitWindow.h',['../CommitWindow_8h.html',1,'']]],

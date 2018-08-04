@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['url',['url',['../structparam.html#ae96815049083647dfa94190f16ae844d',1,'param']]]
+  ['npaths',['npaths',['../structopts.html#a4effafcdf7ff2353b410ac5dc5540856',1,'opts']]]
 ];

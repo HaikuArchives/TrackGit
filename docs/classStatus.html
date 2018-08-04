@@ -102,12 +102,12 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a260cc821753970f4dde2aefb8233911e"><td class="memItemLeft" align="right" valign="top">static BString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatus.html#a260cc821753970f4dde2aefb8233911e">GetStatusTextUtil</a> (git_status_list *)</td></tr>
-<tr class="memdesc:a260cc821753970f4dde2aefb8233911e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs <a class="el" href="classStatus.html" title="Status command Class. ">Status</a> text for current repo.  <a href="#a260cc821753970f4dde2aefb8233911e">More...</a><br /></td></tr>
-<tr class="separator:a260cc821753970f4dde2aefb8233911e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a047eb3e2653cfde18ad2e4cfcca6759f"><td class="memItemLeft" align="right" valign="top">static BString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatus.html#a047eb3e2653cfde18ad2e4cfcca6759f">GetBranchText</a> (git_repository *)</td></tr>
-<tr class="memdesc:a047eb3e2653cfde18ad2e4cfcca6759f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs Branch text for current repo.  <a href="#a047eb3e2653cfde18ad2e4cfcca6759f">More...</a><br /></td></tr>
-<tr class="separator:a047eb3e2653cfde18ad2e4cfcca6759f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6d5b54c6dee4b025487684d4664c031"><td class="memItemLeft" align="right" valign="top">static BString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatus.html#ac6d5b54c6dee4b025487684d4664c031">GetStatusTextUtil</a> (git_status_list *, <a class="el" href="classStatusWindow.html">StatusWindow</a> *)</td></tr>
+<tr class="memdesc:ac6d5b54c6dee4b025487684d4664c031"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs <a class="el" href="classStatus.html" title="Status command Class. ">Status</a> text for current repo.  <a href="#ac6d5b54c6dee4b025487684d4664c031">More...</a><br /></td></tr>
+<tr class="separator:ac6d5b54c6dee4b025487684d4664c031"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44c08f069c8c7021355c526a595f114b"><td class="memItemLeft" align="right" valign="top">static BString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStatus.html#a44c08f069c8c7021355c526a595f114b">GetBranchText</a> (git_repository *, <a class="el" href="classStatusWindow.html">StatusWindow</a> *)</td></tr>
+<tr class="memdesc:a44c08f069c8c7021355c526a595f114b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs Branch text for current repo.  <a href="#a44c08f069c8c7021355c526a595f114b">More...</a><br /></td></tr>
+<tr class="separator:a44c08f069c8c7021355c526a595f114b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -123,6 +123,8 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classStatus.html" title="Status command Class. ">Status</a> command Class. </p>
+
+<p class="definition">Definition at line <a class="el" href="Status_8h_source.html#l00039">39</a> of file <a class="el" href="Status_8h_source.html">Status.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6a5d2b43e60360372041bf221bb12729"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6a5d2b43e60360372041bf221bb12729">&#9670;&nbsp;</a></span>Status()</h2>
@@ -159,6 +161,8 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="Status_8cpp_source.html#l00022">22</a> of file <a class="el" href="Status_8cpp_source.html">Status.cpp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -186,14 +190,16 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="classStatus.html" title="Status command Class. ">Status</a> command execution. </p>
-<p>Opens an alert with status text. </p>
+<p>Shows an alert with status text. </p>
 
 <p>Implements <a class="el" href="classGitCommand.html#a94cf3dc8475df20f04add46a6f22d949">GitCommand</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="Status_8cpp_source.html#l00050">50</a> of file <a class="el" href="Status_8cpp_source.html">Status.cpp</a>.</p>
+
 </div>
 </div>
-<a id="a047eb3e2653cfde18ad2e4cfcca6759f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a047eb3e2653cfde18ad2e4cfcca6759f">&#9670;&nbsp;</a></span>GetBranchText()</h2>
+<a id="a44c08f069c8c7021355c526a595f114b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44c08f069c8c7021355c526a595f114b">&#9670;&nbsp;</a></span>GetBranchText()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -205,8 +211,18 @@ Private Attributes</h2></td></tr>
           <td class="memname">BString * Status::GetBranchText </td>
           <td>(</td>
           <td class="paramtype">git_repository *&#160;</td>
-          <td class="paramname"><em>repo</em></td><td>)</td>
+          <td class="paramname"><em>repo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="classStatusWindow.html">StatusWindow</a> *&#160;</td>
+          <td class="paramname"><em>window</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -224,6 +240,8 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The Branch text. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="Status_8cpp_source.html#l00280">280</a> of file <a class="el" href="Status_8cpp_source.html">Status.cpp</a>.</p>
 
 </div>
 </div>
@@ -251,10 +269,12 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The entire status text to display. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="Status_8cpp_source.html#l00313">313</a> of file <a class="el" href="Status_8cpp_source.html">Status.cpp</a>.</p>
+
 </div>
 </div>
-<a id="a260cc821753970f4dde2aefb8233911e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a260cc821753970f4dde2aefb8233911e">&#9670;&nbsp;</a></span>GetStatusTextUtil()</h2>
+<a id="ac6d5b54c6dee4b025487684d4664c031"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6d5b54c6dee4b025487684d4664c031">&#9670;&nbsp;</a></span>GetStatusTextUtil()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -266,8 +286,18 @@ Private Attributes</h2></td></tr>
           <td class="memname">BString * Status::GetStatusTextUtil </td>
           <td>(</td>
           <td class="paramtype">git_status_list *&#160;</td>
-          <td class="paramname"><em>status</em></td><td>)</td>
+          <td class="paramname"><em>status</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="classStatusWindow.html">StatusWindow</a> *&#160;</td>
+          <td class="paramname"><em>window</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -301,6 +331,8 @@ Private Attributes</h2></td></tr>
  Print untracked files. <br />
  Print ignored files. </p>
 
+<p class="definition">Definition at line <a class="el" href="Status_8cpp_source.html#l00063">63</a> of file <a class="el" href="Status_8cpp_source.html">Status.cpp</a>.</p>
+
 </div>
 </div>
 <a id="a4edf252fd12830bf0808f3d9ff009662"></a>
@@ -331,6 +363,8 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classGitCommand.html#a3a7a5df7111f44a731a4a21d3e4ac539">GitCommand</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="Status_8cpp_source.html#l00037">37</a> of file <a class="el" href="Status_8cpp_source.html">Status.cpp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -356,6 +390,8 @@ Private Attributes</h2></td></tr>
 
 <p>The current directory where <a class="el" href="classStatus.html" title="Status command Class. ">Status</a> option is selected. </p>
 
+<p class="definition">Definition at line <a class="el" href="Status_8h_source.html#l00047">47</a> of file <a class="el" href="Status_8h_source.html">Status.h</a>.</p>
+
 </div>
 </div>
 <a id="ad25c299a675d6ef794832b2aaed2225a"></a>
@@ -379,6 +415,8 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The repo/directory where command is called. </p>
+
+<p class="definition">Definition at line <a class="el" href="Status_8h_source.html#l00043">43</a> of file <a class="el" href="Status_8h_source.html">Status.h</a>.</p>
 
 </div>
 </div>
@@ -404,11 +442,13 @@ Private Attributes</h2></td></tr>
 
 <p>The <a class="el" href="classStatus.html" title="Status command Class. ">Status</a> Window. </p>
 
+<p class="definition">Definition at line <a class="el" href="Status_8h_source.html#l00051">51</a> of file <a class="el" href="Status_8h_source.html">Status.h</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>GitCommand/<a class="el" href="Status_8h_source.html">Status.h</a></li>
-<li>GitCommand/<a class="el" href="Status_8cpp.html">Status.cpp</a></li>
+<li>GitCommand/<a class="el" href="Status_8cpp_source.html">Status.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

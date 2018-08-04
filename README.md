@@ -2,9 +2,15 @@
 
 Tracker Addon for Git Version Control System.
 
+TrackGit provides user with GUIs for various Git commands. The implementation was done using [LibGit2](http://libgit2.github.com/).
+
+TrackGit uses the Dynamic population of menu. The commit which adds this feature in Haiku is [here](https://review.haiku-os.org/#/c/haiku/+/164/).
+
+
 ## About
 
-This project is done under [Google Summer of Code 2018](https://summerofcode.withgoogle.com/organizations/4821756754264064/#4903524337451008). The mentor for this project is [Stephan Aßmus](https://github.com/stippi). The progress wiki is [here](https://github.com/Hrily/TrackGit/wiki) and the detailed progress reports can be found at [my Haiku blog](https://www.haiku-os.org/blog/hrily).
+This project is done under [Google Summer of Code 2018](https://summerofcode.withgoogle.com/organizations/4821756754264064/#4903524337451008). The mentor for this project is [Stephan Aßmus](https://github.com/stippi). 
+The source code revision history is available on [GitHub](https://github.com/Hrily/TrackGit/) which also includes a [progress wiki](https://github.com/Hrily/TrackGit/wiki/). More detailed progress reports can be found at [my Haiku blog](https://www.haiku-os.org/blog/hrily).
 
 The project proposal can be found [here](https://drive.google.com/file/d/1nailoOCGmpRVo3sZ8mdXGmpuWxXdgf1T/view).
 
@@ -31,6 +37,7 @@ or you can execute `run.sh`.
 + [x] Push
 + [x] CreateBranch
 + [x] SwitchBranch
++ [x] Log Viewer
 
 ## Documentation
 

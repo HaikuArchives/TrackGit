@@ -19,6 +19,7 @@ enum {
 	kOK
 };
 
+
 /**
  * LogWindow Constructor
  * @param repo The repo to get log of.

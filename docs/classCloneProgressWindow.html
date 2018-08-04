@@ -91,6 +91,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab2b08327ed93547ecbd49cf7ad2b79b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCloneProgressWindow.html#ab2b08327ed93547ecbd49cf7ad2b79b1">SetText</a> (const char *)</td></tr>
 <tr class="memdesc:ab2b08327ed93547ecbd49cf7ad2b79b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function sets texts of the textview within window.  <a href="#ab2b08327ed93547ecbd49cf7ad2b79b1">More...</a><br /></td></tr>
 <tr class="separator:ab2b08327ed93547ecbd49cf7ad2b79b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d83e79cf10992feb3eabc373ff1b084"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCloneProgressWindow.html#a4d83e79cf10992feb3eabc373ff1b084">SetProgress</a> (float)</td></tr>
+<tr class="memdesc:a4d83e79cf10992feb3eabc373ff1b084"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function sets the value of progress bar.  <a href="#a4d83e79cf10992feb3eabc373ff1b084">More...</a><br /></td></tr>
+<tr class="separator:a4d83e79cf10992feb3eabc373ff1b084"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a700f8f65bf2a66e72360366e44bde75e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCloneProgressWindow.html#a700f8f65bf2a66e72360366e44bde75e">MessageReceived</a> (BMessage *)</td></tr>
 <tr class="memdesc:a700f8f65bf2a66e72360366e44bde75e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The handler to receive messages.  <a href="#a700f8f65bf2a66e72360366e44bde75e">More...</a><br /></td></tr>
 <tr class="separator:a700f8f65bf2a66e72360366e44bde75e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -103,9 +106,14 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a8263934222c214152454053ace37d2c7"><td class="memItemLeft" align="right" valign="top">BTextView *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCloneProgressWindow.html#a8263934222c214152454053ace37d2c7">fTextView</a></td></tr>
 <tr class="memdesc:a8263934222c214152454053ace37d2c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The text view to show progress text.  <a href="#a8263934222c214152454053ace37d2c7">More...</a><br /></td></tr>
 <tr class="separator:a8263934222c214152454053ace37d2c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fd1746038623f6c1ee9da2fb51acc18"><td class="memItemLeft" align="right" valign="top">BStatusBar *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCloneProgressWindow.html#a2fd1746038623f6c1ee9da2fb51acc18">fProgressBar</a></td></tr>
+<tr class="memdesc:a2fd1746038623f6c1ee9da2fb51acc18"><td class="mdescLeft">&#160;</td><td class="mdescRight">The progress bar.  <a href="#a2fd1746038623f6c1ee9da2fb51acc18">More...</a><br /></td></tr>
+<tr class="separator:a2fd1746038623f6c1ee9da2fb51acc18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classClone.html" title="Clone command Class. ">Clone</a> Progress Window class. </p>
+
+<p class="definition">Definition at line <a class="el" href="CloneWindow_8h_source.html#l00063">63</a> of file <a class="el" href="CloneWindow_8h_source.html">CloneWindow.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aecb7b781b4a8c0b3e26a91668acdcea9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aecb7b781b4a8c0b3e26a91668acdcea9">&#9670;&nbsp;</a></span>CloneProgressWindow()</h2>
@@ -130,6 +138,8 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="CloneWindow_8cpp_source.html#l00106">106</a> of file <a class="el" href="CloneWindow_8cpp_source.html">CloneWindow.cpp</a>.</p>
 
 </div>
 </div>
@@ -166,6 +176,36 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="CloneWindow_8cpp_source.html#l00170">170</a> of file <a class="el" href="CloneWindow_8cpp_source.html">CloneWindow.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a4d83e79cf10992feb3eabc373ff1b084"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d83e79cf10992feb3eabc373ff1b084">&#9670;&nbsp;</a></span>SetProgress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CloneProgressWindow::SetProgress </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>progress</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function sets the value of progress bar. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">progress</td><td>The progress value. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="CloneWindow_8cpp_source.html#l00156">156</a> of file <a class="el" href="CloneWindow_8cpp_source.html">CloneWindow.cpp</a>.</p>
+
 </div>
 </div>
 <a id="ab2b08327ed93547ecbd49cf7ad2b79b1"></a>
@@ -191,6 +231,8 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="CloneWindow_8cpp_source.html#l00142">142</a> of file <a class="el" href="CloneWindow_8cpp_source.html">CloneWindow.cpp</a>.</p>
 
 </div>
 </div>
@@ -218,6 +260,34 @@ Private Attributes</h2></td></tr>
 <p>The <a class="el" href="classClone.html" title="Clone command Class. ">Clone</a> Window pointer. </p>
 <p>Used to sent cancel BMessage. </p>
 
+<p class="definition">Definition at line <a class="el" href="CloneWindow_8h_source.html#l00069">69</a> of file <a class="el" href="CloneWindow_8h_source.html">CloneWindow.h</a>.</p>
+
+</div>
+</div>
+<a id="a2fd1746038623f6c1ee9da2fb51acc18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fd1746038623f6c1ee9da2fb51acc18">&#9670;&nbsp;</a></span>fProgressBar</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">BStatusBar* CloneProgressWindow::fProgressBar</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The progress bar. </p>
+
+<p class="definition">Definition at line <a class="el" href="CloneWindow_8h_source.html#l00077">77</a> of file <a class="el" href="CloneWindow_8h_source.html">CloneWindow.h</a>.</p>
+
 </div>
 </div>
 <a id="a8263934222c214152454053ace37d2c7"></a>
@@ -242,11 +312,13 @@ Private Attributes</h2></td></tr>
 
 <p>The text view to show progress text. </p>
 
+<p class="definition">Definition at line <a class="el" href="CloneWindow_8h_source.html#l00073">73</a> of file <a class="el" href="CloneWindow_8h_source.html">CloneWindow.h</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>UI/<a class="el" href="CloneWindow_8h_source.html">CloneWindow.h</a></li>
-<li>UI/<a class="el" href="CloneWindow_8cpp.html">CloneWindow.cpp</a></li>
+<li>UI/<a class="el" href="CloneWindow_8cpp_source.html">CloneWindow.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['clonewindow',['cloneWindow',['../structprogress__data.html#ab32c9cb5b888c8959bf6cb1842caaf17',1,'progress_data::cloneWindow()'],['../structparam.html#a4fa1ed3619d44c0bae79ea5d7a33eb47',1,'param::cloneWindow()']]],
-  ['completed_5fsteps',['completed_steps',['../structprogress__data.html#a2cc31ae21b15c352adfbb74185a32595',1,'progress_data']]]
+  ['before',['before',['../structlog__options.html#a1327c8ffef82ce129d34d3a0f37ffc50',1,'log_options']]],
+  ['branch',['branch',['../structfetch__payload.html#a78fbc4742a18e6fd57bc9b48c0afd4f3',1,'fetch_payload']]],
+  ['branch_5foid',['branch_oid',['../structfetch__payload.html#ab549c311f8ef078aa2d34654ef805ae3',1,'fetch_payload']]]
 ];

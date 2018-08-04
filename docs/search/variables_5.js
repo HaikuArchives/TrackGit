@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['repeat',['repeat',['../structopts.html#ac8e852f83ae4c0d31d919cc31ac5c349',1,'opts']]],
-  ['repodir',['repodir',['../structopts.html#a55f132d782e02ac19ca06822ee1a6729',1,'opts']]]
+  ['hide',['hide',['../structlog__state.html#a8e66a048d1c355909b19199203542101',1,'log_state']]]
 ];

@@ -235,7 +235,6 @@ static int add_revision(struct log_state *s, const char *revstr)
 }
 
 
-
 /**
  * Constructs the entire Log Text for given repo
  * @returns The entire log text to display.
