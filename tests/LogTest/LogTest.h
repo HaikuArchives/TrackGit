@@ -1,3 +1,10 @@
+/**
+ * @file LogTest.h
+ * @brief Header file of Log test.
+ * 
+ * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ */
+
 #ifndef _LOG_TEST_H_
 #define _LOG_TEST_H_
 

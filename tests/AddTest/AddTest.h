@@ -1,3 +1,10 @@
+/**
+ * @file AddTest.h
+ * @brief Header file of Add test.
+ * 
+ * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ */
+
 #ifndef _ADD_TEST_H_
 #define _ADD_TEST_H_
 

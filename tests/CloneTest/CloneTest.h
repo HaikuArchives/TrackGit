@@ -1,3 +1,10 @@
+/**
+ * @file CloneTest.h
+ * @brief Header file of Clone test.
+ * 
+ * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ */
+
 #ifndef _CLONE_TEST_H_
 #define _CLONE_TEST_H_
 

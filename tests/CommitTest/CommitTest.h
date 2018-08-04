@@ -1,3 +1,10 @@
+/**
+ * @file CommitTest.h
+ * @brief Header file of Commit test.
+ * 
+ * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ */
+
 #ifndef _COMMIT_TEST_H_
 #define _COMMIT_TEST_H_
 

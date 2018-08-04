@@ -1,3 +1,10 @@
+/**
+ * @file CloneTest.cpp
+ * @brief Implementaion file of Clone Test.
+ * 
+ * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ */
+
 #include "CloneTest.h"
 
 #include <stdio.h>

@@ -1,3 +1,10 @@
+/**
+ * @file InitTest.h
+ * @brief Header file of Init test.
+ * 
+ * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ */
+
 #ifndef _INIT_TEST_H_
 #define _INIT_TEST_H_
 

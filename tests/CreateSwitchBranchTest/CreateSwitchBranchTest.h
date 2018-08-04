@@ -1,3 +1,10 @@
+/**
+ * @file CreateSwitchBranchTest.h
+ * @brief Header file of Create and Switch Brach test.
+ * 
+ * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ */
+
 #ifndef _CREATE_SWITCH_BRANCH_TEST_H_
 #define _CREATE_SWITCH_BRANCH_TEST_H_
 

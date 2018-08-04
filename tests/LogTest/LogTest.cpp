@@ -1,3 +1,10 @@
+/**
+ * @file LogTest.cpp
+ * @brief Implementaion file of Log Test.
+ * 
+ * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ */
+
 #include "LogTest.h"
 
 #include <stdio.h>
