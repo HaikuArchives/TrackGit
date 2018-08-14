@@ -105,8 +105,8 @@ CloneWindow::MessageReceived(BMessage* msg)
  */
 CloneProgressWindow::CloneProgressWindow(CloneWindow* cloneWindow)
 	:
-	BWindow(BRect(0, 0, 300, 150), "", B_MODAL_WINDOW,
-			B_NOT_CLOSABLE | B_NOT_RESIZABLE)
+	BWindow(BRect(0, 0, 300, 150), "TrackGit - Clone Progress",
+			B_DOCUMENT_WINDOW, B_NOT_CLOSABLE | B_NOT_RESIZABLE)
 {
 	fCloneWindow = cloneWindow;
 	fTextView = new BTextView(BRect(0, 0, 280, 80), "_clone_", 

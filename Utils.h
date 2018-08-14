@@ -17,7 +17,7 @@
 #include <vector.h>
 #include <git2.h>
 
-#define CANCEL_CREDENTIALS -2
+#define CANCEL_CREDENTIALS -123
 
 enum {
 	kQuitWindow,

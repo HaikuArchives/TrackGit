@@ -7,6 +7,7 @@
 
 #include "Clone.h"
 #include "../UI/CloneWindow.h"
+#include "../Utils.h"
 
 #include <AppKit.h>
 
@@ -180,11 +181,12 @@ DoCloneThread(void* arg)
 	clone_opts.fetch_opts.callbacks.sideband_progress = sideband_progress;
 	clone_opts.fetch_opts.callbacks.transfer_progress = &fetch_progress;
 	clone_opts.fetch_opts.callbacks.payload = &progress;
+	clone_opts.fetch_opts.callbacks.credentials = cred_acquire_cb;
 
 	// Do the clone
 	int ret = git_clone(&cloned_repo, url, path, &clone_opts);
 	
-	if (ret != 0) {
+	if (ret != 0 && ret != CANCEL_CREDENTIALS) {
 		const git_error* err = giterr_last();
 		printf("Error %d : %s\n", err->klass, err->message);
 
