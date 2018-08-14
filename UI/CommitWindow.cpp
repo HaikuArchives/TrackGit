@@ -62,18 +62,22 @@ CommitWindow::MessageReceived(BMessage* msg)
 	BAlert* alert = NULL;
 	switch (msg->what) {
 		case kDoCommit:
-			if (Commit::DoCommit(fRepo, BString(fCommitTextView->Text()))) {
-                const git_error* err = giterr_last();
-                printf("Error %d : %s\n", err->klass, err->message);
-
-                BString buffer("Error : %s");
-                buffer.ReplaceFirst("%s", err->message);
-                alert = new BAlert("", buffer.String(), "Cancel", 
-                        0, 0, B_WIDTH_AS_USUAL, B_WARNING_ALERT);
+			if (Commit::DoCommit(fRepo,
+						BString(fCommitTextView->Text())) != 0) {
+				const git_error* err = giterr_last();
+				BString buffer("Error : %s");
+				if (err) {
+					printf("Error %d : %s\n", err->klass, err->message);
+					buffer.ReplaceFirst("%s", err->message);
+				} else 
+					buffer.ReplaceFirst("%s", "Cannot get default username or "
+							"email. Did you setup git config?");
+				alert = new BAlert("", buffer.String(), "Cancel", 
+						0, 0, B_WIDTH_AS_USUAL, B_WARNING_ALERT);
 			} else {
 				BString buffer("Change commited successfully.");
-                alert = new BAlert("", buffer.String(), "OK", 
-                        0, 0, B_WIDTH_AS_USUAL);
+				alert = new BAlert("", buffer.String(), "OK", 
+						0, 0, B_WIDTH_AS_USUAL);
 			}
 			alert->Go();
 			Quit();
