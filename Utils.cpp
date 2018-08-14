@@ -309,5 +309,12 @@ int cred_acquire_cb(git_cred** out, const char* url,
 	status_t win_status = B_OK;
 	wait_for_thread(thread, &win_status);
 
+	/**
+	 * If user cancels the credentials prompt, the username is empty.
+	 * Cancel the command in such case.
+	 */
+	if (strlen(username) == 0)
+		return CANCEL_CREDENTIALS;
+
 	return git_cred_userpass_plaintext_new(out, username, password);
 }

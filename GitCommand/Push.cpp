@@ -103,6 +103,8 @@ DoPushThread(void* arg)
 	array.strings[0] = refspec;
 
 	err = git_remote_push(remote, &array, &options);
+	if (err == CANCEL_CREDENTIALS)
+		goto clean;
 	if (err < 0)
 		goto ret;
 
