@@ -21,7 +21,7 @@ enum {
 ConflictsWindow::ConflictsWindow()
 	:
 	BWindow(BRect(0, 0, 300, 300), "TrackGit - Conflicts",
-			B_DOCUMENT_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
+			B_TITLED_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
 {
 	fConflictsTextView = new BTextView("ConflictsText");
 	fConflictsTextView->SetText("Loading...");

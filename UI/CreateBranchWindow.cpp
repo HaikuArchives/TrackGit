@@ -22,7 +22,7 @@
 CreateBranchWindow::CreateBranchWindow(BString repo)
 	:
 	TrackGitWindow(repo, BRect(0, 0, 300, 100), "TrackGit - Create Branch",
-			B_DOCUMENT_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
+			B_TITLED_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
 {
 	fBranchText = new BTextControl("Name: ", "", NULL);
 	fSwitchBranch = new BCheckBox("Switch to this branch");

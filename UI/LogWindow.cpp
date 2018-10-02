@@ -27,7 +27,7 @@ enum {
 LogWindow::LogWindow(BString repo)
 	:
 	TrackGitWindow(repo, BRect(0, 0, 400, 300), "TrackGit - Log",
-			B_DOCUMENT_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
+			B_TITLED_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
 {
 	fLogTextView = new BTextView("logText");
 	fLogTextView->SetText("Loading...");

@@ -21,7 +21,7 @@
 CommitWindow::CommitWindow(BString repo)
 	:
 	TrackGitWindow(repo, BRect(0, 0, 300, 200), "TrackGit - Commit",
-			B_DOCUMENT_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
+			B_TITLED_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
 {
 	BStringView* fCommitString = new BStringView("commitString", 
 			"Commit Message:");

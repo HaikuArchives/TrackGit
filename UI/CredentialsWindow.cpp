@@ -22,7 +22,7 @@
 CredentialsWindow::CredentialsWindow(char* usernamePtr, char* passwordPtr)
 	:
 	BWindow(BRect(0, 0, 300, 150), "TrackGit - User Credentials",
-			B_DOCUMENT_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
+			B_TITLED_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
 {
 	fUsernamePtr = usernamePtr;
 	fPasswordPtr = passwordPtr;

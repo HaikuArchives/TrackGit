@@ -23,7 +23,7 @@
 SwitchBranchWindow::SwitchBranchWindow(BString repo)
 	:
 	TrackGitWindow(repo, BRect(0, 0, 300, 100), "TrackGit - Switch Branch",
-			B_DOCUMENT_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
+			B_TITLED_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
 {
 	vector<BString> branches;
 

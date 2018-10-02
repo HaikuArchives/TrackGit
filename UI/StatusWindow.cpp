@@ -53,7 +53,7 @@ StatusItem::GetPath()
 StatusWindow::StatusWindow(BString repo)
 	:
 	TrackGitWindow(repo, BRect(0, 0, 300, 300), "TrackGit - Status",
-			B_DOCUMENT_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
+			B_TITLED_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
 {
 	fStatusListView = new BListView(B_SINGLE_SELECTION_LIST);
 	//fStatusListView->SetSelectionMessage(new BMessage(kStatusSelected));

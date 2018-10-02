@@ -25,7 +25,7 @@ enum {
 PushWindow::PushWindow(BString repo)
         :
         TrackGitWindow(repo, BRect(0, 0, 300, 150), "TrackGit - Push",
-						B_DOCUMENT_WINDOW, B_NOT_CLOSABLE | B_NOT_RESIZABLE)
+						B_TITLED_WINDOW, B_NOT_CLOSABLE | B_NOT_RESIZABLE)
 {
 	fTextView = new BTextView(BRect(0, 0, 280, 80), "_clone_", 
 						  BRect(0, 0, 280, 80), B_FOLLOW_LEFT_RIGHT);

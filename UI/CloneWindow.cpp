@@ -25,7 +25,7 @@
 CloneWindow::CloneWindow(BString repo, BString dirPath, Clone* clone)
 	:
 	TrackGitWindow(repo, BRect(0, 0, 300, 180), "TrackGit - Clone",
-			B_DOCUMENT_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
+			B_TITLED_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
 {
 	fClone = clone;
 	fProgressWindow = new CloneProgressWindow(this);
@@ -106,7 +106,7 @@ CloneWindow::MessageReceived(BMessage* msg)
 CloneProgressWindow::CloneProgressWindow(CloneWindow* cloneWindow)
 	:
 	BWindow(BRect(0, 0, 300, 150), "TrackGit - Clone Progress",
-			B_DOCUMENT_WINDOW, B_NOT_CLOSABLE | B_NOT_RESIZABLE)
+			B_TITLED_WINDOW, B_NOT_CLOSABLE | B_NOT_RESIZABLE)
 {
 	fCloneWindow = cloneWindow;
 	fTextView = new BTextView(BRect(0, 0, 280, 80), "_clone_", 
