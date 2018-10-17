@@ -14,7 +14,7 @@
 #include <AppKit.h>
 #include <SupportKit.h>
 
-#include <vector.h>
+#include <vector>
 #include <git2.h>
 
 #define CANCEL_CREDENTIALS -123
@@ -45,6 +45,12 @@ enum {
  * The Application signature.
  */
 #define APP_SIGN "application/x-vnd.Haiku-TrackGit"
+
+
+//#if __GNUC__ > 2
+	using std::vector;
+//#endif	
+
 
 void extract_selected_paths(const BMessage* msg,
 		vector<char*>& selected);

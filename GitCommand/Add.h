@@ -16,6 +16,10 @@
 
 #include <git2.h>
 
+//#if __GNUC__ > 2
+	using std::vector;
+//#endif	
+
 
 /**
  * Add command Class.
