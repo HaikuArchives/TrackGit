@@ -16,9 +16,9 @@
 
 #include <git2.h>
 
-//#if __GNUC__ > 2
+#if __GNUC__ > 2
 	using std::vector;
-//#endif	
+#endif	
 
 
 /**
