@@ -13,6 +13,10 @@
 #include <AppKit.h>
 #include <SupportKit.h>
 
+//#if __GNUC__ > 2
+	using std::map;
+//#endif	
+
 class TrackGitWindow;
 
 
