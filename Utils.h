@@ -47,9 +47,9 @@ enum {
 #define APP_SIGN "application/x-vnd.Haiku-TrackGit"
 
 
-//#if __GNUC__ > 2
+#if __GNUC__ > 2
 	using std::vector;
-//#endif	
+#endif	
 
 
 void extract_selected_paths(const BMessage* msg,

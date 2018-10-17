@@ -14,9 +14,9 @@
 
 #include <vector>
 
-//#if __GNUC__ > 2
+#if __GNUC__ > 2
 	using std::vector;
-//#endif	
+#endif	
 
 
 /**
