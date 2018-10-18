@@ -22,7 +22,8 @@
 CredentialsWindow::CredentialsWindow(char* usernamePtr, char* passwordPtr)
 	:
 	BWindow(BRect(0, 0, 300, 150), "TrackGit - User Credentials",
-			B_TITLED_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
+			B_TITLED_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE
+			| B_AUTO_UPDATE_SIZE_LIMITS)
 {
 	fUsernamePtr = usernamePtr;
 	fPasswordPtr = passwordPtr;
@@ -34,11 +35,13 @@ CredentialsWindow::CredentialsWindow(char* usernamePtr, char* passwordPtr)
 	BButton* fCancel = new BButton("cancel", "Cancel",
 			new BMessage(kCredCancel));
 
-	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
-		.SetInsets(10)
-		.Add(fUsername)
-		.Add(fPassword)
-		.AddGroup(B_HORIZONTAL, 0)
+	BLayoutBuilder::Group<>(this, B_VERTICAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
+		.AddGrid()
+		.AddTextControl(fUsername, 0, 0)
+		.AddTextControl(fPassword, 0, 1)
+		.End()
+		.AddGroup(B_HORIZONTAL)
 			.AddGlue()
 			.Add(fCancel)
 			.Add(fOK)

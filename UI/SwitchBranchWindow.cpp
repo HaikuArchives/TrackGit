@@ -23,7 +23,8 @@
 SwitchBranchWindow::SwitchBranchWindow(BString repo)
 	:
 	TrackGitWindow(repo, BRect(0, 0, 300, 100), "TrackGit - Switch Branch",
-			B_TITLED_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
+			B_TITLED_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE
+			| B_AUTO_UPDATE_SIZE_LIMITS)
 {
 	vector<BString> branches;
 
@@ -54,10 +55,10 @@ SwitchBranchWindow::SwitchBranchWindow(BString repo)
 
 	BMenuField* switchMenuField = new BMenuField("Branch: ", fSwitchMenu);
 
-	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
-		.SetInsets(10)
+	BLayoutBuilder::Group<>(this, B_VERTICAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
 		.Add(switchMenuField)
-		.AddGroup(B_HORIZONTAL, 0)
+		.AddGroup(B_HORIZONTAL)
 			.AddGlue()
 			.Add(fCancel)
 			.Add(fSwitch)

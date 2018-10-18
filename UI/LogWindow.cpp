@@ -40,8 +40,8 @@ LogWindow::LogWindow(BString repo)
 	BButton* fOK = new BButton("ok", B_TRANSLATE("OK"),
 			new BMessage(kOK));
 
-	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
-		.SetInsets(10)
+	BLayoutBuilder::Group<>(this, B_VERTICAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
 		.Add(fScrollView)
 		.Add(fOK);
 

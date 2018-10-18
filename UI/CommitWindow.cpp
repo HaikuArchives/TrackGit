@@ -37,11 +37,11 @@ CommitWindow::CommitWindow(BString repo)
 	BButton* fCancel = new BButton("cancel", "Cancel",
 			new BMessage(kCancelCommit));
 
-	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
-		.SetInsets(10)
+	BLayoutBuilder::Group<>(this, B_VERTICAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
 		.Add(fCommitString)
 		.Add(fScrollView)
-		.AddGroup(B_HORIZONTAL, 0)
+		.AddGroup(B_HORIZONTAL)
 			.AddGlue()
 			.Add(fCancel)
 			.Add(fCommit)

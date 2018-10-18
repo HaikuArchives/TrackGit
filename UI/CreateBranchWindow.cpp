@@ -22,7 +22,8 @@
 CreateBranchWindow::CreateBranchWindow(BString repo)
 	:
 	TrackGitWindow(repo, BRect(0, 0, 300, 100), "TrackGit - Create Branch",
-			B_TITLED_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE)
+			B_TITLED_WINDOW, B_NOT_RESIZABLE | B_NOT_ZOOMABLE
+			| B_AUTO_UPDATE_SIZE_LIMITS)
 {
 	fBranchText = new BTextControl("Name: ", "", NULL);
 	fSwitchBranch = new BCheckBox("Switch to this branch");
@@ -32,11 +33,11 @@ CreateBranchWindow::CreateBranchWindow(BString repo)
 	BButton* fCancel = new BButton("cancel", "Cancel",
 			new BMessage(kCancelCreateBranch));
 
-	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
-		.SetInsets(10)
+	BLayoutBuilder::Group<>(this, B_VERTICAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
 		.Add(fBranchText)
 		.Add(fSwitchBranch)
-		.AddGroup(B_HORIZONTAL, 0)
+		.AddGroup(B_HORIZONTAL)
 			.AddGlue()
 			.Add(fCancel)
 			.Add(fCreate)
