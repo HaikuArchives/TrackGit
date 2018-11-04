@@ -1,5 +1,7 @@
 # TrackGit
 
+![Screenshot1](screenshot_trackgit1.png) ![Screenshot2](screenshot_trackgit.png)
+
 Tracker Addon for Git Version Control System.
 
 TrackGit provides user with GUIs for various Git commands. The implementation was done using [LibGit2](http://libgit2.github.com/).
