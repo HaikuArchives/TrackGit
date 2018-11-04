@@ -1,8 +1,6 @@
 # TrackGit
 
-![Screenshot1](screenshot_trackgit1.png)
-
-![Screenshot2](screenshot_trackgit.png)
+![Screenshot1](screenshot_trackgit1.png) ![Screenshot2](screenshot_trackgit.png)
 
 Tracker Addon for Git Version Control System.
 
