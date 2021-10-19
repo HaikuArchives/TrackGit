@@ -1,17 +1,18 @@
 /*
-	PathBox.h: A control to easily allow the user to choose a file/folder path
-	Written by DarkWyrm <darkwyrm@earthlink.net>, Copyright 2007
-	Released under the MIT license.
+ * Copyright 2007, DarkWyrm <darkwyrm@earthlink.net>
+ * All rights reserved. Distributed under the terms of the MIT license.
 */
 #ifndef PATHBOX_H
 #define PATHBOX_H
 
 
-#include <View.h>
-#include <FilePanel.h>
-#include <Entry.h>
+#include <posix/sys/time.h>
+
 #include <Button.h>
+#include <Entry.h>
+#include <FilePanel.h>
 #include <TextControl.h>
+#include <View.h>
 
 
 class DropControl;
