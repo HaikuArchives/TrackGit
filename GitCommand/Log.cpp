@@ -1,17 +1,16 @@
-/**
- * @file Log.cpp
- * @brief Implemention file of Log command.
- * 
- * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+/*
+ * Copyright 2018, Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ * All rights reserved. Distributed under the terms of the MIT license.
  */
 
 #include "Log.h"
-#include "../UI/LogWindow.h"
-
-#include <InterfaceKit.h>
 
 #include <stdlib.h>
 #include <strings.h>
+
+#include <InterfaceKit.h>
+
+#include "../UI/LogWindow.h"
 
 
 /**
@@ -48,14 +47,11 @@ Log::GetWindow()
 void
 Log::Execute()
 {
-	BString logText = GetLogText();
-
 	if (!fLogWindow) {
 		fLogWindow->Quit();
 		return;
 	}
-
-	fLogWindow->SetText(logText);
+	AppendLogText();
 }
 
 
@@ -143,15 +139,8 @@ static void print_commit(git_commit *commit, struct log_options *opts,
 		text << "Author: " << sig->name << " <" << sig->email << ">\n";
 		print_time(&sig->when, "Date:   ", text);
 	}
-	text << "\n";
 
-	for (scan = git_commit_message(commit); scan && *scan; ) {
-		for (eol = scan; *eol && *eol != '\n'; ++eol) /* find eol */;
-
-		text << "\t" << scan << "\n";
-		scan = *eol ? eol + 1 : NULL;
-	}
-	text << "\n";
+	text << "\n" << git_commit_message(commit) << "\n\n";
 }
 
 
@@ -236,49 +225,52 @@ static int add_revision(struct log_state *s, const char *revstr)
 
 
 /**
- * Constructs the entire Log Text for given repo
- * @returns The entire log text to display.
+ * Appends the Log Text for repo to the Log Window
  */
-BString
-Log::GetLogText()
+void
+Log::AppendLogText()
 {
 	git_repository *repo = NULL;
-	BString text;
-	int i, count = 0, printed = 0, parents;
-	struct log_state s;
-	struct log_options opt;
-	git_diff_options diffopts = GIT_DIFF_OPTIONS_INIT;
-	git_oid oid;
-	git_commit *commit = NULL;
 	git_pathspec *ps = NULL;
 
 	git_libgit2_init();
 
-	memset(&s, 0, sizeof(s));
-	s.sorting = GIT_SORT_TIME;
-	s.repodir = fRepo.String();
-
+	struct log_options opt;
 	memset(&opt, 0, sizeof(opt));
 	opt.max_parents = -1;
 	opt.limit = -1;
 
-	if (!s.revisions)
-		add_revision(&s, NULL);
+	struct log_state state;
+	memset(&state, 0, sizeof(state));
+	state.sorting = GIT_SORT_TIME;
+	state.repodir = fRepo.String();
+
+	if (!state.revisions)
+		add_revision(&state, NULL);
 
 	/** Use the revwalker to traverse the history. */
 
-	printed = count = 0;
+	BString text;
+	git_oid oid;
+	git_commit *commit = NULL;
 
-	for (; !git_revwalk_next(&oid, s.walker); git_commit_free(commit)) {
-		check_lg2(git_commit_lookup(&commit, s.repo, &oid),
+	for (int i = -1; !git_revwalk_next(&oid, state.walker); git_commit_free(commit)) {
+		check_lg2(git_commit_lookup(&commit, state.repo, &oid),
 			"Failed to look up commit", NULL);
-		
+
+		// We only append every ~100 commits because the delay is unnoticable,
+		// and infrequent appends are a bit less heavy.
 		print_commit(commit, &opt, text);
+		if (i == -1 || i == 100) {
+			fLogWindow->AppendText(text);
+			text.SetTo("");
+			i = -1;
+		}
+		i++;
 	}
+	fLogWindow->AppendText(text);
 
 	git_pathspec_free(ps);
 	git_repository_free(repo);
 	git_libgit2_shutdown();
-
-	return text;
 }
