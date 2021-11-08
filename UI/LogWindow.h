@@ -1,31 +1,31 @@
-/**
- * @file LogWindow.h
- * @brief Header file of Log window.
- * 
- * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+/*
+ * Copyright 2018, Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ * All rights reserved. Distributed under the terms of the MIT license.
  */
 
 #ifndef _LOG_WINDOW_H_
 #define _LOG_WINDOW_H_
 
-#include "TrackGitWindow.h"
-
 #include <InterfaceKit.h>
 #include <SupportKit.h>
+
+#include "TrackGitWindow.h"
 
 
 /**
  * The Log Window class.
  */
 class LogWindow : public TrackGitWindow {
-	/**
-	 * The Log Text View.
-	 */
-	BTextView* fLogTextView;
 public:
-	LogWindow(BString);
-	void SetText(BString);
-	virtual void MessageReceived(BMessage*);
+					LogWindow(BString);
+			void	AppendText(BString);
+
+private:
+	bool fLoading;
+	BTextView* fLogTextView;
 };
+
+
+BRect window_rect_by_text_column(int32 columns);
 
 #endif

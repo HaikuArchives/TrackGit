@@ -1,19 +1,18 @@
-/**
- * @file Log.h
- * @brief Header file of Log command.
- * 
- * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+/*
+ * Copyright 2018, Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ * All rights reserved. Distributed under the terms of the MIT license.
  */
 
 #ifndef _LOG_H_
 #define _LOG_H_
 
-#include "GitCommand.h"
-#include "../UI/LogWindow.h"
-
 #include <SupportKit.h>
 
 #include <git2.h>
+
+#include "GitCommand.h"
+#include "../UI/LogWindow.h"
+
 
 /**
  * log_state represents walker being configured while handling options
@@ -60,7 +59,7 @@ public:
 							Log(BString);
 
 	virtual	void			Execute();
-	BString					GetLogText();
+			void			AppendLogText();
 	virtual TrackGitWindow*	GetWindow();
 };
 
