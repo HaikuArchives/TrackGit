@@ -1,14 +1,14 @@
-/**
- * @file GitCommand.h
- * @brief Header file of GitCommand. The base class to all git commands.
- * 
- * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+/*
+ * Copyright 2018, Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ * All rights reserved. Distributed under the terms of the MIT license.
  */
 
 #ifndef _GIT_COMMAND_H_
 #define _GIT_COMMAND_H_
 
 #include <stddef.h>
+
+#include <posix/sys/time.h>
 
 class TrackGitWindow;
 

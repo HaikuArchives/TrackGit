@@ -1,10 +1,9 @@
-/**
- * @file TrackGit.cpp
- * @brief Main file of TrackGit - A Tracker Addon for Git Version Control 
- * System.
- * 
- * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+/*
+ * Copyright 2018, Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ * All rights reserved. Distributed under the terms of the MIT license.
  */
+
+#include "TrackGitApp.h"
 
 #include <Alert.h>
 #include <Application.h>
@@ -21,7 +20,6 @@
 #include <add-ons/tracker/TrackerAddOn.h>
 
 #include "Utils.h"
-#include "TrackGitApp.h"
 
 #include <git2.h>
 

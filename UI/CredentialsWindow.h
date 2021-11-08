@@ -1,12 +1,12 @@
-/**
- * @file CloneWindow.h
- * @brief Header file of Clone window.
- * 
- * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+/*
+ * Copyright 2018, Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ * All rights reserved. Distributed under the terms of the MIT license.
  */
 
 #ifndef _CREDENTIALS_WINDOW_H_
 #define _CREDENTIALS_WINDOW_H_
+
+#include <posix/sys/time.h>
 
 #include <InterfaceKit.h>
 

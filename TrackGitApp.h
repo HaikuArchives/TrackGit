@@ -1,12 +1,12 @@
-/**
- * @file TrackGitApp.h
- * @brief Header file of TrackGit App.
- * 
- * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+/*
+ * Copyright 2018, Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ * All rights reserved. Distributed under the terms of the MIT license.
  */
 
 #ifndef _TRACKGIT_APP_H_
 #define _TRACKGIT_APP_H_
+
+#include <posix/sys/time.h>
 
 #include <map>
 
