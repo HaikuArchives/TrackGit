@@ -3,7 +3,9 @@
  * All rights reserved. Distributed under the terms of the MIT license.
  */
 
-#include "TrackGitApp.h"
+#include <stdio.h>
+#include <strings.h>
+#include <vector>
 
 #include <Alert.h>
 #include <Application.h>
@@ -14,14 +16,13 @@
 #include <SupportKit.h>
 #include <MenuItem.h>
 
-#include <stdio.h>
-#include <strings.h>
-#include <vector>
 #include <add-ons/tracker/TrackerAddOn.h>
 
+#include <git2.h>
+
+#include "TrackGitApp.h"
 #include "Utils.h"
 
-#include <git2.h>
 
 #define B_TRANSLATION_CONTEXT "TrackGit"
 
@@ -161,8 +162,12 @@ populate_menu(BMessage* msg, BMenu* menu, BHandler* handler)
 					B_TRANSLATE("Add all files"), addMsg);
 			submenu->AddItem(addItem);
 		}
+	} else if (strcmp(menu->Name(), "MenuBar") == 0) {
+		// For git-less dirPath, don't add items to menubar
+		delete submenu;
+		submenu = NULL;
 	} else {
-		// dirPath does not belong to git repo
+		// dirPath does not belong to git repo, menu isn't menubar
 		// Add Clone menu item
 		BMessage* cloneMsg = new BMessage(*msg);
 		cloneMsg->AddInt32("addon_item_id", kClone);
@@ -181,8 +186,10 @@ populate_menu(BMessage* msg, BMenu* menu, BHandler* handler)
 		}
 	}
 
-	menu->AddItem(submenu);
-	submenu->SetTargetForItems(handler);
+	if (submenu != NULL) {
+		menu->AddItem(submenu);
+		submenu->SetTargetForItems(handler);
+	}
 
 	git_buf_free(&buf);
 	git_libgit2_shutdown();
