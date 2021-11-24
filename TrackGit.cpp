@@ -40,10 +40,7 @@ extern "C" {
 void 
 process_refs(entry_ref dir_ref, BMessage* msg, void*)
 {
-	BString buffer("TrackGit: A Tracker Addon for Git Version Control System");
-	BAlert *alert = new BAlert("", buffer.String(), "Cancel", 
-			0, 0, B_WIDTH_AS_USUAL, B_WARNING_ALERT);
-	alert->Go();
+	TrackGitApp::AboutWindow();
 }
 
 

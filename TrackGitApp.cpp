@@ -1,16 +1,14 @@
-/**
- * @file TrackGitApp.cpp
- * @brief Implementation file of TrackGitApp.
- * 
- * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+/*
+ * Copyright 2018, Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ * All rights reserved. Distributed under the terms of the MIT license.
  */
 
 #include "TrackGitApp.h"
-#include "Utils.h"
 
+#include <AboutWindow.h>
+#include <Catalog.h>
 #include <InterfaceKit.h>
 
-#include "UI/TrackGitWindow.h"
 #include "GitCommand/GitCommand.h"
 #include "GitCommand/Clone.h"
 #include "GitCommand/Init.h"
@@ -23,7 +21,11 @@
 #include "GitCommand/CreateBranch.h"
 #include "GitCommand/SwitchBranch.h"
 #include "GitCommand/Log.h"
+#include "UI/TrackGitWindow.h"
+#include "Utils.h"
 
+
+#define B_TRANSLATION_CONTEXT "TrackGitApp"
 
 /**
  * TrackGitApp Constructor.
@@ -123,4 +125,32 @@ TrackGitApp::MessageReceived(BMessage* msg)
 	
 	if (gitCommand)
 		gitCommand->Execute();
+}
+
+
+void
+TrackGitApp::AboutRequested()
+{
+	AboutWindow();
+}
+
+
+void
+TrackGitApp::AboutWindow()
+{
+	const char* authors[] = {
+		"Adrien Destugues",
+		"Hrishikesh Hiraskar",
+		"humdinger",
+		"Janus",
+		"Stephan Aßmus",
+		"waddlesplash",
+		NULL
+	};
+	BAboutWindow* aboutW = new BAboutWindow(B_TRANSLATE_SYSTEM_NAME(ADDON_NAME),
+		APP_SIGN);
+	aboutW->AddDescription(B_TRANSLATE("A Tracker Addon for Git Version Control System"));
+	aboutW->AddCopyright(2018, "Hrishikesh Hiraskar");
+	aboutW->AddAuthors(authors);
+	aboutW->Show();
 }
