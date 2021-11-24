@@ -27,13 +27,17 @@ class TrackGitWindow;
  */
 class TrackGitApp : public BApplication
 {
-	/**
-	 * The map of running commands to their repo.
-	 */
+public:
+					TrackGitApp();
+
+	virtual void	MessageReceived(BMessage*);
+	virtual void	AboutRequested();
+
+	static	void	AboutWindow();
+
+private:
+	/** The map of running commands to their repo. */
 	map<BString, TrackGitWindow*> fRunningCommands;
-	public:
-	TrackGitApp();
-	virtual void MessageReceived(BMessage*);
 };
 
 #endif
