@@ -64,12 +64,16 @@ populate_menu(BMessage* msg, BMenu* menu, BHandler* handler)
 		return;
 	}
 
+	const char* menuName = ADDON_NAME;
+	if (strcmp(menu->Name(), "MenuBar") == 0)
+		menuName = B_TRANSLATE("Git");
+
 	// Remove Menu item if already exists.
-	BMenuItem* item = menu->FindItem(ADDON_NAME);
+	BMenuItem* item = menu->FindItem(menuName);
 	if (item != NULL)
 		menu->RemoveItem(item);
 
-	BMenu* submenu = new BMenu(ADDON_NAME);
+	BMenu* submenu = new BMenu(menuName);
 
 	vector<char*> selected;
 	extract_selected_paths(msg, selected);
@@ -161,8 +165,12 @@ populate_menu(BMessage* msg, BMenu* menu, BHandler* handler)
 					B_TRANSLATE("Add all files"), addMsg);
 			submenu->AddItem(addItem);
 		}
+	} else if (strcmp(menu->Name(), "MenuBar") == 0) {
+		// For git-less dirPath, don't add items to menubar
+		delete submenu;
+		submenu = NULL;
 	} else {
-		// dirPath does not belong to git repo
+		// dirPath does not belong to git repo, menu isn't menubar
 		// Add Clone menu item
 		BMessage* cloneMsg = new BMessage(*msg);
 		cloneMsg->AddInt32("addon_item_id", kClone);
@@ -181,8 +189,10 @@ populate_menu(BMessage* msg, BMenu* menu, BHandler* handler)
 		}
 	}
 
-	menu->AddItem(submenu);
-	submenu->SetTargetForItems(handler);
+	if (submenu != NULL) {
+		menu->AddItem(submenu);
+		submenu->SetTargetForItems(handler);
+	}
 
 	git_buf_free(&buf);
 	git_libgit2_shutdown();
