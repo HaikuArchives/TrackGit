@@ -110,7 +110,7 @@ TrackGitApp::MessageReceived(BMessage* msg)
 			gitCommand = new CreateBranch(repo);
 			break;
 		case kSwitchBranch:
-			gitCommand = new SwitchBranch(repo);
+			gitCommand = new SwitchBranch(repo, msg);
 			break;
 		case kLog:
 			gitCommand = new Log(repo);

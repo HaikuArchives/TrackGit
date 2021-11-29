@@ -1,18 +1,16 @@
-/**
- * @file CreateBranchWindow.cpp
- * @brief Implementation file of Create Branch window.
- * 
- * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+/*
+ * Copyright 2018, Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ * All rights reserved. Distributed under the terms of the MIT license.
  */
 
 #include "CreateBranchWindow.h"
-#include "../GitCommand/CreateBranch.h"
-#include "../GitCommand/SwitchBranch.h"
-
-#include <stdio.h>
-#include <git2.h>
 
 #include <LayoutBuilder.h>
+
+#include <git2.h>
+
+#include "../GitCommand/CreateBranch.h"
+#include "../GitCommand/SwitchBranch.h"
 
 
 /**
@@ -58,6 +56,7 @@ CreateBranchWindow::MessageReceived(BMessage* msg)
 	BAlert* alert = NULL;
 	switch (msg->what) {
 		case kDoCreateBranch:
+		{
 			if (CreateBranch::DoCreateBranch(fRepo,
 						BString(fBranchText->Text())) < 0) {
                 const git_error* err = giterr_last();
@@ -78,24 +77,12 @@ CreateBranchWindow::MessageReceived(BMessage* msg)
 			}
 			alert->Go();
 			if (fSwitchBranch->Value() == B_CONTROL_ON) {
-				if (SwitchBranch::DoSwitchBranch(fRepo,
-							BString(fBranchText->Text())) < 0) {
-					const git_error* err = giterr_last();
-
-					BString buffer("Error : %s");
-					buffer.ReplaceFirst("%s", err->message);
-					alert = new BAlert("", buffer.String(), "Cancel", 
-							0, 0, B_WIDTH_AS_USUAL, B_WARNING_ALERT);
-				} else {
-					BString buffer("Switched to branch %b.");
-					buffer.ReplaceFirst("%b", fBranchText->Text());
-					alert = new BAlert("", buffer.String(), "OK", 
-							0, 0, B_WIDTH_AS_USUAL);
-				}
-				alert->Go();
+				int res = SwitchBranch::DoSwitchBranch(fRepo, fBranchText->Text());
+				SwitchBranch::NotifyResult(res, fRepo, fBranchText->Text());
 			}
 			Quit();
 			break;
+		}
 		case kCancelCreateBranch:
 			Quit();
 			break;

@@ -3,16 +3,13 @@
  * All rights reserved. Distributed under the terms of the MIT license.
  */
 
-#include <stdio.h>
-#include <strings.h>
-#include <vector>
-
 #include <Alert.h>
 #include <Application.h>
 #include <AppKit.h>
 #include <Catalog.h>
 #include <InterfaceKit.h>
 #include <StorageKit.h>
+#include <StringList.h>
 #include <SupportKit.h>
 #include <MenuItem.h>
 
@@ -20,6 +17,7 @@
 
 #include <git2.h>
 
+#include "SwitchBranch.h"
 #include "TrackGitApp.h"
 #include "Utils.h"
 
@@ -123,19 +121,35 @@ populate_menu(BMessage* msg, BMenu* menu, BHandler* handler)
 				B_TRANSLATE("Push" B_UTF8_ELLIPSIS), pushMsg);
 		submenu->AddItem(pushItem);
 
-		// Add Create Branch menu item
-		BMessage* createBranchMsg = new BMessage(*msg);
-		createBranchMsg->AddInt32("addon_item_id", kCreateBranch);
-		BMenuItem* createBranchItem = new BMenuItem(
-				B_TRANSLATE("Create branch" B_UTF8_ELLIPSIS), createBranchMsg);
-		submenu->AddItem(createBranchItem);
+		// Add Branch menu
+		BMenu* branchMenu = new BMenu("BranchMenu");
 
-		// Add Switch Branch menu item
 		BMessage* switchBranchMsg = new BMessage(*msg);
 		switchBranchMsg->AddInt32("addon_item_id", kSwitchBranch);
-		BMenuItem* switchBranchItem = new BMenuItem(
-				B_TRANSLATE("Switch branch" B_UTF8_ELLIPSIS), switchBranchMsg);
-		submenu->AddItem(switchBranchItem);
+		BMenuItem* branchMenuItem = new BMenuItem(branchMenu, switchBranchMsg);
+		branchMenuItem->SetLabel(B_TRANSLATE("Branches" B_UTF8_ELLIPSIS));
+
+		BStringList branches;
+		BString branch;
+		if (SwitchBranch::GetBranches(dirPath, &branches, &branch, repo) == 0)
+			for (int i = 0; i < branches.CountStrings(); i++) {
+				BMessage* branchMsg = new BMessage(*msg);
+				branchMsg->AddInt32("addon_item_id", kSwitchBranch);
+				branchMsg->AddString("branch", branches.StringAt(i));
+				branchMenu->AddItem(new BMenuItem(branches.StringAt(i), branchMsg));
+				branchMenu->ItemAt(i)->SetMarked(branch == branches.StringAt(i));
+			}
+		else
+			branchMenu->AddItem(
+				new BMenuItem(B_TRANSLATE("Switch branch" B_UTF8_ELLIPSIS),
+					switchBranchMsg));
+		branchMenu->AddSeparatorItem();
+
+		BMessage* createBranchMsg = new BMessage(*msg);
+		createBranchMsg->AddInt32("addon_item_id", kCreateBranch);
+		branchMenu->AddItem(new BMenuItem(
+				B_TRANSLATE("Create branch" B_UTF8_ELLIPSIS), createBranchMsg));
+		submenu->AddItem(branchMenuItem);
 
 		// Add Log menu item
 		BMessage* logMsg = new BMessage(*msg);

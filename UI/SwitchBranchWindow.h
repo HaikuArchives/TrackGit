@@ -1,17 +1,16 @@
-/**
- * @file SwitchBranchWindow.h
- * @brief Header file of Switch Branch window.
- * 
- * @author Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+/*
+ * Copyright 2018, Hrishikesh Hiraskar <hrishihiraskar@gmail.com>
+ * All rights reserved. Distributed under the terms of the MIT license.
  */
 
 #ifndef _SWITCH_BRANCH_WINDOW_H_
 #define _SWITCH_BRANCH_WINDOW_H_
 
-#include "TrackGitWindow.h"
-
 #include <InterfaceKit.h>
 #include <SupportKit.h>
+
+#include "TrackGitWindow.h"
+
 
 enum {
 	kDoSwitchBranch,
@@ -20,21 +19,14 @@ enum {
 };
 
 
-/**
- * The Switch Branch Window class.
- */
 class SwitchBranchWindow : public TrackGitWindow {
-	/**
-	 * The Switch Branch pop up menu.
-	 */
-	BPopUpMenu*			fSwitchMenu;
-	/**
-	 * The branch to be switched to.
-	 */
-	BString				fSelectedBranch;
 public:
 						SwitchBranchWindow(BString);
 	virtual void		MessageReceived(BMessage*);
+
+private:
+	BPopUpMenu*			fSwitchMenu;
+	BString				fSelectedBranch;
 };
 
 #endif
